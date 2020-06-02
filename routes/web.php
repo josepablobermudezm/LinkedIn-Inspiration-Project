@@ -30,3 +30,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('usuarios','usuariosController');
+Route::resource('experiencias','experienciasController');
+Route::resource('ofertas','ofertasController');
+Route::resource('requisitos','requisitosController');
+Route::resource('formaciones','formacionesController');
