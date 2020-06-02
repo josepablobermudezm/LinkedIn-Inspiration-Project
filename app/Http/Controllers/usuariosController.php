@@ -61,8 +61,8 @@ class usuariosController extends Controller
      */
     public function show($id)
     {
-      $usuario = usuarios::find($id);
-      return view('usuarios.show',compact('post'));
+      $usuarios = usuarios::find($id);
+      return view('usuarios.show',compact('usuarios'));
     }
 
     /**
@@ -73,8 +73,8 @@ class usuariosController extends Controller
      */
     public function edit($id)
     {
-        $post = usuarios::find($id);
-        return view('usuarios.edit',compact('post'));
+        $usuarios = usuarios::find($id);
+        return view('usuarios.edit',compact('usuarios'));
     }
 
     /**
