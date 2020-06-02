@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\usuarios;
 
 class usuariosController extends Controller
@@ -14,8 +15,8 @@ class usuariosController extends Controller
      */
     public function index()
     {
-        $usuario = usuarios::all();
-        return view('usuarios.index', compact('usuario'));
+        $usuarios = usuarios::all();
+        return view('usuarios.index', compact('usuarios'));
     }
 
     /**
@@ -25,7 +26,7 @@ class usuariosController extends Controller
      */
     public function create()
     {
-        //
+        return view('usuarios.create');
     }
 
     /**
@@ -36,7 +37,20 @@ class usuariosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //['usNombreReal','usNombreUsuario','usContrasena','usDireccion', 'usTelefono', 'usTipoUsuario', 'usFoto', 'usCedula'];
+ 
+        $this->validate($request,[
+          'usNombreReal'=>'required|string|max:50',
+          'usNombreUsuario'=>'required|string|max:50',
+          'usContrasena'=>'required|max:100',
+          'usDireccion'=>'required|string|max:300',
+          'usTelefono'=>'required|string|max:20',
+          'usTipoUsuario'=>'required|string|max:2',
+          'usFoto'=>'required|string|max:20',
+          'usCedula'=>'required|string|max:30',
+        ]);
+        usuarios::create($request->all());
+        return redirect()->route('usuarios.index')->with('success','Post created success');
     }
 
     /**
@@ -47,7 +61,8 @@ class usuariosController extends Controller
      */
     public function show($id)
     {
-        //
+      $usuario = usuarios::find($id);
+      return view('usuarios.show',compact('post'));
     }
 
     /**
@@ -58,7 +73,8 @@ class usuariosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = usuarios::find($id);
+        return view('usuarios.edit',compact('post'));
     }
 
     /**
@@ -70,7 +86,18 @@ class usuariosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'usNombreReal'=>'required|string|max:50',
+            'usNombreUsuario'=>'required|string|max:50',
+            'usContrasena'=>'required|max:100',
+            'usDireccion'=>'required|string|max:300',
+            'usTelefono'=>'required|string|max:20',
+            'usTipoUsuario'=>'required|string|max:2',
+            'usFoto'=>'required|string|max:20',
+            'usCedula'=>'required|string|max:30',
+          ]);
+        usuarios::find($id)->update($request->all());
+        return redirect()->route('usuarios.index')->with('success','Usuario actualizado con exito');
     }
 
     /**
@@ -81,6 +108,7 @@ class usuariosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        usuarios::find($id)->delete();
+        return redirect()->route('usuarios.index')->with('success','Usuario Eliminado con Exito');
     }
 }
