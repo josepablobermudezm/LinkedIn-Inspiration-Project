@@ -40,11 +40,11 @@
       <td>{{ $value->usTipoUsuario }}</td>
       <td>{{ $value->usFoto }}</td>
       <td>
-        <a class="btn btn-info btn-sm" href="{{route('usuarios.show',$value->id)}}">
+        <a class="btn btn-info btn-sm" href="{{route('usuarios.show',$value->usID)}}">
           <i class="glyphicon glyphicon-th-large"></i></a>
-        <a class="btn btn-primary btn-sm" href="{{route('usuarios.edit',$value->id)}}">
+        <a class="btn btn-primary btn-sm" href="{{route('usuarios.edit',$value->usID)}}">
           <i class="glyphicon glyphicon-pencil"></i></a>
-        {!! Form::open(['method' => 'DELETE','route' => ['usuarios.destroy', $value->id],'style'=>'display:inline']) !!}
+        {!! Form::open(['method' => 'DELETE','route' => ['usuarios.destroy', $value->usID],'style'=>'display:inline']) !!}
         <button type="submit" style="display: inline;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
         {!! Form::close() !!}
       </td>
