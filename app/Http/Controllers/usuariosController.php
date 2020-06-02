@@ -50,7 +50,7 @@ class usuariosController extends Controller
           'usCedula'=>'required|string|max:30',
         ]);
         usuarios::create($request->all());
-        return redirect()->route('usuarios.index')->with('success','Post created success');
+        return redirect()->route('usuarios.index')->with('success','Usuario creado exitosamente');
     }
 
     /**
