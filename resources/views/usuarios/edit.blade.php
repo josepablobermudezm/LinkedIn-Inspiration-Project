@@ -2,7 +2,7 @@
 @section('content')
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      {{ Form::model($usuario,['route'=>['usuarios.update',$usuario->usID],'method'=>'PATCH']) }}
+      {{ Form::model($usuarios,['route'=>['usuarios.update',$usuarios->usID],'method'=>'PATCH']) }}
       @include('usuarios.form_master')
       {{ Form::close() }}
     </div>

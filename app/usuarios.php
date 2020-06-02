@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class usuarios extends Model
 {
+    protected $primaryKey = 'usID';
     protected $fillable = ['usNombreReal','usNombreUsuario','usContrasena','usDireccion', 'usTelefono', 'usTipoUsuario', 'usFoto', 'usCedula'];
     protected $dates = ['created_at', 'updated_at'];
 
