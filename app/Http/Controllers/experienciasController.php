@@ -47,10 +47,17 @@ class experienciasController extends Controller
           'exDescripcion'=>'required|string|max:300',
         ]);
         $user = auth()->user();
-        $request->request->add(['exCurriculum' => getCurriculumID($user->id)]);
+        $request->request->add(['exCurriculum' => $this->getCurriculumID($user->id)]);
         experiencias::create($request->all());
         return redirect()->route('experiencias.index')->with('success','Experiencia creada exitosamente');
     }
+
+    public function getCurriculumID($userID){
+        //$curr = DB::table('curriculums')->get();
+        $id = DB::table('curriculums')->select('crID')->where('c.crUsuario', '=', $userID)->first();
+        return $id;
+    }
+
 
     /**
      * Display the specified resource.
@@ -58,12 +65,7 @@ class experienciasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function getCurriculumID($userID){
-        //$curr = DB::table('curriculums')->get();
-        $id = DB::select('SELECT c.crID FROM curriculums c where c.crUsuario = $userID');
-        return $id;
-    }
-
+    
     public function show($id)
     {
       $experiencias = experiencias::find($id);
