@@ -42,7 +42,6 @@ class experienciasController extends Controller
         $this->validate($request,[
           'exPuesto'=>'required|string|max:50',
           'exEmpresa'=>'required|string|max:50',
-          'exCurriculum'=>'required|max:3',
           'exFechaInicio'=>'required|string|max:10',
           'fechaFinal'=>'required|string|max:10',
           'exDescripcion'=>'required|string|max:300',
