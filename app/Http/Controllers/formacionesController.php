@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\formaciones;
+use Illuminate\Support\Facades\DB;
+
 class formacionesController extends Controller
 {
     /**
@@ -42,6 +44,13 @@ class formacionesController extends Controller
           'foInstitucion'=>'required|string|max:50',
           'foFecha'=>'required|string|max:10',
         ]);
+        $user = auth()->user();
+        $curriculum = DB::table('curriculums')->orderBy('crID', 'asc')->pluck('crID', 'crUsuario');
+        foreach ($curriculum as $k => $v) {
+            if($k == $user->id){
+                $request->request->add(['foCurriculum' => $curriculum[$k]]);
+            }
+        }
         formaciones::create($request->all());
         return redirect()->route('formaciones.index')->with('success','Formación creada exitosamente');
     }
