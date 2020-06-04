@@ -37,6 +37,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::resource('curriculums','curriculumsController');
 Route::resource('usuarios','usuariosController');
 Route::resource('experiencias','experienciasController');
 Route::resource('ofertas','ofertasController');
