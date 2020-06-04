@@ -14,7 +14,7 @@ class usuariosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
         $usuarios = usuarios::all();
         return view('usuarios.index', compact('usuarios'));
     }
