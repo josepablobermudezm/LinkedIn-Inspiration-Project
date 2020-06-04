@@ -18,12 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('PDF', function () {
-    $pdf = PDF::loadView('usuarios.index');
-    
-    return $pdf->stream();
-})->name('PDF');
-
+Route::get('pdf', 'ReportGeneratorController@Reporte1')->name('pdf');
 
 Auth::routes();
 
