@@ -19,7 +19,6 @@
       <th with="80px">No</th>
       <td>Puesto</td>
       <td>Empresa</td>
-      <td>Curriculum</td>
       <td>Fecha Inicio</td>
       <td>Fecha Final</td>
       <td>Descripción</td>
@@ -35,16 +34,15 @@
       <td>{{$no++}}</td>
       <td>{{ $value->exPuesto }}</td>
       <td>{{ $value->exEmpresa }}</td>
-      <td>{{ $value->exCurriculum }}</td>
       <td>{{ $value->exFechaInicio }}</td>
       <td>{{ $value->fechaFinal }}</td>
       <td>{{ $value->exDescripcion }}</td>
       <td>
-        <a class="btn btn-info btn-sm" href="{{route('experiencias.show', $value->id)}}">
+        <a class="btn btn-info btn-sm" href="{{route('experiencias.show', $value->exID)}}">
           <i class="glyphicon glyphicon-th-large"></i></a>
-        <a class="btn btn-primary btn-sm" href="{{route('experiencias.edit', $value->id)}}">
+        <a class="btn btn-primary btn-sm" href="{{route('experiencias.edit', $value->exID)}}">
           <i class="glyphicon glyphicon-pencil"></i></a>
-        {!! Form::open(['method' => 'DELETE','route' => ['experiencias.destroy', $value->id],'style'=>'display:inline']) !!}
+        {!! Form::open(['method' => 'DELETE','route' => ['experiencias.destroy', $value->exID ],'style'=>'display:inline']) !!}
         <button type="submit" style="display: inline;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
         {!! Form::close() !!}
       </td>

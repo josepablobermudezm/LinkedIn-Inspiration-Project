@@ -45,6 +45,8 @@ class experienciasController extends Controller
           'fechaFinal'=>'required|string|max:10',
           'exDescripcion'=>'required|string|max:300',
         ]);
+        $user = auth()->user();
+        $request->request->add(['exCurriculum' => $user->id]);
         experiencias::create($request->all());
         return redirect()->route('experiencias.index')->with('success','Experiencia creada exitosamente');
     }
@@ -85,7 +87,6 @@ class experienciasController extends Controller
         $this->validate($request,[
             'exPuesto'=>'required|string|max:50',
             'exEmpresa'=>'required|string|max:50',
-            'exCurriculum'=>'required|max:3',
             'exFechaInicio'=>'required|string|max:10',
             'fechaFinal'=>'required|string|max:10',
             'exDescripcion'=>'required|string|max:300',
