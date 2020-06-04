@@ -40,7 +40,7 @@ class ofertasController extends Controller
           'ofNombre'=>'required|string|max:50',
           'ofFechaInicio'=>'required|string|max:10',
           'ofFechaFinal'=>'required|max:10',
-          'ofLimite'=>'required|int|max:4',
+          'ofLimite'=>'required|int|max:300',
         ]);
         ofertas::create($request->all());
         return redirect()->route('ofertas.index')->with('success','Oferta creada exitosamente');

@@ -7,7 +7,7 @@
     </div>
   </div>
 </div>
-<!--
+
 @if ($message = Session::get('success'))
       <div class="alert alert-success">
           <p>{{ $message }}</p>
@@ -17,14 +17,12 @@
   <table class="table table-bordered">
     <tr>
       <th with="80px">No</th>
-      <td>NombreReal</td>
-      <td>NombreUsuario</td>
-      <td>Contrasena</td>
-      <td>Telefono</td>
-      <td>TipoUsuario</td>
-      <td>Foto</td>
+      <td>Nombre de Oferta</td>
+      <td>Fecha Inicio</td>
+      <td>Fecha Final</td>
+      <td>Cupo</td>
       <th with="140px" class="text-center">
-        <a href="{{route('usuarios.create')}}" class="btn btn-success btn-sm">
+        <a href="{{route('ofertas.create')}}" class="btn btn-success btn-sm">
           <i class="glyphicon glyphicon-plus"></i>
         </a>
       </th>
@@ -33,22 +31,18 @@
     @foreach ($ofertas as $key => $value)
     <tr>
       <td>{{$no++}}</td>
-      <td>{{ $value->usNombreReal }}</td>
-      <td>{{ $value->usNombreUsuario }}</td>
-      <td>{{ $value->usContrasena }}</td>
-      <td>{{ $value->usTelefono }}</td>
-      <td>{{ $value->usTipoUsuario }}</td>
-      <td>{{ $value->usFoto }}</td>
+      <td>{{ $value->ofNombre }}</td>
+      <td>{{ $value->usFechaInicio }}</td>
+      <td>{{ $value->usFechaFinal }}</td>
+      <td>{{ $value->usLimite }}</td>
       <td>
-        <a class="btn btn-info btn-sm" href="{{route('usuarios.show',$value->id)}}">
-          <i class="glyphicon glyphicon-th-large"></i></a>
-        <a class="btn btn-primary btn-sm" href="{{route('usuarios.edit',$value->id)}}">
+        <a class="btn btn-primary btn-sm" href="{{route('ofertas.edit',$value->ofID)}}">
           <i class="glyphicon glyphicon-pencil"></i></a>
-        {!! Form::open(['method' => 'DELETE','route' => ['usuarios.destroy', $value->id],'style'=>'display:inline']) !!}
+        {!! Form::open(['method' => 'DELETE','route' => ['usuarios.destroy', $value->ofID],'style'=>'display:inline']) !!}
         <button type="submit" style="display: inline;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
         {!! Form::close() !!}
       </td>
     </tr>
     @endforeach
-  </table>-->
+  </table>
   @endsection
