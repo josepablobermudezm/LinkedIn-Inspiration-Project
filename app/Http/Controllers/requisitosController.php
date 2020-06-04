@@ -13,6 +13,7 @@ class requisitosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
         $requisitos = requisitos::all();
@@ -31,10 +32,7 @@ class requisitosController extends Controller
 
     public function offer($id)
     {
-        
-
-        $requisitos = DB::table('requisitos')->orderBy('rqID', 'asc')->where('rqOfertaTrabajo',$id)->get()->toArray();
-        
+        $requisitos = DB::table('requisitos')->orderBy('rqID', 'asc')->where('rqOfertaTrabajo',$id)->get()->toArray();   
         return view('requisitos.index',compact('requisitos'));
     }
 
