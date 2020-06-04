@@ -13,6 +13,7 @@ class requisitosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
         $requisitos = requisitos::all();
@@ -31,10 +32,7 @@ class requisitosController extends Controller
 
     public function offer($id)
     {
-        
-
-        $requisitos = DB::table('requisitos')->orderBy('rqID', 'asc')->where('rqOfertaTrabajo','$id')->pluck('rqID','rqNombre','rqDescripcion','rqOfertaTrabajo');
-        
+        $requisitos = DB::table('requisitos')->orderBy('rqID', 'asc')->where('rqOfertaTrabajo',$id)->get()->toArray();   
         return view('requisitos.index',compact('requisitos'));
     }
 
@@ -52,7 +50,7 @@ class requisitosController extends Controller
           'rqDescripcion'=>'required|string|max:300'
         ]);
         requisitos::create($request->all());
-        return redirect()->route('requisitos.index')->with('success','Requisito creada exitosamente');
+        return redirect()->route('requisitos.index')->with('success','Requisito creado exitosamente');
     }
 
     /**
