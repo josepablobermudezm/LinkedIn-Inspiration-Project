@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ofertas;
+
+
 class ofertasController extends Controller
 {
     /**
@@ -40,7 +42,7 @@ class ofertasController extends Controller
           'ofNombre'=>'required|string|max:50',
           'ofFechaInicio'=>'required|string|max:10',
           'ofFechaFinal'=>'required|max:10',
-          'ofLimite'=>'required|int|max:300',
+          'ofLimite'=>'required|int|max:999',
         ]);
         ofertas::create($request->all());
         return redirect()->route('ofertas.index')->with('success','Oferta creada exitosamente');
@@ -57,6 +59,7 @@ class ofertasController extends Controller
       $ofertas = ofertas::find($id);
       return view('ofertas.show',compact('ofertas'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -83,7 +86,7 @@ class ofertasController extends Controller
             'ofNombre'=>'required|string|max:50',
             'ofFechaInicio'=>'required|string|max:10',
             'ofFechaFinal'=>'required|max:10',
-            'ofLimite'=>'required|int|max:4',
+            'ofLimite'=>'required|int|max:999',
           ]);
           ofertas::find($id)->update($request->all());
         return redirect()->route('ofertas.index')->with('success','Oferta actualizada con exito');

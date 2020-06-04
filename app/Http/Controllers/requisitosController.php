@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\requisitos;
+use Illuminate\Support\Facades\DB;
+
 class requisitosController extends Controller
 {
     /**
@@ -25,6 +27,15 @@ class requisitosController extends Controller
     public function create()
     {
         return view('requisitos.create');
+    }
+
+    public function offer($id)
+    {
+        
+
+        $requisitos = DB::table('requisitos')->orderBy('rqID', 'asc')->where('rqOfertaTrabajo','$id')->pluck('rqID','rqNombre','rqDescripcion','rqOfertaTrabajo');
+        
+        return view('requisitos.index',compact('requisitos'));
     }
 
     /**

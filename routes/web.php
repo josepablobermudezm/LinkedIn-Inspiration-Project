@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Route::get('pdf', 'ReportGeneratorController@Reporte1')->name('pdf');
 
+Route::get('requisitos/offer/{id}','requisitosController@offer')->name('offer');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
