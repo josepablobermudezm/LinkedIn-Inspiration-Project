@@ -36,7 +36,7 @@
     <td>{{ $value->ofFechaFinal }}</td>
     <td>{{ $value->ofLimite }}</td>
     <td>
-      <a class="btn btn-info btn-sm" href="{{route('ofertas.requisitos',$value->ofID)}}">
+      <a class="btn btn-info btn-sm" href="{{route('offer',$value->ofID)}}">
         <i class="glyphicon glyphicon-th-large"></i></a>
       <a class="btn btn-primary btn-sm" href="{{route('ofertas.edit',$value->ofID)}}">
         <i class="glyphicon glyphicon-pencil"></i></a>

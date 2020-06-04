@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ofertas;
-use Illuminate\Support\Facades\DB;
+
 
 class ofertasController extends Controller
 {
@@ -60,11 +60,6 @@ class ofertasController extends Controller
       return view('ofertas.show',compact('ofertas'));
     }
 
-    public function requisitos($id)
-    {
-        $requisitos = DB::table('requisitos')->orderBy('rqID', 'asc')->where('rqOfertaTrabajo',$id);
-        return view('ofertas.requisitos.index',compact('requisitos'));
-    }
 
     /**
      * Show the form for editing the specified resource.
