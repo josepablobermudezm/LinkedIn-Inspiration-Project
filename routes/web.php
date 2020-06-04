@@ -13,9 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('PDF', function () {
+    $pdf = PDF::loadView('usuarios.index');
+    
+    return $pdf->stream();
+})->name('PDF');
+
 
 Auth::routes();
 
