@@ -32,11 +32,11 @@
       <td>{{ $value->crUsuario}}</td>
       <td>{{ $value->	crObservaciones}}</td>
       <td>
-        <a class="btn btn-info btn-sm" href="{{route('curriculums.show',$value->usID)}}">
+        <a class="btn btn-info btn-sm" href="{{route('curriculums.show',$value->crID)}}">
           <i class="glyphicon glyphicon-th-large"></i></a>
-        <a class="btn btn-primary btn-sm" href="{{route('curriculums.edit',$value->usID)}}">
+        <a class="btn btn-primary btn-sm" href="{{route('curriculums.edit',$value->crID)}}">
           <i class="glyphicon glyphicon-pencil"></i></a>
-        {!! Form::open(['method' => 'DELETE','route' => ['curriculums.destroy', $value->usID],'style'=>'display:inline']) !!}
+        {!! Form::open(['method' => 'DELETE','route' => ['curriculums.destroy', $value->crID],'style'=>'display:inline']) !!}
         <button type="submit" style="display: inline;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
         {!! Form::close() !!}
       </td>

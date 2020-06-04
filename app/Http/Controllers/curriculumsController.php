@@ -55,8 +55,8 @@ class curriculumsController extends Controller
      */
     public function show($id)
     {
-        /*$curriculums = curriculums::find($id);
-        return view('curriculums.show', compact('curriculums'));*/
+        $curriculums = curriculums::find($id);
+        return view('curriculums.show', compact('curriculums'));
     }
 
     /**
@@ -67,8 +67,8 @@ class curriculumsController extends Controller
      */
     public function edit($id)
     {
-        /*$curriculums = curriculums::find($id);
-        return view('curriculums.edit', compact('curriculums'));*/
+        $curriculums = curriculums::find($id);
+        return view('curriculums.edit', compact('curriculums'));
     }
 
     /**
@@ -80,12 +80,12 @@ class curriculumsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        /*$this->validate($request, [
+        $this->validate($request, [
             'crUsuario' => 'required|string|max:20',
             'crObservaciones' => 'required|string|max:300',
         ]);
         curriculums::find($id)->update($request->all());
-        return redirect()->route('curriculums.index')->with('success', 'Usuario actualizado con exito');*/
+        return redirect()->route('curriculums.index')->with('success', 'Usuario actualizado con exito');
     }
 
     /**
@@ -96,7 +96,7 @@ class curriculumsController extends Controller
      */
     public function destroy($id)
     {
-        /*curriculums::find($id)->delete();
-        return redirect()->route('curriculums.index')->with('success', 'curriculums Eliminado con Exito');*/
+        curriculums::find($id)->delete();
+        return redirect()->route('curriculums.index')->with('success', 'curriculums Eliminado con Exito');
     }
 }
