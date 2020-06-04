@@ -27,7 +27,6 @@
                     @endauth
                 </div>
             @endif
-            <a href="{{ route('PDF')}}">Ver PDF</a>
             <div class="content">
                 <div class="title m-b-md">
                     Laravel
