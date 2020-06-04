@@ -38,7 +38,7 @@ class requisitosController extends Controller
         // ['rqNombre','rqOfertaTrabajo'];
         $this->validate($request,[
           'rqNombre'=>'required|string|max:30',
-          'rqOfertaTrabajo'=>'required|int|max:3',
+          'rqDescripcion'=>'required|string|max:300'
         ]);
         requisitos::create($request->all());
         return redirect()->route('requisitos.index')->with('success','Requisito creada exitosamente');
@@ -79,7 +79,7 @@ class requisitosController extends Controller
     {
         $this->validate($request,[
             'rqNombre'=>'required|string|max:30',
-            'rqOfertaTrabajo'=>'required|int|max:3',
+            'rqDescripcion'=>'required|string|max:300'
           ]);
           requisitos::find($id)->update($request->all());
         return redirect()->route('requisitos.index')->with('success','Requisito actualizada con exito');

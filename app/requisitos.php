@@ -11,7 +11,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class requisitos extends Model
 {
-    protected $fillable = ['rqNombre','rqOfertaTrabajo'];
+  protected $primaryKey = 'rqID';
+    protected $fillable = ['rqNombre','rqDescripcion'];
     protected $dates = ['created_at', 'updated_at'];
 
 }

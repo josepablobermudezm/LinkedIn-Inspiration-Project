@@ -5,7 +5,7 @@
   <div class="col-sm-10">
     <div class="form-group {{ $errors->has('crUsuario') ? 'has-error' : "" }}">
       {{ Form::text('crUsuario',NULL, ['class'=>'form-control', 'id'=>'crUsuario', 'placeholder'=>'Usuario Post...']) }}
-      {{ $errors->first('crUsuario', '<p class="help-block">:message</p>') }}
+      {!! $errors->first('crUsuario', '<p class="help-block">:message</p>') !!}
     </div>
   </div>
 </div>
@@ -17,7 +17,7 @@
   <div class="col-sm-10">
     <div class="form-group {{ $errors->has('crObservaciones') ? 'has-error' : "" }}">
       {{ Form::text('crObservaciones',NULL, ['class'=>'form-control', 'id'=>'crObservaciones', 'placeholder'=>'Observaciones Post...']) }}
-      {{ $errors->first('crObservaciones', '<p class="help-block">:message</p>') }}
+      {!! $errors->first('crObservaciones', '<p class="help-block">:message</p>') !!}
     </div>
   </div>
 </div>

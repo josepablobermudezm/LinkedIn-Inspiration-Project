@@ -37,8 +37,7 @@ class formacionesController extends Controller
     {
         // ['foCurriculum','foTitulo','foEspecialidad','foInstitucion', 'foFecha'];
         $this->validate($request,[
-          'foCurriculum'=>'required|int|max:3',
-          'foTitulo'=>'required|string|max:30',
+          'foTitulo'=>'required|string|max:50',
           'foEspecialidad'=>'required|max:50',
           'foInstitucion'=>'required|string|max:50',
           'foFecha'=>'required|string|max:10',
@@ -81,8 +80,7 @@ class formacionesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'foCurriculum'=>'required|int|max:3',
-            'foTitulo'=>'required|string|max:30',
+            'foTitulo'=>'required|string|max:50',
             'foEspecialidad'=>'required|max:50',
             'foInstitucion'=>'required|string|max:50',
             'foFecha'=>'required|string|max:10',

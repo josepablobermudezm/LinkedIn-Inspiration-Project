@@ -5,7 +5,7 @@
   <div class="col-sm-10">
     <div class="form-group {{ $errors->has('exPuesto') ? 'has-error' : "" }}">
       {{ Form::text('exPuesto',NULL, ['class'=>'form-control', 'id'=>'exPuesto', 'placeholder'=>'Puesto Post...']) }}
-      {{ $errors->first('exPuesto', '<p class="help-block">:message</p>') }}
+      {!! $errors->first('exPuesto', '<p class="help-block">:message</p>') !!}
     </div>
   </div>
 </div>
@@ -15,9 +15,9 @@
     {!! form::label('exEmpresa','Empresa') !!}
   </div>
   <div class="col-sm-10">
-    <div class="form-group {{ $errors->has('xEmpresa') ? 'has-error' : "" }}">
+    <div class="form-group {{ $errors->has('exEmpresa') ? 'has-error' : "" }}">
       {{ Form::text('exEmpresa',NULL, ['class'=>'form-control', 'id'=>'exEmpresa', 'placeholder'=>'Empresa Post...']) }}
-      {{ $errors->first('exEmpresa', '<p class="help-block">:message</p>') }}
+      {!! $errors->first('exEmpresa', '<p class="help-block">:message</p>') !!}
     </div>
   </div>
 </div>
@@ -29,7 +29,7 @@
   <div class="col-sm-10">
     <div class="form-group {{ $errors->has('exFechaInicio') ? 'has-error' : "" }}">
       {{ Form::text('exFechaInicio',NULL, ['class'=>'form-control', 'id'=>'exFechaInicio', 'placeholder'=>'FechaInicio Post...']) }}
-      {{ $errors->first('exFechaInicio', '<p class="help-block">:message</p>') }}
+      {!! $errors->first('exFechaInicio', '<p class="help-block">:message</p>') !!}
     </div>
   </div>
 </div>
@@ -41,7 +41,7 @@
   <div class="col-sm-10">
     <div class="form-group {{ $errors->has('fechaFinal') ? 'has-error' : "" }}">
       {{ Form::text('fechaFinal',NULL, ['class'=>'form-control', 'id'=>'fechaFinal', 'placeholder'=>'Fecha Final Post...']) }}
-      {{ $errors->first('fechaFinal', '<p class="help-block">:message</p>') }}
+      {!! $errors->first('fechaFinal', '<p class="help-block">:message</p>') !!}
     </div>
   </div>
 </div>
@@ -53,7 +53,7 @@
   <div class="col-sm-10">
     <div class="form-group {{ $errors->has('exDescripcion') ? 'has-error' : "" }}">
       {{ Form::text('exDescripcion',NULL, ['class'=>'form-control', 'id'=>'exDescripcion', 'placeholder'=>'Descripcion Post...']) }}
-      {{ $errors->first('exDescripcion', '<p class="help-block">:message</p>') }}
+      {!! $errors->first('exDescripcion', '<p class="help-block">:message</p>') !!}
     </div>
   </div>
 </div>
