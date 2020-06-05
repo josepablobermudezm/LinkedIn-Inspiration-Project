@@ -20,7 +20,7 @@
       <td>Nombre</td>
       <td>Descripción</td>
       <th with="140px" class="text-center">
-        <a href="{{route('requisitos.create')}}" class="btn btn-success btn-sm">
+        <a href="{{route('create',$rqOfertaTrabajo)}}" class="btn btn-success btn-sm">
           <i class="glyphicon glyphicon-plus"></i>
         </a>
       </th>
@@ -32,11 +32,11 @@
       <td>{{ $value->rqNombre }}</td>
       <td>{{ $value->rqDescripcion }}</td>
       <td>
-        <a class="btn btn-info btn-sm" href="{{route('requisitos.show',$value->rqID)}}">
+        <a class="btn btn-info btn-sm" href="{{ route('show', ['id'=>$value->rqID,'oferta'=>$rqOfertaTrabajo] ) }}">
           <i class="glyphicon glyphicon-th-large"></i></a>
-        <a class="btn btn-primary btn-sm" href="{{route('requisitos.edit',$value->rqID)}}">
+        <a class="btn btn-primary btn-sm" href="{{route('edit', ['id'=>$value->rqID,'oferta'=>$rqOfertaTrabajo])}}">
           <i class="glyphicon glyphicon-pencil"></i></a>
-        {!! Form::open(['method' => 'DELETE','route' => ['requisitos.destroy', $value->rqID],'style'=>'display:inline']) !!}
+        {!! Form::open(['method' => 'DELETE','route' => ['destroy', $value->rqID, $rqOfertaTrabajo],'style'=>'display:inline']) !!}
         <button type="submit" style="display: inline;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
         {!! Form::close() !!}
       </td>

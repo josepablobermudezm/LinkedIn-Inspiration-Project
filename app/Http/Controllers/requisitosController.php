@@ -13,11 +13,14 @@ class requisitosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
-    public function index()
+    public function index($id, $message)
     {
-        $requisitos = requisitos::all();
-        return view('requisitos.index', compact('requisitos'));
+        $requisitos = DB::table('requisitos')->orderBy('rqID', 'asc')->where('rqOfertaTrabajo', $id)->get()->toArray();
+        if ($message != null) {
+            return view('requisitos.index', compact('requisitos'))->with('success', $message)->with('rqOfertaTrabajo', $id);
+        } else {
+            return view('requisitos.index', compact('requisitos'));
+        }
     }
 
     /**
@@ -25,15 +28,15 @@ class requisitosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id_offer)
     {
-        return view('requisitos.create');
+        return view('requisitos.create')->with('rqOfertaTrabajo', $id_offer);
     }
 
     public function offer($id)
     {
-        $requisitos = DB::table('requisitos')->orderBy('rqID', 'asc')->where('rqOfertaTrabajo',$id)->get()->toArray();   
-        return view('requisitos.index',compact('requisitos'));
+        $requisitos = DB::table('requisitos')->orderBy('rqID', 'asc')->where('rqOfertaTrabajo', $id)->get()->toArray();
+        return view('requisitos.index', compact('requisitos'))->with('rqOfertaTrabajo', $id);
     }
 
     /**
@@ -42,15 +45,25 @@ class requisitosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $rqOfertaTrabajo)
     {
         // ['rqNombre','rqOfertaTrabajo'];
-        $this->validate($request,[
-          'rqNombre'=>'required|string|max:30',
-          'rqDescripcion'=>'required|string|max:300'
+        $this->validate($request, [
+            'rqNombre' => 'required|string|max:30',
+            'rqDescripcion' => 'required|string|max:300'
         ]);
+
+        /*$curriculum = DB::table('curriculums')->orderBy('crID', 'asc')->pluck('crID', 'crUsuario');
+        foreach ($curriculum as $k => $v) {
+
+            echo $curriculum[$k];
+            $request->request->add(['exCurriculum' => $curriculum[$k]]);
+        }*/
+
+        $request->request->add(['rqOfertaTrabajo' => $rqOfertaTrabajo]);
         requisitos::create($request->all());
-        return redirect()->route('requisitos.index')->with('success','Requisito creado exitosamente');
+        return $this->index($rqOfertaTrabajo, 'Requisito creado exitosamente');
+        //return redirect()->route('requisitos.index')->with('success','');
     }
 
     /**
@@ -59,10 +72,10 @@ class requisitosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, $rqOfertaTrabajo)
     {
-      $requisitos = requisitos::find($id);
-      return view('requisitos.show',compact('requisitos'));
+        $requisitos = requisitos::find($id);
+        return view('requisitos.show', compact('requisitos'))->with('rqOfertaTrabajo', $rqOfertaTrabajo);
     }
 
     /**
@@ -71,10 +84,10 @@ class requisitosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, $rqOfertaTrabajo)
     {
         $requisitos = requisitos::find($id);
-        return view('requisitos.edit',compact('requisitos'));
+        return view('requisitos.edit', compact('requisitos'))->with('rqOfertaTrabajo', $rqOfertaTrabajo);;
     }
 
     /**
@@ -84,14 +97,15 @@ class requisitosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, $idOffer)
     {
-        $this->validate($request,[
-            'rqNombre'=>'required|string|max:30',
-            'rqDescripcion'=>'required|string|max:300'
-          ]);
-          requisitos::find($id)->update($request->all());
-        return redirect()->route('requisitos.index')->with('success','Requisito actualizada con exito');
+        $this->validate($request, [
+            'rqNombre' => 'required|string|max:30',
+            'rqDescripcion' => 'required|string|max:300'
+        ]);
+        requisitos::find($id)->update($request->all());
+        return $this->index($idOffer, 'Requisito actualizada con exito');
+        //return redirect()->route('requisitos.index')->with('success','');
     }
 
     /**
@@ -100,9 +114,10 @@ class requisitosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, $id_offer)
     {
         requisitos::find($id)->delete();
-        return redirect()->route('requisitos.index')->with('success','Requisito Eliminada con Exito');
+        return $this->index($id_offer, 'Requisito Eliminada con Exito');
+        //return redirect()->route('requisitos.index')->with('success','');
     }
 }

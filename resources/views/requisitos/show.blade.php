@@ -7,7 +7,7 @@
         </div>
         <div class="pull-right">
             <br />
-            <a class="btn btn-primary" href="{{ route('requisitos.index') }}"> <i class="glyphicon glyphicon-arrow-left"></i></a>
+            <a class="btn btn-primary" href="{{ route('offer',['id'=>$rqOfertaTrabajo])}}"> <i class="glyphicon glyphicon-arrow-left"></i></a>
         </div>
     </div>
 </div>

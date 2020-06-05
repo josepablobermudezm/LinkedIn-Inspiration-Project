@@ -20,7 +20,29 @@ Route::get('/', function () {
 
 Route::get('pdf', 'ReportGeneratorController@Reporte1')->name('pdf');
 
-Route::get('requisitos/offer/{id}','requisitosController@offer')->name('offer');
+Route::get('requisitos/offer/{id}', 'requisitosController@offer')->name('offer');
+Route::get('requisitos/create/{id}', 'requisitosController@create')->name('create');
+
+Route::get('requisitos/show/{id}/{oferta}', [
+    'as' => 'show', 'uses' => 'requisitosController@show'
+]);
+
+Route::post('requisitos/store/{oferta}', [
+    'as' => 'store', 'uses' => 'requisitosController@store'
+]);
+
+Route::get('requisitos/edit/{id}/{oferta}', [
+    'as' => 'edit', 'uses' => 'requisitosController@edit'
+]);
+
+Route::patch('requisitos/update/{id}/{oferta}', [
+    'as' => 'update', 'uses' => 'requisitosController@update'
+]);
+
+Route::delete('requisitos/destroy/{id}/{oferta}', [
+    'as' => 'destroy', 'uses' => 'requisitosController@destroy']);
+
+
 
 Auth::routes();
 
@@ -34,9 +56,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('curriculums','curriculumsController');
-Route::resource('usuarios','usuariosController');
-Route::resource('experiencias','experienciasController');
-Route::resource('ofertas','ofertasController');
-Route::resource('requisitos','requisitosController');
-Route::resource('formaciones','formacionesController');
+Route::resource('curriculums', 'curriculumsController');
+Route::resource('usuarios', 'usuariosController');
+Route::resource('experiencias', 'experienciasController');
+Route::resource('ofertas', 'ofertasController');
+Route::resource('requisitos', 'requisitosController');
+Route::resource('formaciones', 'formacionesController');
