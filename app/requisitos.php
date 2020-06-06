@@ -1,10 +1,4 @@
 <?php
-
-/*CREATE TABLE `requisitos` (
-  `rqID` bigint(3) NOT NULL,
-  `rqNombre` varchar(50) NOT NULL,
-  `rqOfertaTrabajo` bigint(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;*/
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;

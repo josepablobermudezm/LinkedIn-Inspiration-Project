@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 use App\User;
 use App;
 
@@ -16,7 +16,8 @@ class usuariosController extends Controller
      */
     public function index()
     {   
-        $usuarios = User::all();
+        $user = auth()->user();
+        $usuarios  = DB::table('users')->orderBy('id', 'asc')->where('id', $user->id)->get()->toArray();
         return view('usuarios.index', compact('usuarios'));
     }
 
