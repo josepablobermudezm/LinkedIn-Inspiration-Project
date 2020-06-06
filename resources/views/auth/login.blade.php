@@ -14,7 +14,6 @@
                             <div class="col-md-3 col-form-label text-md-right">
                                 <i class="fas fa-user"></i>
                             </div>
-
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
