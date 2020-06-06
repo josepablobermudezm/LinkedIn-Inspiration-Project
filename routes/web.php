@@ -66,3 +66,4 @@ Route::resource('experiencias', 'experienciasController');
 Route::resource('ofertas', 'ofertasController');
 Route::resource('requisitos', 'requisitosController');
 Route::resource('formaciones', 'formacionesController');
+Route::resource('categorias', 'categoriasController');
