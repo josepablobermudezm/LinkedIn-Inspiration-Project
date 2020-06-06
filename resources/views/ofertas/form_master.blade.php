@@ -15,7 +15,11 @@
     </div>
     <div class="col-sm-10">
         <div class="form-group {{ $errors->has('ofCategoria') ? 'has-error' : "" }}">
-            {{ Form::text('ofCategoria',NULL, ['class'=>'form-control', 'id'=>'ofCategoria']) }}
+            <select name="ofCategoria" class="form-control">
+                @foreach($categories as $key =>$value)
+                <option value='{{$value->cgID}}' >{{$value->cgNombre}}</option>
+                @endforeach
+            </select>
             {!! $errors->first('ofCategoria', '<p class="help-block">:message</p>') !!}
         </div>
     </div>

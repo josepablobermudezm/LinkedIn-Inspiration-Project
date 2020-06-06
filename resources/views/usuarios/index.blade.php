@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="full-right">
-      <h2>Edición de usuario</h2>
+      <h2>Usuario</h2>
     </div>
   </div>
 </div>
