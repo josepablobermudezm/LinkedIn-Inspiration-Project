@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\usuarios;
+use App\User;
 use App;
 
 class usuariosController extends Controller
@@ -16,7 +16,7 @@ class usuariosController extends Controller
      */
     public function index()
     {   
-        $usuarios = usuarios::all();
+        $usuarios = User::all();
         return view('usuarios.index', compact('usuarios'));
     }
 
@@ -36,23 +36,24 @@ class usuariosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    /*public function store(Request $request)
     {
         //['usNombreReal','usNombreUsuario','usContrasena','usDireccion', 'usTelefono', 'usTipoUsuario', 'usFoto', 'usCedula'];
  
         $this->validate($request,[
-          'usNombreReal'=>'required|string|max:50',
-          'usNombreUsuario'=>'required|string|max:50',
-          'usContrasena'=>'required|max:100',
-          'usDireccion'=>'required|string|max:300',
-          'usTelefono'=>'required|string|max:20',
-          'usTipoUsuario'=>'required|string|max:2',
-          'usFoto'=>'required|string|max:20',
-          'usCedula'=>'required|string|max:30',
+            'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:50'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'address' => ['required', 'string', 'max:50'],
+            'phone' => ['required', 'string', 'max:50'],
+            'tipoUsuario' => ['required', 'string', 'max:1'],
+            'photo' => ['required', 'string', 'max:50'],
+            'cedula' => ['required', 'string', 'max:50']
         ]);
-        usuarios::create($request->all());
+        user::create($request->all());
         return redirect()->route('usuarios.index')->with('success','Usuario creado exitosamente');
-    }
+    }*/
 
     /**
      * Display the specified resource.
@@ -62,7 +63,7 @@ class usuariosController extends Controller
      */
     public function show($id)
     {
-      $usuarios = usuarios::find($id);
+      $usuarios = user::find($id);
       return view('usuarios.show',compact('usuarios'));
     }
 
@@ -74,7 +75,7 @@ class usuariosController extends Controller
      */
     public function edit($id)
     {
-        $usuarios = usuarios::find($id);
+        $usuarios = user::find($id);
         return view('usuarios.edit',compact('usuarios'));
     }
 
@@ -88,16 +89,17 @@ class usuariosController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'usNombreReal'=>'required|string|max:50',
-            'usNombreUsuario'=>'required|string|max:50',
-            'usContrasena'=>'required|max:100',
-            'usDireccion'=>'required|string|max:300',
-            'usTelefono'=>'required|string|max:20',
-            'usTipoUsuario'=>'required|string|max:2',
-            'usFoto'=>'required|string|max:20',
-            'usCedula'=>'required|string|max:30',
+            'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:50'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            //'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'address' => ['required', 'string', 'max:50'],
+            'phone' => ['required', 'string', 'max:50'],
+            'tipoUsuario' => ['required', 'string', 'max:1'],
+            'photo' => ['required', 'string', 'max:50'],
+            'cedula' => ['required', 'string', 'max:50']
           ]);
-        usuarios::find($id)->update($request->all());
+        user::find($id)->update($request->all());
         return redirect()->route('usuarios.index')->with('success','Usuario actualizado con exito');
     }
 
@@ -109,7 +111,7 @@ class usuariosController extends Controller
      */
     public function destroy($id)
     {
-        usuarios::find($id)->delete();
+        user::find($id)->delete();
         return redirect()->route('usuarios.index')->with('success','Usuario Eliminado con Exito');
     }
 }

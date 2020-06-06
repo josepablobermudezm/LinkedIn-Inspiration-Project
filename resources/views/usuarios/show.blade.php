@@ -14,56 +14,63 @@
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>NombreReal : </strong>
-            {{ $usuarios->usNombreReal}}
+            <strong>Nombre Real : </strong>
+            {{ $usuarios->name}}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>NombreUsuario : </strong>
-            {{ $usuarios->usNombreUsuario}}
+            <strong>Nombre de Usuario : </strong>
+            {{ $usuarios->username}}
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Contrasena : </strong>
-            {{ $usuarios->usContrasena}}
+            <strong>Correo : </strong>
+            {{ $usuarios->email}}
+        </div>
+    </div>
+    <!--<div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Contraseña : </strong>
+            {{ $usuarios->password}}
+        </div>
+    </div>-->
+    
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Dirección : </strong>
+            {{ $usuarios->address}}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Telefono : </strong>
-            {{ $usuarios->usTelefono}}
+            {{ $usuarios->phone}}
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Contrasena : </strong>
-            {{ $usuarios->usContrasena}}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>TipoUsuario : </strong>
-            {{ $usuarios->usTipoUsuario}}
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Contrasena : </strong>
-            {{ $usuarios->usContrasena}}
+            <strong>Tipo de Usuario : </strong>
+            {{ $usuarios->tipoUsuario}}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Foto : </strong>
-            {{ $usuarios->usFoto}}
+            {{ $usuarios->photo}}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Cédula : </strong>
+            {{ $usuarios->cedula}}
         </div>
     </div>
 </div>
