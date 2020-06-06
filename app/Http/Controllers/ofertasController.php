@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ofertas;
+use App\categorias;
 
 
 class ofertasController extends Controller
@@ -25,8 +26,8 @@ class ofertasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('ofertas.create');
+    {   $categories = categorias::all();
+        return view('ofertas.create', compact('categories'));
     }
 
     /**
@@ -37,15 +38,23 @@ class ofertasController extends Controller
      */
     public function store(Request $request)
     {
+        $empresa = auth()->user()->id;
         // ['ofNombre','ofFechaInicio','ofFechaFinal','ofLimite'];
-        $this->validate($request,[
-          'ofNombre'=>'required|string|max:50',
-          'ofFechaInicio'=>'required|string|max:10',
-          'ofFechaFinal'=>'required|max:10',
-          'ofLimite'=>'required|int|max:999',
+        $this->validate($request, [
+            'ofNombre' => 'required|string|max:50',
+            'ofHorario' => 'required|string|max:300',
+            'ofDescripcion' => 'required|string|max:300',
+            'ofUbicacion' => 'required|string|max:300',
+            'ofSueldo' => 'required|max:8,2',
+            'ofFechaInicio' => 'required|string|max:10',
+            'ofFechaFinal' => 'required|string|max:10',
+            'ofVacantes' => 'required|int|max:999',
         ]);
+        
+        $request->request->add(['ofEmpresa' => $empresa]);
+        
         ofertas::create($request->all());
-        return redirect()->route('ofertas.index')->with('success','Oferta creada exitosamente');
+        return redirect()->route('ofertas.index')->with('success', 'Oferta creada exitosamente');
     }
 
     /**
@@ -56,8 +65,8 @@ class ofertasController extends Controller
      */
     public function show($id)
     {
-      $ofertas = ofertas::find($id);
-      return view('ofertas.show',compact('ofertas'));
+        $ofertas = ofertas::find($id);
+        return view('ofertas.show', compact('ofertas'));
     }
 
 
@@ -70,7 +79,8 @@ class ofertasController extends Controller
     public function edit($id)
     {
         $ofertas = ofertas::find($id);
-        return view('ofertas.edit',compact('ofertas'));
+        $categories = categorias::all();    
+        return view('ofertas.edit', compact('ofertas', 'categories'));
     }
 
     /**
@@ -82,14 +92,19 @@ class ofertasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'ofNombre'=>'required|string|max:50',
-            'ofFechaInicio'=>'required|string|max:10',
-            'ofFechaFinal'=>'required|max:10',
-            'ofLimite'=>'required|int|max:999',
-          ]);
-          ofertas::find($id)->update($request->all());
-        return redirect()->route('ofertas.index')->with('success','Oferta actualizada con exito');
+        $this->validate($request, [
+            'ofNombre' => 'required|string|max:50',
+            'ofHorario' => 'required|string|max:300',
+            'ofDescripcion' => 'required|string|max:300',
+            'ofUbicacion' => 'required|string|max:300',
+            'ofSueldo' => 'required|max:8,2',
+            'ofFechaInicio' => 'required|string|max:10',
+            'ofFechaFinal' => 'required|string|max:10',
+            'ofVacantes' => 'required|int|max:999',
+        ]);
+        
+        ofertas::find($id)->update($request->all());
+        return redirect()->route('ofertas.index')->with('success', 'Oferta actualizada con exito');
     }
 
     /**
@@ -101,6 +116,6 @@ class ofertasController extends Controller
     public function destroy($id)
     {
         ofertas::find($id)->delete();
-        return redirect()->route('ofertas.index')->with('success','Oferta Eliminada con Exito');
+        return redirect()->route('ofertas.index')->with('success', 'Oferta Eliminada con Exito');
     }
 }

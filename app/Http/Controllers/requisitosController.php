@@ -53,13 +53,6 @@ class requisitosController extends Controller
             'rqDescripcion' => 'required|string|max:300'
         ]);
 
-        /*$curriculum = DB::table('curriculums')->orderBy('crID', 'asc')->pluck('crID', 'crUsuario');
-        foreach ($curriculum as $k => $v) {
-
-            echo $curriculum[$k];
-            $request->request->add(['exCurriculum' => $curriculum[$k]]);
-        }*/
-
         $request->request->add(['rqOfertaTrabajo' => $rqOfertaTrabajo]);
         requisitos::create($request->all());
         return $this->index($rqOfertaTrabajo, 'Requisito creado exitosamente');
