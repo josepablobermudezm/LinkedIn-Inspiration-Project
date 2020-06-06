@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="full-right">
-      <h2>CRUD Resource Ofertas</h2>
+      <h2>Ofertas</h2>
     </div>
   </div>
 </div>
@@ -17,10 +17,15 @@
 <table class="table table-bordered">
   <tr>
     <th with="80px">No</th>
-    <td>Nombre de Oferta</td>
+    <td>Nombre</td>
+    <td>Categoría</td>
+    <td>Descripción</td>
     <td>Fecha Inicio</td>
     <td>Fecha Final</td>
-    <td>Cupo</td>
+    <td>Ubicación</td>
+    <td>Horario</td>
+    <td>Vacantes</td>
+    <td>Sueldo</td>
     <th with="140px" class="text-center">
       <a href="{{route('ofertas.create')}}" class="btn btn-success btn-sm">
         <i class="glyphicon glyphicon-plus"></i>
@@ -32,9 +37,15 @@
   <tr>
     <td>{{$no++}}</td>
     <td>{{ $value->ofNombre }}</td>
+    <td>{{ $value->ofCategoria }}</td>
+    <td>{{ $value->ofDescripcion }}</td>
     <td>{{ $value->ofFechaInicio }}</td>
     <td>{{ $value->ofFechaFinal }}</td>
-    <td>{{ $value->ofLimite }}</td>
+    <td>{{ $value->ofUbicacion }}</td>
+    <td>{{ $value->ofHorario }}</td>
+    <td>{{ $value->ofVacantes }}</td>
+    <td>{{ $value->ofSueldo }}</td>
+
     <td>
       <a class="btn btn-info btn-sm" href="{{route('offer',$value->ofID)}}">
         <i class="glyphicon glyphicon-th-large"></i></a>

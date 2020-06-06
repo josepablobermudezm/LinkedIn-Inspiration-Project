@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 class ofertas extends Model
 {
     protected $primaryKey = 'ofID';
-    protected $fillable = ['ofNombre','ofFechaInicio','ofFechaFinal','ofLimite'];
+    protected $fillable = ['ofNombre','ofCategoria','ofDescripcion','ofFechaInicio','ofUbicacion' ,'ofFechaFinal', 'ofHorario','ofVacantes' ,'ofSueldo'];
     protected $dates = ['created_at', 'updated_at'];
     
 }
