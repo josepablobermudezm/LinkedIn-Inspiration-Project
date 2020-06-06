@@ -63,11 +63,10 @@ class experienciasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
-    public function show($id)
-    {
-      $experiencias = experiencias::find($id);
-      return view('experiencias.show',compact('experiencias'));
+
+    public function curriculum($id){
+        $experiencias  = DB::table('experiencias')->orderBy('exID', 'asc')->where('exCurriculum', $id)->get()->toArray();
+        return view('experiencias.index', compact('experiencias'));
     }
 
     /**

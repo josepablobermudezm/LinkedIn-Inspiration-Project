@@ -1,95 +1,119 @@
 <div class="row">
   <div class="col-sm-2">
-    {!! form::label('usNombreReal','NombreReal') !!}
+    {!! form::label('name','Nombre Real') !!}
   </div>
   <div class="col-sm-10">
-    <div class="form-group {{ $errors->has('usNombreReal') ? 'has-error' : "" }}">
-      {{ Form::text('usNombreReal',NULL, ['class'=>'form-control', 'id'=>'usNombreReal', 'placeholder'=>'NombreReal Post...']) }}
-      {{ $errors->first('usNombreReal', '<p class="help-block">:message</p>') }}
+    <div class="form-group {{ $errors->has('name') ? 'has-error' : "" }}">
+      {{ Form::text('name',NULL, ['class'=>'form-control', 'id'=>'name', 'placeholder'=>'Nombre Real']) }}
+      {{ $errors->first('name', '<p class="help-block">:message</p>') }}
     </div>
   </div>
 </div>
 
 <div class="row">
   <div class="col-sm-2">
-    {!! form::label('usNombreUsuario','NombreUsuario') !!}
+    {!! form::label('username','Nombre de Usuario') !!}
   </div>
   <div class="col-sm-10">
-    <div class="form-group {{ $errors->has('usNombreUsuario') ? 'has-error' : "" }}">
-      {{ Form::text('usNombreUsuario',NULL, ['class'=>'form-control', 'id'=>'usNombreUsuario', 'placeholder'=>'NombreUsuario Post...']) }}
-      {{ $errors->first('usNombreUsuario', '<p class="help-block">:message</p>') }}
+    <div class="form-group {{ $errors->has('username') ? 'has-error' : "" }}">
+      {{ Form::text('username',NULL, ['class'=>'form-control', 'id'=>'username', 'placeholder'=>'Nombre de Usuario']) }}
+      {{ $errors->first('username', '<p class="help-block">:message</p>') }}
     </div>
   </div>
 </div>
 
 <div class="row">
   <div class="col-sm-2">
-    {!! form::label('usContrasena','Contrasena') !!}
+    {!! form::label('email','Correo') !!}
   </div>
   <div class="col-sm-10">
-    <div class="form-group {{ $errors->has('usContrasena') ? 'has-error' : "" }}">
-      {{ Form::text('usContrasena',NULL, ['class'=>'form-control', 'id'=>'usContrasena', 'placeholder'=>'Contrasena Post...']) }}
-      {{ $errors->first('usContrasena', '<p class="help-block">:message</p>') }}
+    <div class="form-group {{ $errors->has('email') ? 'has-error' : "" }}">
+      {{ Form::text('email',NULL, ['class'=>'form-control', 'id'=>'email', 'placeholder'=>'Correo']) }}
+      {{ $errors->first('email', '<p class="help-block">:message</p>') }}
+    </div>
+  </div>
+</div>
+<!--
+<div class="row">
+  <div class="col-sm-2">
+    {!! form::label('password','Contraseña') !!}
+  </div>
+  <div class="col-sm-10">
+    <div class="form-group {{ $errors->has('password') ? 'has-error' : "" }}">
+      {{ Form::text('password',NULL, ['class'=>'form-control', 'id'=>'password', 'placeholder'=>'Contrasena']) }}
+      {{ $errors->first('password', '<p class="help-block">:message</p>') }}
     </div>
   </div>
 </div>
 
 <div class="row">
   <div class="col-sm-2">
-    {!! form::label('usDireccion','Direccion') !!}
+    {!! form::label('password','Contraseña') !!}
   </div>
   <div class="col-sm-10">
-    <div class="form-group {{ $errors->has('usDireccion') ? 'has-error' : "" }}">
-      {{ Form::text('usDireccion',NULL, ['class'=>'form-control', 'id'=>'usDireccion', 'placeholder'=>'Direccion Post...']) }}
-      {{ $errors->first('usDireccion', '<p class="help-block">:message</p>') }}
+    <div class="form-group {{ $errors->has('password') ? 'has-error' : "" }}">
+      {{ Form::text('password',NULL, ['class'=>'form-control', 'id'=>'password', 'placeholder'=>'Contrasena']) }}
+      {{ $errors->first('password', '<p class="help-block">:message</p>') }}
+    </div>
+  </div>
+</div>-->
+
+<div class="row">
+  <div class="col-sm-2">
+    {!! form::label('	address','Dirección') !!}
+  </div>
+  <div class="col-sm-10">
+    <div class="form-group {{ $errors->has('address') ? 'has-error' : "" }}">
+      {{ Form::text('address',NULL, ['class'=>'form-control', 'id'=>'address', 'placeholder'=>'Direccion']) }}
+      {{ $errors->first('address', '<p class="help-block">:message</p>') }}
     </div>
   </div>
 </div>
 
 <div class="row">
   <div class="col-sm-2">
-    {!! form::label('usTelefono','Telefono') !!}
+    {!! form::label('phone','Teléfono') !!}
   </div>
   <div class="col-sm-10">
-    <div class="form-group {{ $errors->has('usTelefono') ? 'has-error' : "" }}">
-      {{ Form::text('usTelefono',NULL, ['class'=>'form-control', 'id'=>'usTelefono', 'placeholder'=>'Telefono Post...']) }}
-      {{ $errors->first('usTelefono', '<p class="help-block">:message</p>') }}
+    <div class="form-group {{ $errors->has('phone') ? 'has-error' : "" }}">
+      {{ Form::text('phone',NULL, ['class'=>'form-control', 'id'=>'phone', 'placeholder'=>'Telefono']) }}
+      {{ $errors->first('phone', '<p class="help-block">:message</p>') }}
     </div>
   </div>
 </div>
 
 <div class="row">
   <div class="col-sm-2">
-    {!! form::label('usTipoUsuario','TipoUsuario') !!}
+    {!! form::label('tipoUsuario','Tipo de usuario') !!}
   </div>
   <div class="col-sm-10">
-    <div class="form-group {{ $errors->has('usTipoUsuario') ? 'has-error' : "" }}">
-      {{ Form::text('usTipoUsuario',NULL, ['class'=>'form-control', 'id'=>'usTipoUsuario', 'placeholder'=>'TipoUsuario Post...']) }}
-      {{ $errors->first('usTipoUsuario', '<p class="help-block">:message</p>') }}
+    <div class="form-group {{ $errors->has('tipoUsuario') ? 'has-error' : "" }}">
+      {{ Form::text('tipoUsuario',NULL, ['class'=>'form-control', 'id'=>'tipoUsuario', 'placeholder'=>'TipoUsuario']) }}
+      {{ $errors->first('tipoUsuario', '<p class="help-block">:message</p>') }}
     </div>
   </div>
 </div>
 
 <div class="row">
   <div class="col-sm-2">
-    {!! form::label('usFoto','Foto') !!}
+    {!! form::label('photo','Foto') !!}
   </div>
   <div class="col-sm-10">
-    <div class="form-group {{ $errors->has('usFoto') ? 'has-error' : "" }}">
-      {{ Form::text('usFoto',NULL, ['class'=>'form-control', 'id'=>'usFoto', 'placeholder'=>'Foto Post...']) }}
-      {{ $errors->first('usFoto', '<p class="help-block">:message</p>') }}
+    <div class="form-group {{ $errors->has('photo') ? 'has-error' : "" }}">
+      {{ Form::text('photo',NULL, ['class'=>'form-control', 'id'=>'photo', 'placeholder'=>'Foto']) }}
+      {{ $errors->first('photo', '<p class="help-block">:message</p>') }}
     </div>
   </div>
 </div>
 
 <div class="row">
   <div class="col-sm-2">
-    {!! form::label('usCedula','Cedula') !!}
+    {!! form::label('cedula','Cedula') !!}
   </div>
   <div class="col-sm-10">
-    <div class="form-group {{ $errors->has('usCedula') ? 'has-error' : "" }}">
-      {{ Form::text('usCedula',NULL, ['class'=>'form-control', 'id'=>'usCedula', 'placeholder'=>'Cedula Post...']) }}
-      {{ $errors->first('usCedula', '<p class="help-block">:message</p>') }}
+    <div class="form-group {{ $errors->has('cedula') ? 'has-error' : "" }}">
+      {{ Form::text('cedula',NULL, ['class'=>'form-control', 'id'=>'cedula', 'placeholder'=>'Cedula']) }}
+      {{ $errors->first('cedula', '<p class="help-block">:message</p>') }}
     </div>
   </div>
 </div>

@@ -61,10 +61,9 @@ class formacionesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-      $formaciones = formaciones::find($id);
-      return view('formaciones.show',compact('formaciones'));
+    public function curriculum($id){
+        $formaciones  = DB::table('formaciones')->orderBy('foID', 'asc')->where('foCurriculum', $id)->get()->toArray();
+        return view('formaciones.index', compact('formaciones'));
     }
 
     /**
