@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="full-right">
-      <h2>CRUD Resource Experiencias</h2>
+      <h2>Experiencias</h2>
     </div>
   </div>
 </div>

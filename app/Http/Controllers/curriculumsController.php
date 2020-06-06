@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 use App\curriculums;
 
 class curriculumsController extends Controller
@@ -15,7 +15,8 @@ class curriculumsController extends Controller
      */
     public function index()
     {
-        $curriculums = curriculums::all();
+        $user = auth()->user();
+        $curriculums = DB::table('curriculums')->where('crUsuario', $user->id)->get()->toArray();
         return view('curriculums.index', compact('curriculums'));
     }
 

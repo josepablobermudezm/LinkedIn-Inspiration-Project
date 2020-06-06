@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="full-right">
-      <h2>CRUD Formaciones</h2>
+      <h2>Formaciones</h2>
     </div>
   </div>
 </div>
