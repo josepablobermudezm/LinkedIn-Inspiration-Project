@@ -37,7 +37,7 @@
   <tr>
     <td>{{$no++}}</td>
     <td>{{ $value->ofNombre }}</td>
-    <td>{{ $value->ofCategoria }}</td>
+    <td>{{ $value->ofNomCategoria }}</td>
     <td>{{ $value->ofDescripcion }}</td>
     <td>{{ $value->ofFechaInicio }}</td>
     <td>{{ $value->ofFechaFinal }}</td>

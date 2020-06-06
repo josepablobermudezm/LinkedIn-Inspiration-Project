@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ofertas;
 use App\categorias;
+use Illuminate\Support\Facades\DB;
 
 
 class ofertasController extends Controller
@@ -16,7 +17,24 @@ class ofertasController extends Controller
      */
     public function index()
     {
-        $ofertas = ofertas::all();
+
+        $ofertas = DB::table('ofertas')
+            ->join('categorias', 'ofertas.ofCategoria', '=', 'categorias.cgID')
+            ->select(
+                'ofID',
+                'ofNombre',
+                'ofUbicacion',
+                'ofSueldo',
+                'ofDescripcion',
+                'categorias.cgNombre as ofNomCategoria',
+                'ofHorario',
+                'ofFechaInicio',
+                'ofFechaFinal',
+                'ofVacantes',
+                'ofEmpresa'
+            )
+            ->get()->toArray();
+        //$ofertas = ofertas::all();
         return view('ofertas.index', compact('ofertas'));
     }
 
@@ -26,7 +44,8 @@ class ofertasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   $categories = categorias::all();
+    {
+        $categories = categorias::all();
         return view('ofertas.create', compact('categories'));
     }
 
@@ -50,9 +69,9 @@ class ofertasController extends Controller
             'ofFechaFinal' => 'required|string|max:10',
             'ofVacantes' => 'required|int|max:999',
         ]);
-        
+
         $request->request->add(['ofEmpresa' => $empresa]);
-        
+
         ofertas::create($request->all());
         return redirect()->route('ofertas.index')->with('success', 'Oferta creada exitosamente');
     }
@@ -79,7 +98,7 @@ class ofertasController extends Controller
     public function edit($id)
     {
         $ofertas = ofertas::find($id);
-        $categories = categorias::all();    
+        $categories = categorias::all();
         return view('ofertas.edit', compact('ofertas', 'categories'));
     }
 
@@ -102,7 +121,7 @@ class ofertasController extends Controller
             'ofFechaFinal' => 'required|string|max:10',
             'ofVacantes' => 'required|int|max:999',
         ]);
-        
+
         ofertas::find($id)->update($request->all());
         return redirect()->route('ofertas.index')->with('success', 'Oferta actualizada con exito');
     }
