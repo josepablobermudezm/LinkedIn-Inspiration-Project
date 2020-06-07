@@ -192,6 +192,76 @@ class ofertasController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function listaEmpleos()
+    {
+        $user = auth()->user()->id;
+        $array = array();
+        $ofertas = DB::table('ofertas')
+            ->select(
+                'ofID',
+                'ofNombre',
+                'ofUbicacion',
+                'ofSueldo',
+                'ofDescripcion',
+                'ofCategoria',
+                'ofHorario',
+                'ofFechaInicio',
+                'ofFechaFinal',
+                'ofVacantes',
+                'ofEmpresa'
+            )->get()->toArray();
+
+        return view('ofertas.listaOfertas', compact('ofertas'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function listaOfertas()
+    {
+        $user = auth()->user()->id;
+        $array = array();
+        $ofertas = DB::table('ofertas')
+            ->select(
+                'ofID',
+                'ofNombre',
+                'ofUbicacion',
+                'ofSueldo',
+                'ofDescripcion',
+                'ofCategoria',
+                'ofHorario',
+                'ofFechaInicio',
+                'ofFechaFinal',
+                'ofVacantes',
+                'ofEmpresa'
+            )->get()->toArray();
+
+        $inscripciones = DB::table('inscripciones')
+            ->select(
+                'id_user',
+                'id_oferta',
+            )->where('inscripciones.id_user', $user)->get()->toArray();
+
+        foreach ($ofertas as $key => $oferta) {
+            foreach ($inscripciones as $key => $inscripcion) {
+                if ($inscripcion->id_oferta == $oferta->ofID) {
+                    array_push($array, $oferta);
+                }
+            }
+        }
+
+        return view('ofertas.listaOfertas', compact('array'));
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

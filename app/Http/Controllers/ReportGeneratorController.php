@@ -11,22 +11,55 @@ use PDF;
 
 class ReportGeneratorController extends Controller
 {
-    public function ReporteCurriculum($user){
+    public function ReporteCurriculum($user)
+    {
         // Sacamos el usuario logueado, esto en caso de ser un candidato, si es empresa entonces hay que mostrarle
         // los canditados que están inscritos a sus ofertas
         $usuarios  = DB::table('users')->orderBy('id', 'asc')->where('id', $user)->get()->toArray();
 
         // Se obteien el curriculum para sacar las experiencias y formaciones
-        $curriculums = DB::table('curriculums')->join('users','curriculums.crUsuario', '=', 'users.id')
-        ->select('curriculums.crID', 'users.name as NombreUsuario', 'curriculums.crObservaciones')
-        ->where('crUsuario', $user)->get()->toArray(); 
+        $curriculums = DB::table('curriculums')->join('users', 'curriculums.crUsuario', '=', 'users.id')
+            ->select('curriculums.crID', 'users.name as NombreUsuario', 'curriculums.crObservaciones')
+            ->where('crUsuario', $user)->get()->toArray();
         //Obtenemos las formaciones
         $formaciones  = DB::table('formaciones')->orderBy('foID', 'asc')->where('foCurriculum', $curriculums[0]->crID)->get()->toArray();
         // Obtenemos las experiencias
         $experiencias  = DB::table('experiencias')->orderBy('exID', 'asc')->where('exCurriculum', $curriculums[0]->crID)->get()->toArray();
-        
 
         $pdf = PDF::loadView('reporte1Curriculum', compact('usuarios', 'experiencias', 'formaciones'))->setPaper('a4', 'landscape');;
         return $pdf->stream('Reporte1.pdf');
+    }
+
+    public function ReporteEmpleos()
+    {
+        $ofertasaux  = DB::table('ofertas')->orderBy('ofCategoria', 'asc')->where('ofVacantes','>','0')->get()->toArray();
+        $categorias  = DB::table('categorias')->orderBy('cgID', 'asc')->get()->toArray();
+        $ofertas = array();
+        foreach($ofertasaux as $key => $oferta){
+            foreach($categorias as $key => $categoria){
+                if($oferta->ofCategoria == $categoria->cgID){
+                    $oferta->ofCategoria = $categoria->cgNombre;
+                    array_push($ofertas, $oferta);
+                }
+            }
+        }
+        $pdf = PDF::loadView('reporte2Empleos', compact('ofertas'))->setPaper('a4', 'landscape');;
+        return $pdf->stream('Reporte2.pdf');
+    }
+
+    public function ReporteEmpresa($user)
+    {
+        $usuarios  = DB::table('users')->orderBy('id', 'asc')->where('id', $user)->get()->toArray();
+
+        $pdf = PDF::loadView('reporte3Empresa', compact('usuarios'))->setPaper('a4', 'landscape');;
+        return $pdf->stream('Reporte3.pdf');
+    }
+
+    public function ReporteOferta($user)
+    {
+        $ofertas  = DB::table('ofertas')->orderBy('ofID', 'asc')->where('ofID', $user)->get()->toArray();
+
+        $pdf = PDF::loadView('reporte4Ofertas', compact('ofertas'))->setPaper('a4', 'landscape');;
+        return $pdf->stream('Reporte4.pdf');
     }
 }

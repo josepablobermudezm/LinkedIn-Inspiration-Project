@@ -21,7 +21,11 @@ Route::get('/Reportes', function () {
     return view('Reportes');
 })->name('reportes');
 
-Route::get('pdf/{user}', 'ReportGeneratorController@ReporteCurriculum')->name('pdf');
+Route::get('pdf/{user}', 'ReportGeneratorController@ReporteCurriculum')->name('pdf');//ReporteEmpresa
+Route::get('pdf2', 'ReportGeneratorController@ReporteEmpleos')->name('pdf2');//ReporteEmpresa
+Route::get('pdf3/{user}', 'ReportGeneratorController@ReporteEmpresa')->name('pdf3');//ReporteEmpresa
+Route::get('pdf4/{user}', 'ReportGeneratorController@ReporteOferta')->name('pdf4');//ReporteEmpresa
+
 
 Route::get('requisitos/offer/{id}', 'requisitosController@offer')->name('offer');
 Route::get('experiencias/curriculum/{id}', 'experienciasController@curriculum')->name('exp');
@@ -40,6 +44,18 @@ Route::get('requisitos/show/{id}/{oferta}', [
 
 Route::post('requisitos/store/{oferta}', [
     'as' => 'store', 'uses' => 'requisitosController@store'
+]);
+
+Route::get('usuarios/listaEmpresas/', [
+    'as' => 'listaEmpresas', 'uses' => 'usuariosController@listaEmpresas'
+]);
+
+Route::get('ofertas/listaOfertas/', [
+    'as' => 'listaOfertas', 'uses' => 'ofertasController@listaOfertas'
+]);
+
+Route::get('ofertas/listaEmpleos/', [
+    'as' => 'listaEmpleos', 'uses' => 'ofertasController@listaEmpleos'
 ]);
 
 Route::post('ofertas/inscribir/{ofID}', [

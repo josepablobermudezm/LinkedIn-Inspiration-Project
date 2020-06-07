@@ -15,7 +15,7 @@ class usuariosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $user = auth()->user();
         $usuarios  = DB::table('users')->orderBy('id', 'asc')->where('id', $user->id)->get()->toArray();
         return view('usuarios.index', compact('usuarios'));
@@ -64,8 +64,8 @@ class usuariosController extends Controller
      */
     public function show($id)
     {
-      $usuarios = user::find($id);
-      return view('usuarios.show',compact('usuarios'));
+        $usuarios = user::find($id);
+        return view('usuarios.show', compact('usuarios'));
     }
 
     /**
@@ -77,7 +77,7 @@ class usuariosController extends Controller
     public function edit($id)
     {
         $usuarios = user::find($id);
-        return view('usuarios.edit',compact('usuarios'));
+        return view('usuarios.edit', compact('usuarios'));
     }
 
     /**
@@ -89,7 +89,7 @@ class usuariosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:50'],
             'email' => ['required', 'string', 'email', 'max:255'],
@@ -99,9 +99,9 @@ class usuariosController extends Controller
             'tipoUsuario' => ['required', 'string', 'max:1'],
             'photo' => ['required', 'string', 'max:50'],
             'cedula' => ['required', 'string', 'max:50']
-          ]);
+        ]);
         user::find($id)->update($request->all());
-        return redirect()->route('usuarios.index')->with('success','Usuario actualizado con exito');
+        return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado con exito');
     }
 
     /**
@@ -113,6 +113,29 @@ class usuariosController extends Controller
     public function destroy($id)
     {
         user::find($id)->delete();
-        return redirect()->route('usuarios.index')->with('success','Usuario Eliminado con Exito');
+        return redirect()->route('usuarios.index')->with('success', 'Usuario Eliminado con Exito');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function listaEmpresas()
+    {
+        $usuarios = DB::table('users')
+            ->select(
+                'id',
+                'name',
+                'username',
+                'email',
+                'address',
+                'phone',
+                'photo',
+                'cedula'
+            )->where('tipoUsuario','E')->get()->toArray();
+
+        return view('usuarios.listaEmpresas', compact('usuarios'));
     }
 }
