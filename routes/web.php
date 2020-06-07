@@ -17,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/Reportes', function () {
+    return view('Reportes');
+})->name('reportes');
+
+Route::get('pdf', 'ReportGeneratorController@ReporteCurriculum')->name('pdf');
 
 Route::get('pdf', 'ReportGeneratorController@Reporte1')->name('pdf');
 
