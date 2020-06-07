@@ -94,7 +94,7 @@ class ofertasController extends Controller
         if (!$variable) {
             inscripciones::create($request->all());
             return redirect()->route('ofertas.index')->with('success', 'Inscripción realizada con éxito');
-        }else{
+        } else {
             return redirect()->route('ofertas.index')->with('warning', 'Usted ya posee una inscripción');
         }
     }
@@ -152,6 +152,49 @@ class ofertasController extends Controller
         $empresa = auth()->user()->id;
         $categories = DB::table('categorias')->orderBy('cgID', 'asc')->where('cgEmpresa', $empresa)->get()->toArray();
         return view('ofertas.edit', compact('ofertas', 'categories'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function listaCandidatos($id)
+    {
+        $ofertas = ofertas::find($id);
+        $array = array();
+        $usuarios = DB::table('users')
+            ->select(
+                'id',
+                'name',
+                'username',
+                'email',
+                'address',
+                'phone',
+                'photo',
+                'cedula'
+            )->get()->toArray();
+        $inscripciones = DB::table('inscripciones')
+            ->select(
+                'id_user',
+                'id_oferta',
+            )->where('inscripciones.id_oferta', $id)->get()->toArray();
+
+        foreach ($usuarios as $key => $usuario) {
+            foreach ($inscripciones as $key => $inscripcion) {
+                if($inscripcion->id_user == $usuario->id){
+                    array_push($array,$usuario);
+                }
+            }
+        }
+
+        /*
+         * SELECT u.id, u.name, u.email, u.address, u.phone, u.photo, u.cedula, u.cedula
+         * FROM users u, inscripciones i
+         * WHERE (u.id = i.id_user AND i.id_oferta = 4)
+         */
+        return view('ofertas.listaCandidatos', compact('ofertas', 'array'));
     }
 
     /**

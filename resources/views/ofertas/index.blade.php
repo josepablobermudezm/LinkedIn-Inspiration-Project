@@ -59,6 +59,8 @@
     <td>{{ $value->ofSueldo }}</td>
     <td>
       @if ($tipoUsuario == 'E')
+      <a class="btn btn-primary btn-sm" href="{{route('listaCandidatos',$value->ofID)}}">
+        <i class="glyphicon glyphicon-th-list"></i></a>
       <a class="btn btn-info btn-sm" href="{{route('offer',$value->ofID)}}">
         Requisitos</a>
       <a class="btn btn-primary btn-sm" href="{{route('ofertas.edit',$value->ofID)}}">

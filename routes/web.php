@@ -39,6 +39,10 @@ Route::post('ofertas/inscribir/{ofID}', [
     'as' => 'inscribir', 'uses' => 'ofertasController@inscribir'
 ]);
 
+Route::get('ofertas/listaCandidatos/{ofID}', [
+    'as' => 'listaCandidatos', 'uses' => 'ofertasController@listaCandidatos'
+]);
+
 Route::get('requisitos/edit/{id}/{oferta}', [
     'as' => 'edit', 'uses' => 'requisitosController@edit'
 ]);
