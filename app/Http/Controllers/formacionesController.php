@@ -15,7 +15,12 @@ class formacionesController extends Controller
      */
     public function index()
     {
-        $formaciones = formaciones::all();
+        $user = auth()->user();
+        $curriculums = DB::table('curriculums')->join('users','curriculums.crUsuario', '=', 'users.id')
+        ->select('curriculums.crID', 'users.name as NombreUsuario', 'curriculums.crObservaciones')
+        ->where('crUsuario', $user->id)->get()->toArray(); 
+        $formaciones  = DB::table('formaciones')->orderBy('foID', 'asc')->where('foCurriculum', $curriculums[0]->crID)->get()->toArray();
+
         return view('formaciones.index', compact('formaciones'));
     }
 
@@ -45,13 +50,13 @@ class formacionesController extends Controller
           'foFecha'=>'required|string|max:10',
         ]);
         $user = auth()->user();
-        $curriculum = DB::table('curriculums')->orderBy('crID', 'asc')->pluck('crID', 'crUsuario');
-        foreach ($curriculum as $k => $v) {
-            if($k == $user->id){
-                $request->request->add(['foCurriculum' => $curriculum[$k]]);
-            }
-        }
+        $curriculums = DB::table('curriculums')->join('users','curriculums.crUsuario', '=', 'users.id')
+        ->select('curriculums.crID', 'users.name as NombreUsuario', 'curriculums.crObservaciones')
+        ->where('crUsuario', $user->id)->get()->toArray(); 
+
+        $request->request->add(['foCurriculum' => $curriculums[0]->crID]);
         formaciones::create($request->all());
+        $formaciones  = DB::table('formaciones')->orderBy('foID', 'asc')->where('foCurriculum', $curriculums[0]->crID)->get()->toArray();
         return redirect()->route('formaciones.index')->with('success','Formación creada exitosamente');
     }
 
@@ -93,10 +98,21 @@ class formacionesController extends Controller
             'foInstitucion'=>'required|string|max:50',
             'foFecha'=>'required|string|max:10',
           ]);
-          formaciones::find($id)->update($request->all());
-        return redirect()->route('formaciones.index')->with('success','Formación actualizada con exito');
+        formaciones::find($id)->update($request->all());
+        $user = auth()->user();
+        $curriculums = DB::table('curriculums')->join('users','curriculums.crUsuario', '=', 'users.id')
+        ->select('curriculums.crID', 'users.name as NombreUsuario', 'curriculums.crObservaciones')
+        ->where('crUsuario', $user->id)->get()->toArray(); 
+        $formaciones  = DB::table('formaciones')->orderBy('foID', 'asc')->where('foCurriculum', $curriculums[0]->crID)->get()->toArray();
+
+        return redirect()->route('formaciones.index', compact('formaciones'))->with('success','Formación actualizada con exito');
     }
 
+    public function show($id)
+    {
+        $formaciones = formaciones::find($id);
+        return view('formaciones.show', compact('formaciones'));
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -106,6 +122,12 @@ class formacionesController extends Controller
     public function destroy($id)
     {
         formaciones::find($id)->delete();
-        return redirect()->route('formaciones.index')->with('success','Formación Eliminada con Exito');
+        $user = auth()->user();
+        $curriculums = DB::table('curriculums')->join('users','curriculums.crUsuario', '=', 'users.id')
+        ->select('curriculums.crID', 'users.name as NombreUsuario', 'curriculums.crObservaciones')
+        ->where('crUsuario', $user->id)->get()->toArray(); 
+        $formaciones  = DB::table('formaciones')->orderBy('foID', 'asc')->where('foCurriculum', $curriculums[0]->crID)->get()->toArray();
+
+        return redirect()->route('formaciones.index', compact('formaciones'))->with('success','Formación Eliminada con Exito');
     }
 }
