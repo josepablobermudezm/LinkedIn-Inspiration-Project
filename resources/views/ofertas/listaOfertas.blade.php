@@ -44,7 +44,7 @@
     <td>{{ $value->ofVacantes }}</td>
     <td>{{ $value->ofEmpresa  }}</td>
     <td>
-      <a class="btn btn-info btn-sm" href="{{ route('pdf4',$value->id) }}">
+      <a class="btn btn-info btn-sm" href="{{ route('pdf4',$value->ofID) }}">
         <i class="glyphicon glyphicon-th-list"></i></a>
     </td>
   </tr>

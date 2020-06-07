@@ -22,8 +22,8 @@ Route::get('/Reportes', function () {
 })->name('reportes');
 
 Route::get('pdf/{user}', 'ReportGeneratorController@ReporteCurriculum')->name('pdf');//ReporteEmpresa
-Route::get('pdf/{user}', 'ReportGeneratorController@ReporteEmpresa')->name('pdf3');//ReporteEmpresa
-Route::get('pdf/{user}', 'ReportGeneratorController@ReporteOferta')->name('pdf4');//ReporteEmpresa
+Route::get('pdf3/{user}', 'ReportGeneratorController@ReporteEmpresa')->name('pdf3');//ReporteEmpresa
+Route::get('pdf4/{user}', 'ReportGeneratorController@ReporteOferta')->name('pdf4');//ReporteEmpresa
 
 
 Route::get('requisitos/offer/{id}', 'requisitosController@offer')->name('offer');
