@@ -21,7 +21,9 @@ Route::get('/Reportes', function () {
     return view('Reportes');
 })->name('reportes');
 
-Route::get('pdf/{user}', 'ReportGeneratorController@ReporteCurriculum')->name('pdf');
+Route::get('pdf/{user}', 'ReportGeneratorController@ReporteCurriculum')->name('pdf');//ReporteEmpresa
+Route::get('pdf/{user}', 'ReportGeneratorController@ReporteEmpresa')->name('pdf2');//ReporteEmpresa
+
 
 Route::get('requisitos/offer/{id}', 'requisitosController@offer')->name('offer');
 Route::get('experiencias/curriculum/{id}', 'experienciasController@curriculum')->name('exp');
@@ -36,6 +38,10 @@ Route::get('requisitos/show/{id}/{oferta}', [
 
 Route::post('requisitos/store/{oferta}', [
     'as' => 'store', 'uses' => 'requisitosController@store'
+]);
+
+Route::get('usuarios/listaEmpresas/', [
+    'as' => 'listaEmpresas', 'uses' => 'usuariosController@listaEmpresas'
 ]);
 
 Route::post('ofertas/inscribir/{ofID}', [

@@ -25,8 +25,14 @@ class ReportGeneratorController extends Controller
         // Obtenemos las experiencias
         $experiencias  = DB::table('experiencias')->orderBy('exID', 'asc')->where('exCurriculum', $curriculums[0]->crID)->get()->toArray();
         
-
         $pdf = PDF::loadView('reporte1Curriculum', compact('usuarios', 'experiencias', 'formaciones'))->setPaper('a4', 'landscape');;
         return $pdf->stream('Reporte1.pdf');
+    }
+
+    public function ReporteEmpresa($user){
+        $usuarios  = DB::table('users')->orderBy('id', 'asc')->where('id', $user)->get()->toArray();
+
+        $pdf = PDF::loadView('reporte2Empresa', compact('usuarios'))->setPaper('a4', 'landscape');;
+        return $pdf->stream('Reporte2.pdf');
     }
 }
