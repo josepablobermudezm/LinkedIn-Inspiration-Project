@@ -16,7 +16,9 @@ class curriculumsController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $curriculums = DB::table('curriculums')->where('crUsuario', $user->id)->get()->toArray();
+        $curriculums = DB::table('curriculums')->join('users','curriculums.crUsuario', '=', 'users.id')
+        ->select('curriculums.crID', 'users.name as NombreUsuario', 'curriculums.crObservaciones')
+        ->where('crUsuario', $user->id)->get()->toArray();
         return view('curriculums.index', compact('curriculums'));
     }
 
@@ -27,7 +29,15 @@ class curriculumsController extends Controller
      */
     public function create()
     {
-        return view('curriculums.create');
+        $user = auth()->user();
+        $curriculums = DB::table('curriculums')->join('users','curriculums.crUsuario', '=', 'users.id')
+        ->select('curriculums.crID', 'users.name as NombreUsuario', 'curriculums.crObservaciones')
+        ->where('crUsuario', $user->id)->get()->toArray();
+        if(sizeof($curriculums) == 0){
+            return view('curriculums.create');
+        }
+        return view('curriculums.index', compact('curriculums'));
+        
     }
 
     /**
@@ -38,14 +48,12 @@ class curriculumsController extends Controller
      */
     public function store(Request $request)
     {
-        //['usNombreReal','usNombreUsuario','usContrasena','usDireccion', 'usTelefono', 'usTipoUsuario', 'usFoto', 'usCedula'];
-
         $this->validate($request, [
-            'crUsuario' => 'required|string|max:20',
             'crObservaciones' => 'required|string|max:300',
         ]);
+        $request->request->add(['crUsuario' => auth()->user()->id]);
         curriculums::create($request->all());
-        return redirect()->route('curriculums.index')->with('success', 'curriculums creado exitosamente');
+        return redirect()->route('curriculums.index')->with('success', '¡Curriculum creado exitosamente ahora puedes añadir tus experiencias y formaciones!');
     }
 
     /**
@@ -82,7 +90,6 @@ class curriculumsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'crUsuario' => 'required|string|max:20',
             'crObservaciones' => 'required|string|max:300',
         ]);
         curriculums::find($id)->update($request->all());

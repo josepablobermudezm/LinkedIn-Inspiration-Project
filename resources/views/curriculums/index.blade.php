@@ -18,19 +18,21 @@
   <table class="table table-bordered">
     <tr>
       <th with="80px">No</th>
-      <td>Usuario</td>
+      <td>Candidato</td>
       <td>Observaciones</td>
-      <th with="140px" class="text-center">
-        <a href="{{route('curriculums.create')}}" class="btn btn-success btn-sm">
-          <i class="glyphicon glyphicon-plus"></i>
-        </a>
-      </th>
+      <?php if (sizeof($curriculums) == 0) {?>
+        <th with="140px" class="text-center">
+          <a href="{{route('curriculums.create')}}" class="btn btn-success btn-sm">
+            <i class="glyphicon glyphicon-plus"></i>
+          </a>
+        </th>
+      <?php }?>
     </tr>
     <?php $no = 1; ?>
     @foreach ($curriculums as $key => $value)
     <tr>
       <td>{{$no++}}</td>
-      <td>{{ $value->crUsuario}}</td>
+      <td>{{ $value->NombreUsuario}}</td>
       <td>{{ $value->	crObservaciones}}</td>
       <td>
         <a class="btn btn-primary btn-sm" href="{{route('curriculums.edit',$value->crID)}}">
