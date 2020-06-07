@@ -28,6 +28,10 @@ Route::get('experiencias/curriculum/{id}', 'experienciasController@curriculum')-
 Route::get('formaciones/curriculum/{id}', 'formacionesController@curriculum')->name('form');
 
 
+Route::get('ofertas/filter/', [
+    'as' => 'filter', 'uses' => 'ofertasController@filter'
+]);
+
 Route::get('requisitos/create/{id}', 'requisitosController@create')->name('create');
 
 Route::get('requisitos/show/{id}/{oferta}', [
