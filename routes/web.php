@@ -23,6 +23,7 @@ Route::get('/Reportes', function () {
 
 Route::get('pdf/{user}', 'ReportGeneratorController@ReporteCurriculum')->name('pdf');//ReporteEmpresa
 Route::get('pdf/{user}', 'ReportGeneratorController@ReporteEmpresa')->name('pdf3');//ReporteEmpresa
+Route::get('pdf/{user}', 'ReportGeneratorController@ReporteOferta')->name('pdf4');//ReporteEmpresa
 
 
 Route::get('requisitos/offer/{id}', 'requisitosController@offer')->name('offer');
@@ -42,6 +43,10 @@ Route::post('requisitos/store/{oferta}', [
 
 Route::get('usuarios/listaEmpresas/', [
     'as' => 'listaEmpresas', 'uses' => 'usuariosController@listaEmpresas'
+]);
+
+Route::get('ofertas/listaOfertas/', [
+    'as' => 'listaOfertas', 'uses' => 'ofertasController@listaOfertas'
 ]);
 
 Route::post('ofertas/inscribir/{ofID}', [

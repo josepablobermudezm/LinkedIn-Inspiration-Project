@@ -32,7 +32,14 @@ class ReportGeneratorController extends Controller
     public function ReporteEmpresa($user){
         $usuarios  = DB::table('users')->orderBy('id', 'asc')->where('id', $user)->get()->toArray();
 
-        $pdf = PDF::loadView('reporte2Empresa', compact('usuarios'))->setPaper('a4', 'landscape');;
-        return $pdf->stream('Reporte2.pdf');
+        $pdf = PDF::loadView('reporte3Empresa', compact('usuarios'))->setPaper('a4', 'landscape');;
+        return $pdf->stream('Reporte3.pdf');
+    }
+
+    public function ReporteOferta($user){
+        $ofertas  = DB::table('ofertas')->orderBy('ofID', 'asc')->where('ofID', $user)->get()->toArray();
+
+        $pdf = PDF::loadView('reporte4Ofertas', compact('ofertas'))->setPaper('a4', 'landscape');;
+        return $pdf->stream('Reporte4.pdf');
     }
 }

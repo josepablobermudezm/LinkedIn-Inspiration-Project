@@ -183,8 +183,8 @@ class ofertasController extends Controller
 
         foreach ($usuarios as $key => $usuario) {
             foreach ($inscripciones as $key => $inscripcion) {
-                if($inscripcion->id_user == $usuario->id){
-                    array_push($array,$usuario);
+                if ($inscripcion->id_user == $usuario->id) {
+                    array_push($array, $usuario);
                 }
             }
         }
@@ -195,6 +195,48 @@ class ofertasController extends Controller
          * WHERE (u.id = i.id_user AND i.id_oferta = 4)
          */
         return view('ofertas.listaCandidatos', compact('ofertas', 'array'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function listaOfertas()
+    {
+        $user = auth()->user()->id;
+        $array = array();
+        $ofertas = DB::table('ofertas')
+            ->select(
+                'ofID',
+                'ofNombre',
+                'ofUbicacion',
+                'ofSueldo',
+                'ofDescripcion',
+                'ofCategoria',
+                'ofHorario',
+                'ofFechaInicio',
+                'ofFechaFinal',
+                'ofVacantes',
+                'ofEmpresa'
+            )->get()->toArray();
+
+        $inscripciones = DB::table('inscripciones')
+            ->select(
+                'id_user',
+                'id_oferta',
+            )->where('inscripciones.id_user', $user)->get()->toArray();
+
+        foreach ($ofertas as $key => $oferta) {
+            foreach ($inscripciones as $key => $inscripcion) {
+                if ($inscripcion->id_oferta == $oferta->ofID) {
+                    array_push($array, $oferta);
+                }
+            }
+        }
+
+        return view('ofertas.listaOfertas', compact('array'));
     }
 
     /**
