@@ -21,7 +21,7 @@ Route::get('/Reportes', function () {
     return view('Reportes');
 })->name('reportes');
 
-Route::get('pdf', 'ReportGeneratorController@ReporteCurriculum')->name('pdf');
+Route::get('pdf/{user}', 'ReportGeneratorController@ReporteCurriculum')->name('pdf');
 
 Route::get('requisitos/offer/{id}', 'requisitosController@offer')->name('offer');
 Route::get('experiencias/curriculum/{id}', 'experienciasController@curriculum')->name('exp');
