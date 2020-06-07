@@ -4,7 +4,7 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="full-right">
-      <h2>CRUD Resource Requisitos</h2>
+      <h2>Requisitos</h2>
     </div>
   </div>
 </div>
