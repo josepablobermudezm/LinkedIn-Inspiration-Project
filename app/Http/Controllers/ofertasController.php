@@ -35,7 +35,8 @@ class ofertasController extends Controller
             )
             ->get()->toArray();
         //$ofertas = ofertas::all();
-        return view('ofertas.index', compact('ofertas'));
+        $user = auth()->user()->tipoUsuario;
+        return view('ofertas.index', compact('ofertas'))->with('tipoUsuario', $user);
     }
 
     /**

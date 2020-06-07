@@ -27,11 +27,13 @@
     <td>Horario</td>
     <td>Vacantes</td>
     <td>Sueldo</td>
+    @if ($tipoUsuario == 'E')
     <th with="140px" class="text-center">
       <a href="{{route('ofertas.create')}}" class="btn btn-success btn-sm">
         <i class="glyphicon glyphicon-plus"></i>
       </a>
     </th>
+    @endif
   </tr>
   <?php $no = 1; ?>
   @foreach ($ofertas as $key => $value)
@@ -47,6 +49,7 @@
     <td>{{ $value->ofVacantes }}</td>
     <td>{{ $value->ofSueldo }}</td>
     <td>
+      @if ($tipoUsuario == 'E')
       <a class="btn btn-info btn-sm" href="{{route('offer',$value->ofID)}}">
         <i class="glyphicon glyphicon-th-large"></i></a>
       <a class="btn btn-primary btn-sm" href="{{route('ofertas.edit',$value->ofID)}}">
@@ -54,6 +57,11 @@
       {!! Form::open(['method' => 'DELETE','route' => ['ofertas.destroy', $value->ofID],'style'=>'display:inline']) !!}
       <button type="submit" style="display: inline;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
       {!! Form::close() !!}
+      @else
+      <a class="btn btn-info btn-sm" href="">
+        <i style="font-size: 20px;" class="fa fa-floppy-o"></i></a>
+      @endif
+
     </td>
   </tr>
   @endforeach
