@@ -46,7 +46,6 @@
     <td>{{ $value->ofHorario }}</td>
     <td>{{ $value->ofVacantes }}</td>
     <td>{{ $value->ofSueldo }}</td>
-
     <td>
       <a class="btn btn-info btn-sm" href="{{route('offer',$value->ofID)}}">
         <i class="glyphicon glyphicon-th-large"></i></a>
