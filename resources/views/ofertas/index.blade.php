@@ -6,6 +6,13 @@
     <div class="full-right">
       <h2>Ofertas</h2>
     </div>
+    <br>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group" style="display: flex;">
+            <input class="form-control" style="width: 20%;" type="text" placeholder="Empresa/Categoría">
+            <button type="submit" style="margin-left: 10px; margin-right: auto; justify-content: center;" class="btn btn-info btn-sm" style="font-size: 20px;" class="fa fa-floppy-o">Buscar</i></button>
+        </div>
+    </div>
   </div>
 </div>
 
