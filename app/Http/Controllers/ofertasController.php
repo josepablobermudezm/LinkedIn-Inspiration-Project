@@ -55,7 +55,6 @@ class ofertasController extends Controller
         }
         //$ofertas = DB::table('inscripciones')->orderBy('ofID', 'asc')->where('ofEmpresa', $userID)->get()->toArray();
         return view('ofertas.index', compact('ofertas'))->with('tipoUsuario', $user);
-
     }
 
     /**
