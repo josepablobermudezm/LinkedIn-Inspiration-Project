@@ -14,6 +14,11 @@
   <p>{{ $message }}</p>
 </div>
 @endif
+@if ($message = Session::get('warning'))
+<div class="alert alert-warning">
+  <p>{{ $message }}</p>
+</div>
+@endif
 
 <table class="table table-bordered">
   <tr>
@@ -33,6 +38,10 @@
         <i class="glyphicon glyphicon-plus"></i>
       </a>
     </th>
+    @else
+    <th with="140px" class="text-center">
+      <a>Acciones</a>
+    </th>
     @endif
   </tr>
   <?php $no = 1; ?>
@@ -51,15 +60,16 @@
     <td>
       @if ($tipoUsuario == 'E')
       <a class="btn btn-info btn-sm" href="{{route('offer',$value->ofID)}}">
-        <i class="glyphicon glyphicon-th-large"></i></a>
+        Requisitos</a>
       <a class="btn btn-primary btn-sm" href="{{route('ofertas.edit',$value->ofID)}}">
         <i class="glyphicon glyphicon-pencil"></i></a>
       {!! Form::open(['method' => 'DELETE','route' => ['ofertas.destroy', $value->ofID],'style'=>'display:inline']) !!}
       <button type="submit" style="display: inline;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
       {!! Form::close() !!}
       @else
-      <a class="btn btn-info btn-sm" href="">
-        <i style="font-size: 20px;" class="fa fa-floppy-o"></i></a>
+      {{ Form::open(['route'=>['inscribir', 'ofID'=>$value->ofID], 'method'=>'POST']) }}
+      <button type="submit" style="margin-left: auto; margin-right: auto; justify-content: center;" class="btn btn-info btn-sm" style="font-size: 20px;" class="fa fa-floppy-o">Inscribirse</i></button>
+      {{ form::close() }}
       @endif
     </td>
   </tr>

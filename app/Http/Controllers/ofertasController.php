@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ofertas;
+use App\inscripciones;
 use Illuminate\Support\Facades\DB;
 
 
@@ -16,10 +17,9 @@ class ofertasController extends Controller
      */
     public function index()
     {
-
         $userID = auth()->user()->id;
         $user = auth()->user()->tipoUsuario;
-        if ($user == 'C') {//en el caso de que sea un candidato entonces mostramos toda la lista 
+        if ($user == 'C') { //en el caso de que sea un candidato entonces mostramos toda la lista 
             $ofertas = DB::table('ofertas')
                 ->join('categorias', 'ofertas.ofCategoria', '=', 'categorias.cgID')
                 ->select(
@@ -35,7 +35,7 @@ class ofertasController extends Controller
                     'ofVacantes',
                     'ofEmpresa'
                 )->get()->toArray();
-        } else {//si es una empresa mostramos solamente las ofertas que esa empresa ha creado
+        } else { //si es una empresa mostramos solamente las ofertas que esa empresa ha creado
             $ofertas = DB::table('ofertas')
                 ->join('categorias', 'ofertas.ofCategoria', '=', 'categorias.cgID')
                 ->select(
@@ -52,7 +52,6 @@ class ofertasController extends Controller
                     'ofEmpresa'
                 )->where('ofEmpresa', $userID)->get()->toArray();
         }
-        //$ofertas = DB::table('inscripciones')->orderBy('ofID', 'asc')->where('ofEmpresa', $userID)->get()->toArray();
         return view('ofertas.index', compact('ofertas'))->with('tipoUsuario', $user);
     }
 
@@ -63,13 +62,41 @@ class ofertasController extends Controller
      */
     public function create()
     {
-        
+
         $empresa = auth()->user()->id;
 
         $categories = DB::table('categorias')->orderBy('cgID', 'asc')->where('cgEmpresa', $empresa)->get()->toArray();
 
         //$categories = categorias::all();
         return view('ofertas.create', compact('categories'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  int  $ofID
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function inscribir(Request $request, $ofID)
+    {
+        $user = auth()->user()->id;
+        $request->request->add(['id_user' => $user]);
+        $request->request->add(['id_oferta' => $ofID]);
+
+        $inscripcionesAux = inscripciones::all();
+        $variable = false;
+        foreach ($inscripcionesAux as $key => $value) {
+            if ($user == $value->id_user  && $ofID == $value->id_oferta) {
+                $variable = true;
+            }
+        }
+        if (!$variable) {
+            inscripciones::create($request->all());
+            return redirect()->route('ofertas.index')->with('success', 'Inscripción realizada con éxito');
+        }else{
+            return redirect()->route('ofertas.index')->with('warning', 'Usted ya posee una inscripción');
+        }
     }
 
     /**
@@ -93,7 +120,7 @@ class ofertasController extends Controller
             'ofFechaFinal' => 'required|string|max:10',
             'ofVacantes' => 'required|int|max:999',
         ]);
-            
+
         $request->request->add(['ofEmpresa' => $empresa]);
 
         ofertas::create($request->all());
@@ -147,7 +174,7 @@ class ofertasController extends Controller
             'ofFechaFinal' => 'required|string|max:10',
             'ofVacantes' => 'required|int|max:999',
         ]);
-        $empresa = auth()->user()->id;        
+        $empresa = auth()->user()->id;
         ofertas::find($id)->update($request->all());
         return redirect()->route('ofertas.index')->with('success', 'Oferta actualizada con exito');
     }
