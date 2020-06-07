@@ -35,6 +35,10 @@ Route::post('requisitos/store/{oferta}', [
     'as' => 'store', 'uses' => 'requisitosController@store'
 ]);
 
+Route::post('ofertas/inscribir/{ofID}', [
+    'as' => 'inscribir', 'uses' => 'ofertasController@inscribir'
+]);
+
 Route::get('requisitos/edit/{id}/{oferta}', [
     'as' => 'edit', 'uses' => 'requisitosController@edit'
 ]);
