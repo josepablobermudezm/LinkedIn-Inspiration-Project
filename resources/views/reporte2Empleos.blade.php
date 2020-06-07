@@ -10,38 +10,40 @@
 
 <body>
     <div class="container">
-        <h2>Ofertas</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <td>Categoria</td>
-                    <td>Nombre</td>
-                    <td>Ubicacion</td>
-                    <td>Sueldo</td>
-                    <td>Descripcion</td>
-                    <td>Horario</td>
-                    <td>FechaInicio</td>
-                    <td>FechaFinal</td>
-                    <td>Vacantes</td>
-                    <td>Empresa</td>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($ofertas as $key => $value)
-                <tr>
-                    <td>{{ $value->ofCategoria  }}</td>
-                    <td>{{ $value->ofNombre }}</td>
-                    <td>{{ $value->ofUbicacion }}</td>
-                    <td>{{ $value->ofSueldo }}</td>
-                    <td>{{ $value->ofDescripcion }}</td>
-                    <td>{{ $value->ofHorario }}</td>
-                    <td>{{ $value->ofFechaInicio }}</td>
-                    <td>{{ $value->ofFechaFinal }}</td>
-                    <td>{{ $value->ofVacantes }}</td>
-                    <td>{{ $value->ofEmpresa  }}</td>
-                </tr>
-                @endforeach
-            </tbody>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="full-right">
+                    <h2>Usuario</h2>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <tr>
+                <td>Categoria</td>
+                <td>Nombre</td>
+                <td>Ubicacion</td>
+                <td>Sueldo</td>
+                <td>Descripcion</td>
+                <td>Horario</td>
+                <td>FechaInicio</td>
+                <td>FechaFinal</td>
+                <td>Vacantes</td>
+                <td>Empresa</td>
+            </tr>
+            @foreach ($ofertas as $key => $value)
+            <tr>
+                <td>{{ $value->ofCategoria  }}</td>
+                <td>{{ $value->ofNombre }}</td>
+                <td>{{ $value->ofUbicacion }}</td>
+                <td>{{ $value->ofSueldo }}</td>
+                <td>{{ $value->ofDescripcion }}</td>
+                <td>{{ $value->ofHorario }}</td>
+                <td>{{ $value->ofFechaInicio }}</td>
+                <td>{{ $value->ofFechaFinal }}</td>
+                <td>{{ $value->ofVacantes }}</td>
+                <td>{{ $value->ofEmpresa  }}</td>
+            </tr>
+            @endforeach
         </table>
     </div>
 </body>

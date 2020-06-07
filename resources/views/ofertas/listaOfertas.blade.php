@@ -28,6 +28,7 @@
     <td>FechaFinal</td>
     <td>Vacantes</td>
     <td>Empresa</td>
+    <td>Acciones</td>
   </tr>
   <?php $no = 1; ?>
   @foreach ($array as $key => $value)
