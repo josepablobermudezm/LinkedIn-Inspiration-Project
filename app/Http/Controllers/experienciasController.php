@@ -16,7 +16,11 @@ class experienciasController extends Controller
      */
     public function index()
     {
-        $experiencias = experiencias::all();
+        $user = auth()->user();
+        $curriculums = DB::table('curriculums')->join('users','curriculums.crUsuario', '=', 'users.id')
+        ->select('curriculums.crID', 'users.name as NombreUsuario', 'curriculums.crObservaciones')
+        ->where('crUsuario', $user->id)->get()->toArray(); 
+        $experiencias  = DB::table('experiencias')->orderBy('exID', 'asc')->where('exCurriculum', $curriculums[0]->crID)->get()->toArray();
         return view('experiencias.index', compact('experiencias'));
     }
 
@@ -46,15 +50,17 @@ class experienciasController extends Controller
           'fechaFinal'=>'required|string|max:10',
           'exDescripcion'=>'required|string|max:300',
         ]);
+
         $user = auth()->user();
-        $curriculum = DB::table('curriculums')->orderBy('crID', 'asc')->pluck('crID', 'crUsuario');
-        foreach ($curriculum as $k => $v) {
-            if($k == $user->id){
-                $request->request->add(['exCurriculum' => $curriculum[$k]]);
-            }
-        }
+        $curriculums = DB::table('curriculums')->join('users','curriculums.crUsuario', '=', 'users.id')
+        ->select('curriculums.crID', 'users.name as NombreUsuario', 'curriculums.crObservaciones')
+        ->where('crUsuario', $user->id)->get()->toArray(); 
+
+        $request->request->add(['exCurriculum' => $curriculums[0]->crID]);
         experiencias::create($request->all());
-        return redirect()->route('experiencias.index')->with('success','Experiencia creada exitosamente');
+        $experiencias  = DB::table('experiencias')->orderBy('exID', 'asc')->where('exCurriculum', $curriculums[0]->crID)->get()->toArray();
+        
+        return redirect()->route('experiencias.index', compact('experiencias'))->with('success','Experiencia creada exitosamente');
     }
 
     /**
@@ -69,6 +75,12 @@ class experienciasController extends Controller
         return view('experiencias.index', compact('experiencias'));
     }
 
+    public function show($id)
+    {
+        $experiencias = experiencias::find($id);
+        return view('experiencias.show', compact('experiencias'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -77,6 +89,14 @@ class experienciasController extends Controller
      */
     public function edit($id)
     {
+        /*$user = auth()->user();
+        $curriculum = DB::table('curriculums')->orderBy('crID', 'asc')->pluck('crID', 'crUsuario');
+        $id_curr = 0;
+        foreach ($curriculum as $k => $v) {
+            if($k == $user->id){
+                
+            }
+        }*/
         $experiencias = experiencias::find($id);
         return view('experiencias.edit',compact('experiencias'));
     }
@@ -98,7 +118,12 @@ class experienciasController extends Controller
             'exDescripcion'=>'required|string|max:300',
           ]);
         experiencias::find($id)->update($request->all());
-        return redirect()->route('experiencias.index')->with('success','Experiencia actualizada con exito');
+        $user = auth()->user();
+        $curriculums = DB::table('curriculums')->join('users','curriculums.crUsuario', '=', 'users.id')
+        ->select('curriculums.crID', 'users.name as NombreUsuario', 'curriculums.crObservaciones')
+        ->where('crUsuario', $user->id)->get()->toArray(); 
+        $experiencias  = DB::table('experiencias')->orderBy('exID', 'asc')->where('exCurriculum', $curriculums[0]->crID)->get()->toArray();
+        return redirect()->route('experiencias.index', compact('experiencias'))->with('success','Experiencia actualizada con exito');
     }
 
     /**
@@ -110,6 +135,12 @@ class experienciasController extends Controller
     public function destroy($id)
     {
         experiencias::find($id)->delete();
-        return redirect()->route('experiencias.index')->with('success','Experiencia Eliminada con Exito');
+        $user = auth()->user();
+        $curriculums = DB::table('curriculums')->join('users','curriculums.crUsuario', '=', 'users.id')
+        ->select('curriculums.crID', 'users.name as NombreUsuario', 'curriculums.crObservaciones')
+        ->where('crUsuario', $user->id)->get()->toArray(); 
+        $experiencias  = DB::table('experiencias')->orderBy('exID', 'asc')->where('exCurriculum', $curriculums[0]->crID)->get()->toArray();
+
+        return redirect()->route('experiencias.index', compact('experiencias'))->with('success','Experiencia Eliminada con Exito');
     }
 }
