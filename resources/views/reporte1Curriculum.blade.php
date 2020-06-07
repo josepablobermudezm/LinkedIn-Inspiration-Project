@@ -10,6 +10,8 @@
 <body>
     <div class="container">
         <h2>Curriculum</h2>
+        <br>
+        <h2>Datos Personales</h2>
         <table class="table">
             <thead>
                 <tr>
@@ -53,6 +55,27 @@
                     <td>{{ $value->exDescripcion }}</td>
                     <td>{{ $value->exFechaInicio }}</td>
                     <td>{{ $value->fechaFinal }}</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+        <h2>Formaciones</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Especialidad</th>
+                    <th scope="col">Institución</th>
+                    <th scope="col">Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach ($formaciones as $key => $value)
+                <tr>
+                    <td>{{ $value->foTitulo }}</td>
+                    <td>{{ $value->foEspecialidad }}</td>
+                    <td>{{ $value->foInstitucion }}</td>
+                    <td>{{ $value->foFecha }}</td>
                 </tr>
             @endforeach
             </tbody>
