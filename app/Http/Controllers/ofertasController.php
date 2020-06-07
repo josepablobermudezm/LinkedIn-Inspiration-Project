@@ -188,13 +188,35 @@ class ofertasController extends Controller
                 }
             }
         }
-
-        /*
-         * SELECT u.id, u.name, u.email, u.address, u.phone, u.photo, u.cedula, u.cedula
-         * FROM users u, inscripciones i
-         * WHERE (u.id = i.id_user AND i.id_oferta = 4)
-         */
         return view('ofertas.listaCandidatos', compact('ofertas', 'array'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function listaEmpleos()
+    {
+        $user = auth()->user()->id;
+        $array = array();
+        $ofertas = DB::table('ofertas')
+            ->select(
+                'ofID',
+                'ofNombre',
+                'ofUbicacion',
+                'ofSueldo',
+                'ofDescripcion',
+                'ofCategoria',
+                'ofHorario',
+                'ofFechaInicio',
+                'ofFechaFinal',
+                'ofVacantes',
+                'ofEmpresa'
+            )->get()->toArray();
+
+        return view('ofertas.listaOfertas', compact('ofertas'));
     }
 
     /**
@@ -274,5 +296,67 @@ class ofertasController extends Controller
     {
         ofertas::find($id)->delete();
         return redirect()->route('ofertas.index')->with('success', 'Oferta Eliminada con Exito');
+    }
+
+    public function filter(Request $request)
+    {
+        $ofertas = array();
+        /* 
+        *Traemos todas las ofertas
+        */
+        $ofertasAux = DB::table('ofertas')
+            ->join('categorias', 'ofertas.ofCategoria', '=', 'categorias.cgID')
+            ->select(
+                'ofID',
+                'ofNombre',
+                'ofUbicacion',
+                'ofSueldo',
+                'ofDescripcion',
+                'categorias.cgNombre as ofNomCategoria',
+                'ofHorario',
+                'ofFechaInicio',
+                'ofFechaFinal',
+                'ofCategoria',
+                'ofVacantes',
+                'ofEmpresa'
+            )
+            ->get()->toArray();
+
+        $nombre = $request->request->get('txt_empresa');
+        $usuarios = DB::table('users')
+                ->where('users.name', 'LIKE','%' . $nombre . '%')
+                ->get()->toArray();        
+        if ($nombre != '') {
+            
+            foreach ($ofertasAux as $key => $oferta) {
+                foreach ($usuarios as $key2 => $usuario) {
+                    if ($usuario->id == $oferta->ofEmpresa) {
+                        $oferta->ofEmpresa = $usuario->name;
+                        array_push($ofertas, $oferta);
+                    }
+                }
+            }
+        } else {
+            $nombre = $request->request->get('txt_categoria');
+            $categories = DB::table('categorias')
+                ->where('categorias.cgNombre', 'LIKE', '%' . $nombre . '%')
+                ->get()->toArray();
+                //print_r($categories);
+            foreach ($ofertasAux as $key => $oferta) {
+                foreach ($categories as $key2 => $categoria) {
+                    if ($categoria->cgID == $oferta->ofCategoria) {
+                        foreach ($usuarios as $key2 => $usuario) {
+                            if ($usuario->id == $oferta->ofEmpresa) {
+                                $oferta->ofEmpresa = $usuario->name;
+                                //array_push($ofertas, $oferta);
+                            }
+                        }
+                        array_push($ofertas, $oferta);
+                    }
+                }
+            }
+        }
+        $user = auth()->user()->tipoUsuario;
+        return view('ofertas.index', compact('ofertas'))->with('success', 'Ejecutado con éxito')->with('tipoUsuario', $user);
     }
 }
