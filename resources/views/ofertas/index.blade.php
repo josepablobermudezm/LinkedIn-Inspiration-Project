@@ -51,7 +51,7 @@
     <td>
       @if ($tipoUsuario == 'E')
       <a class="btn btn-info btn-sm" href="{{route('offer',$value->ofID)}}">
-        <i class="glyphicon glyphicon-th-large"></i></a>
+        Requisitos</a>
       <a class="btn btn-primary btn-sm" href="{{route('ofertas.edit',$value->ofID)}}">
         <i class="glyphicon glyphicon-pencil"></i></a>
       {!! Form::open(['method' => 'DELETE','route' => ['ofertas.destroy', $value->ofID],'style'=>'display:inline']) !!}
