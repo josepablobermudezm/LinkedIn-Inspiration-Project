@@ -8,16 +8,10 @@
     </div>
     <br>
     <div class="col-xs-12 col-sm-12 col-md-12">
-      <div class="form-group" style="display: flex;">
-        {{ Form::open(['route'=>['filter'], 'method'=>'GET']) }}        
-        <input name="txt_empresa" class="form-control" style="width: 100%;" type="text" placeholder="Empresa">
-        <button type="submit" style="margin-left: 10px; margin-right: auto; justify-content: center;" class="btn btn-info btn-sm" style="font-size: 20px;" class="fa fa-floppy-o">Buscar</i></button>
-        {{ form::close() }}
-        {{ Form::open(['route'=>['filter'], 'method'=>'GET']) }}        
-        <input name="txt_categoria" class="form-control" style="width: 100%;" type="text" placeholder="Categoria">
-        <button type="submit" style="margin-left: 10px; margin-right: auto; justify-content: center;" class="btn btn-info btn-sm" style="font-size: 20px;" class="fa fa-floppy-o">Buscar</i></button>
-        {{ form::close() }}
-      </div>
+        <div class="form-group" style="display: flex;">
+            <input class="form-control" style="width: 20%;" type="text" placeholder="Empresa/Categoría">
+            <button type="submit" style="margin-left: 10px; margin-right: auto; justify-content: center;" class="btn btn-info btn-sm" style="font-size: 20px;" class="fa fa-floppy-o">Buscar</i></button>
+        </div>
     </div>
   </div>
 </div>
@@ -36,8 +30,7 @@
 <table class="table table-bordered">
   <tr>
     <th with="80px">No</th>
-    <td>Nombre de Oferta</td>
-    <td>Empresa</td>
+    <td>Nombre</td>
     <td>Categoría</td>
     <td>Descripción</td>
     <td>Fecha Inicio</td>
@@ -63,7 +56,6 @@
   <tr>
     <td>{{$no++}}</td>
     <td>{{ $value->ofNombre }}</td>
-    <td>{{ $value->ofEmpresa }}</td>
     <td>{{ $value->ofNomCategoria }}</td>
     <td>{{ $value->ofDescripcion }}</td>
     <td>{{ $value->ofFechaInicio }}</td>
