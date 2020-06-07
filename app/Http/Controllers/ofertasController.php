@@ -17,7 +17,6 @@ class ofertasController extends Controller
      */
     public function index()
     {
-
         $ofertas = DB::table('ofertas')
             ->join('categorias', 'ofertas.ofCategoria', '=', 'categorias.cgID')
             ->select(
@@ -45,7 +44,11 @@ class ofertasController extends Controller
      */
     public function create()
     {
-        $categories = categorias::all();
+
+        $empresa = auth()->user()->id;
+        $categories = DB::table('categorias')->orderBy('cgID', 'asc')->where('cgEmpresa', $empresa)->get()->toArray();
+
+        //$categories = categorias::all();
         return view('ofertas.create', compact('categories'));
     }
 
@@ -65,11 +68,12 @@ class ofertasController extends Controller
             'ofDescripcion' => 'required|string|max:300',
             'ofUbicacion' => 'required|string|max:300',
             'ofSueldo' => 'required|max:8,2',
+            'ofCategoria' => 'required|int|max:10000',
             'ofFechaInicio' => 'required|string|max:10',
             'ofFechaFinal' => 'required|string|max:10',
             'ofVacantes' => 'required|int|max:999',
         ]);
-
+            
         $request->request->add(['ofEmpresa' => $empresa]);
 
         ofertas::create($request->all());
@@ -117,11 +121,12 @@ class ofertasController extends Controller
             'ofDescripcion' => 'required|string|max:300',
             'ofUbicacion' => 'required|string|max:300',
             'ofSueldo' => 'required|max:8,2',
+            'ofCategoria' => 'required|int|max:10000',
             'ofFechaInicio' => 'required|string|max:10',
             'ofFechaFinal' => 'required|string|max:10',
             'ofVacantes' => 'required|int|max:999',
         ]);
-
+        $empresa = auth()->user()->id;        
         ofertas::find($id)->update($request->all());
         return redirect()->route('ofertas.index')->with('success', 'Oferta actualizada con exito');
     }

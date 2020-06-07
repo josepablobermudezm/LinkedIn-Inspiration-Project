@@ -25,6 +25,7 @@ class categoriasController extends Controller
      */
     public function create()
     {
+        
         return view('categorias.create');
     }
 
@@ -36,10 +37,12 @@ class categoriasController extends Controller
      */
     public function store(Request $request)
     {
+        $empresa = auth()->user()->id;
         $this->validate($request, [
             'cgNombre' => 'required|string|max:30',
             'cgDescripcion' => 'required|string|max:300'
         ]);
+        $request->request->add(['cgEmpresa' => $empresa]);
         categorias::create($request->all());
         return redirect()->route('categorias.index')->with('success','Categoria creada con éxito');
     }
@@ -81,6 +84,7 @@ class categoriasController extends Controller
             'cgNombre' => 'required|string|max:30',
             'cgDescripcion' => 'required|string|max:300'
         ]);
+       
         categorias::find($id)->update($request->all());
         return redirect()->route('categorias.index')->with('success','Categoria actualizada con éxito');
     }
