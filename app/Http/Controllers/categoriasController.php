@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\categorias;
+use Illuminate\Support\Facades\DB;
 
 class categoriasController extends Controller
 {
@@ -14,7 +15,8 @@ class categoriasController extends Controller
      */
     public function index()
     {
-        $categorias = categorias::all();
+        $empresa = auth()->user()->id;
+        $categorias = DB::table('categorias')->orderBy('cgID', 'asc')->where('cgEmpresa', $empresa)->get()->toArray();
         return view('categorias.index', compact('categorias'));
     }
 
@@ -25,7 +27,7 @@ class categoriasController extends Controller
      */
     public function create()
     {
-        
+
         return view('categorias.create');
     }
 

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ofertas;
-use App\categorias;
 use Illuminate\Support\Facades\DB;
 
 
@@ -64,8 +63,9 @@ class ofertasController extends Controller
      */
     public function create()
     {
-
+        
         $empresa = auth()->user()->id;
+
         $categories = DB::table('categorias')->orderBy('cgID', 'asc')->where('cgEmpresa', $empresa)->get()->toArray();
 
         //$categories = categorias::all();
@@ -122,7 +122,8 @@ class ofertasController extends Controller
     public function edit($id)
     {
         $ofertas = ofertas::find($id);
-        $categories = categorias::all();
+        $empresa = auth()->user()->id;
+        $categories = DB::table('categorias')->orderBy('cgID', 'asc')->where('cgEmpresa', $empresa)->get()->toArray();
         return view('ofertas.edit', compact('ofertas', 'categories'));
     }
 
