@@ -13,7 +13,7 @@
             <nav>
                 <ul id='menu'>
                     <a href="{{ url('curriculums') }}"><button id="Button1" class="Button1" onclick="CambiarColor(this)"><i class="fas fa-scroll"></i><br><label style="font-size: 20px; cursor: pointer;">-</label></button></a>
-                    <a href="{{ url('usuarios') }}"><button id="Button2" class="Button1" onclick="CambiarColor(this)"><i class="fas fa-scroll"></i><br><label style="font-size: 20px; cursor: pointer;">-</label></button></a>
+                    <a href="{{ route('pdf2') }}"><button id="Button2" class="Button1" onclick="CambiarColor(this)"><i class="fas fa-scroll"></i><br><label style="font-size: 20px; cursor: pointer;">Empleos</label></button></a>
                     <a href="{{ route('listaEmpresas') }}"><button id="Button3" class="Button1" onclick="CambiarColor(this)"><i class="fas fa-scroll"></i><br><label style="font-size: 20px; cursor: pointer;">Empresas</label></button></a>
                     <?php if (auth()->user()->tipoUsuario == 'C') { ?>
                         <a href="{{ route('listaOfertas') }}"><button id="Button4" class="Button1" onclick="CambiarColor(this)"><i class="fas fa-scroll"></i><br><label style="font-size: 20px; cursor: pointer;">Ofertas</label></button></a>

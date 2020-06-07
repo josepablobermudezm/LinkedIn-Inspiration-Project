@@ -203,6 +203,34 @@ class ofertasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function listaEmpleos()
+    {
+        $user = auth()->user()->id;
+        $array = array();
+        $ofertas = DB::table('ofertas')
+            ->select(
+                'ofID',
+                'ofNombre',
+                'ofUbicacion',
+                'ofSueldo',
+                'ofDescripcion',
+                'ofCategoria',
+                'ofHorario',
+                'ofFechaInicio',
+                'ofFechaFinal',
+                'ofVacantes',
+                'ofEmpresa'
+            )->get()->toArray();
+
+        return view('ofertas.listaOfertas', compact('ofertas'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function listaOfertas()
     {
         $user = auth()->user()->id;
