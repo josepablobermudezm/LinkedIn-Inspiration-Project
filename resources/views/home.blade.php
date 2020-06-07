@@ -9,12 +9,19 @@
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
                     @endif
-
-                    You are logged in!
+                    <div id='div_media'>
+                        <nav>
+                            <ul id='menu'>
+                            <a href="{{ url('curriculums') }}"><button id="creditButton" class="creditButton" onclick="CambiarColor(this)"><i class="far fa-file-alt"></i><br><label style="font-size: 20px;">Curriculum</label></button></a>
+                            <a href="{{ url('usuarios') }}"><button id="debitButton" class="creditButton" onclick="CambiarColor(this)"><i class="fas fa-user-circle"></i><br><label style="font-size: 20px;">Mi Perfil</label></button></a>
+                            <a href="{{ url('ofertas') }}"><button id="cashButton" class="creditButton" onclick="CambiarColor(this)"><i class="far fa-address-card"></i><br><label style="font-size: 20px;">Ofertas</label></button></a>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
