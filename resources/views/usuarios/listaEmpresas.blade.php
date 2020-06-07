@@ -39,7 +39,7 @@
       <td>{{ $value->photo }}</td>
       <td>{{ $value->cedula }}</td>
       <td>
-      <a class="btn btn-info btn-sm" href="{{ route('pdf2',$value->id) }}">
+      <a class="btn btn-info btn-sm" href="{{ route('pdf3',$value->id) }}">
         <i class="glyphicon glyphicon-th-list"></i></a>
       </td>
     </tr>
