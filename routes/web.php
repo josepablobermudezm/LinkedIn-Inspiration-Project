@@ -23,8 +23,6 @@ Route::get('/Reportes', function () {
 
 Route::get('pdf', 'ReportGeneratorController@ReporteCurriculum')->name('pdf');
 
-Route::get('pdf', 'ReportGeneratorController@Reporte1')->name('pdf');
-
 Route::get('requisitos/offer/{id}', 'requisitosController@offer')->name('offer');
 Route::get('experiencias/curriculum/{id}', 'experienciasController@curriculum')->name('exp');
 Route::get('formaciones/curriculum/{id}', 'formacionesController@curriculum')->name('form');
