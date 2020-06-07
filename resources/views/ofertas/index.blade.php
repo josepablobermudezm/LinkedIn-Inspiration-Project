@@ -61,7 +61,6 @@
       <a class="btn btn-info btn-sm" href="">
         <i style="font-size: 20px;" class="fa fa-floppy-o"></i></a>
       @endif
-
     </td>
   </tr>
   @endforeach

@@ -17,25 +17,42 @@ class ofertasController extends Controller
      */
     public function index()
     {
-
-        $ofertas = DB::table('ofertas')
-            ->join('categorias', 'ofertas.ofCategoria', '=', 'categorias.cgID')
-            ->select(
-                'ofID',
-                'ofNombre',
-                'ofUbicacion',
-                'ofSueldo',
-                'ofDescripcion',
-                'categorias.cgNombre as ofNomCategoria',
-                'ofHorario',
-                'ofFechaInicio',
-                'ofFechaFinal',
-                'ofVacantes',
-                'ofEmpresa'
-            )
-            ->get()->toArray();
-        //$ofertas = ofertas::all();
+        $userID = auth()->user()->id;
         $user = auth()->user()->tipoUsuario;
+        if ($user == 'C') {//en el caso de que sea un candidato entonces mostramos toda la lista 
+            $ofertas = DB::table('ofertas')
+                ->join('categorias', 'ofertas.ofCategoria', '=', 'categorias.cgID')
+                ->select(
+                    'ofID',
+                    'ofNombre',
+                    'ofUbicacion',
+                    'ofSueldo',
+                    'ofDescripcion',
+                    'categorias.cgNombre as ofNomCategoria',
+                    'ofHorario',
+                    'ofFechaInicio',
+                    'ofFechaFinal',
+                    'ofVacantes',
+                    'ofEmpresa'
+                )->get()->toArray();
+        } else {//si es una empresa mostramos solamente las ofertas que esa empresa ha creado
+            $ofertas = DB::table('ofertas')
+                ->join('categorias', 'ofertas.ofCategoria', '=', 'categorias.cgID')
+                ->select(
+                    'ofID',
+                    'ofNombre',
+                    'ofUbicacion',
+                    'ofSueldo',
+                    'ofDescripcion',
+                    'categorias.cgNombre as ofNomCategoria',
+                    'ofHorario',
+                    'ofFechaInicio',
+                    'ofFechaFinal',
+                    'ofVacantes',
+                    'ofEmpresa'
+                )->where('ofEmpresa', $userID)->get()->toArray();
+        }
+        //$ofertas = DB::table('inscripciones')->orderBy('ofID', 'asc')->where('ofEmpresa', $userID)->get()->toArray();
         return view('ofertas.index', compact('ofertas'))->with('tipoUsuario', $user);
     }
 
