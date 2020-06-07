@@ -21,10 +21,10 @@ Route::get('/Reportes', function () {
     return view('Reportes');
 })->name('reportes');
 
-Route::get('pdf/{user}', 'ReportGeneratorController@ReporteCurriculum')->name('pdf');//ReporteEmpresa
+Route::get('pdf/{user}', 'ReportGeneratorController@ReporteCurriculum')->name('pdf');//Reportecurriculum
 Route::get('pdf3/{user}', 'ReportGeneratorController@ReporteEmpresa')->name('pdf3');//ReporteEmpresa
-Route::get('pdf4/{user}', 'ReportGeneratorController@ReporteOferta')->name('pdf4');//ReporteEmpresa
-
+Route::get('pdf4/{user}', 'ReportGeneratorController@ReporteOferta')->name('pdf4');//Reporteoferta
+Route::get('pdf5', 'ReportGeneratorController@ReporteGrafico')->name('pdf5');//ReporteGrafico
 
 Route::get('requisitos/offer/{id}', 'requisitosController@offer')->name('offer');
 Route::get('experiencias/curriculum/{id}', 'experienciasController@curriculum')->name('exp');
