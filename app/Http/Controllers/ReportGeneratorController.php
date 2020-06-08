@@ -64,7 +64,7 @@ class ReportGeneratorController extends Controller
     }
 
     public function ReporteGrafico(){
-        $pdf = PDF::loadView('reporte5Grafico');
+        //$pdf = PDF::loadView('reporte5Grafico');
         $empresas   = DB::table('ofertas')->join('users', 'ofertas.ofEmpresa', '=', 'users.id')
         ->where('users.tipoUsuario', 'E')
         ->select('users.name', DB::raw('sum(ofertas.ofVacantes) as vacantes'))->groupBy('users.name')

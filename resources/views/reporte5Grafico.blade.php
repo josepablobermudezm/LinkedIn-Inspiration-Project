@@ -12,23 +12,22 @@
 </head>
 
 <body>
-    @foreach ($empresas as $key => $value)
-    <label for="">{{ $value->name }}</label>
-    @endforeach
-    <a href="#" id="downloadPdf">Descargar Como PDF</a>
+    
     <br /><br />
     <div id="reportPage">
         <div id="chartContainer" style="width: 80%;float: left;">
-            <canvas id="myChart"></canvas>
+            <canvas id="myChart">
+            </canvas>
         </div>
 
         <div style="display: none; width: 1%; float: left;">
-            <canvas id="myChart2"></canvas>
+            <canvas id="myChart2"><img style='float: left;' src="https://image.freepik.com/vector-gratis/plantilla-logotipo-supermercado-carrito-compras_23-2148470295.jpg" alt="logo" width="190"/></canvas>
         </div>
         <br /><br /><br />
         <div style="display: none; width: 1%; height: 400px; clear: both;">
             <canvas id="myChart3" style="width: 40%"></canvas>
         </div>
+        <a href="#" id="downloadPdf">Descargar Como PDF</a>
     </div>
     <script>
         var chartColors = {
@@ -40,24 +39,23 @@
             purple: 'rgb(153, 102, 255)',
             grey: 'rgb(231,233,237)'
         };
-
-        var randomScalingFactor = function() {
-            return (Math.random() > 0.5 ? 1.0 : 1.0) * Math.round(Math.random() * 100);
-        };
-       
         var data = {
-            labels:
-            [' ALGO '],
+            labels:[
+            @foreach ($empresas as $key => $value)
+                "{{$value->name}}",
+            @endforeach
+            ],
+            
             datasets: [{
-                label: 'Fuel',
+                label: 'Vacantes',
                 backgroundColor: [
-                    chartColors.red,
+                    chartColors.green,
                     chartColors.blue,
                 ],
                 data: [
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
+                    @foreach ($empresas as $key => $value)
+                        "{{ $value->vacantes }}",
+                    @endforeach
                 ]
             }]
         };
@@ -69,7 +67,7 @@
                 responsive: true,
                 title: {
                     display: true,
-                    text: "Chart.js - Base Example"
+                    text: "Empresas vs Vacantes"
                 },
                 tooltips: {
                     mode: 'index',
@@ -93,8 +91,7 @@
             var reportPageHeight = 1280;
             var reportPageWidth = 900;
 
-            // create a new canvas object that we will populate with all other canvas objects
-            var pdfCanvas = $('<canvas />').attr({
+            var pdfCanvas = $('<canvas/>').attr({
                 id: "canvaspdf",
                 width: reportPageWidth,
                 height: reportPageHeight
@@ -128,7 +125,7 @@
             pdf.addImage($(pdfCanvas)[0], 'PNG', 0, 0);
 
             // download the pdf
-            pdf.save('filename.pdf');
+            pdf.save('EmpresasVSvacantes.pdf');
         });
     </script>
 </body>
