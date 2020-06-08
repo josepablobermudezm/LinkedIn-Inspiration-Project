@@ -13,13 +13,12 @@ var randomScalingFactor = function() {
 };
 
 var data = {
-  labels: ["Car", "Bike", "Walking"],
+  labels: ["Empresas", "N. Vacantes"],
   datasets: [{
       label: 'Fuel',
       backgroundColor: [
           chartColors.red,
           chartColors.blue,
-          chartColors.yellow
       ],
       data: [
           randomScalingFactor(),

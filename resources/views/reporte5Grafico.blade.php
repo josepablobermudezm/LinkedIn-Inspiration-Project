@@ -18,12 +18,8 @@
     <a href="#" id="downloadPdf">Download Report Page as PDF</a>
     <br /><br />
     <div id="reportPage">
-        <div id="chartContainer" style="width: 30%;float: left;">
+        <div id="chartContainer" style="width: 70%;float: center;">
             <canvas id="myChart"></canvas>
-        </div>
-
-        <div style="width: 30%; float: left;">
-            <canvas id="myChart2"></canvas>
         </div>
     </div>
 </body>
