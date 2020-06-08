@@ -21,7 +21,7 @@
         </div>
 
         <div style="display: none; width: 1%; float: left;">
-            <canvas id="myChart2"><img style='float: left;' src="https://image.freepik.com/vector-gratis/plantilla-logotipo-supermercado-carrito-compras_23-2148470295.jpg" alt="logo" width="190"/></canvas>
+            <canvas id="myChart2"></canvas>
         </div>
         <br /><br /><br />
         <div style="display: none; width: 1%; height: 400px; clear: both;">
