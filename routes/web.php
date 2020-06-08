@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +24,7 @@ Route::get('/Reportes', function () {
     return view('Reportes');
 })->name('reportes');
 
+Route::post('/upload','usuariosController@subirImagen');
 
 Route::get('pdf/{user}', 'ReportGeneratorController@ReporteCurriculum')->name('pdf');//Reportecurriculum
 Route::get('pdf2', 'ReportGeneratorController@ReporteEmpleos')->name('pdf2');//ReporteEmpresa

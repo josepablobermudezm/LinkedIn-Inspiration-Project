@@ -33,30 +33,6 @@
     </div>
   </div>
 </div>
-<!--
-<div class="row">
-  <div class="col-sm-2">
-    {!! form::label('password','Contraseña') !!}
-  </div>
-  <div class="col-sm-10">
-    <div class="form-group {{ $errors->has('password') ? 'has-error' : "" }}">
-      {{ Form::text('password',NULL, ['class'=>'form-control', 'id'=>'password', 'placeholder'=>'Contrasena']) }}
-      {{ $errors->first('password', '<p class="help-block">:message</p>') }}
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-2">
-    {!! form::label('password','Contraseña') !!}
-  </div>
-  <div class="col-sm-10">
-    <div class="form-group {{ $errors->has('password') ? 'has-error' : "" }}">
-      {{ Form::text('password',NULL, ['class'=>'form-control', 'id'=>'password', 'placeholder'=>'Contrasena']) }}
-      {{ $errors->first('password', '<p class="help-block">:message</p>') }}
-    </div>
-  </div>
-</div>-->
 
 <div class="row">
   <div class="col-sm-2">
@@ -78,39 +54,6 @@
     <div class="form-group {{ $errors->has('phone') ? 'has-error' : "" }}">
       {{ Form::text('phone',NULL, ['class'=>'form-control', 'id'=>'phone', 'placeholder'=>'Telefono']) }}
       {{ $errors->first('phone', '<p class="help-block">:message</p>') }}
-    </div>
-  </div>
-</div>
-
-<!--<div class="row">
-  <div class="col-sm-2">
-    {!! form::label('tipoUsuario','Tipo de Usuario') !!}
-  </div>
-  <div class="col-sm-10">
-    <div class="form-group {{ $errors->has('tipoUsuario') ? 'has-error' : "" }}">
-      <div>
-        {!! form::label('Empresa','Empresa') !!}
-        {{Form::radio('tipoUsuario', $usuarios->tipoUsuario == 'E' ? true : false,['class'=>'form-control'])}}
-      </div>
-      <div>
-        {!! form::label('Candidato','Candidato') !!}
-        {{Form::radio('tipoUsuario',$usuarios->tipoUsuario == 'E' ? false : true,['class'=>'form-control', 'value'=>'E'])}}
-      </div>
-      {{ Form::text('tipoUsuario',NULL, ['class'=>'form-control', 'id'=>'tipoUsuario', 'placeholder'=>'TipoUsuario']) }}
-      {!! $errors->first('tipoUsuario', '<p class="help-block">:message</p>') !!}
-    </div>
-  </div>
-</div>-->
-
-<div class="row">
-  <div class="col-sm-2">
-    {!! form::label('photo','Foto') !!}
-  </div>
-  <div class="col-sm-10">
-    <div class="form-group {{ $errors->has('photo') ? 'has-error' : "" }}">
-    <input type="file" class="form-control" name="file" >
-      {{ Form::file('photo',NULL, ['class'=>'form-control', 'id'=>'photo', 'placeholder'=>'Foto']) }}
-      {{ $errors->first('photo', '<p class="help-block">:message</p>') }}
     </div>
   </div>
 </div>

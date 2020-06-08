@@ -21,6 +21,14 @@ class usuariosController extends Controller
         return view('usuarios.index', compact('usuarios'));
     }
 
+    public function subirImagen(Request $request)
+    {
+        $filename = $request->photo->getClientOriginalName();
+        $request->photo->storeAs('images',$filename, 'public');
+        User::find(auth()->user()->id)->update(['photo' => $filename]);
+        return redirect()->route('usuarios.edit', auth()->user()->id)->with('success', 'Usuario actualizado con exito');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -93,36 +101,13 @@ class usuariosController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:50'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            //'password' => ['required', 'string', 'min:8', 'confirmed'],
             'address' => ['required', 'string', 'max:50'],
             'phone' => ['required', 'string', 'max:50'],
-            //'tipoUsuario' => ['required', 'string', 'max:1'],
-            //'photo' => ['required', 'string', 'max:50'],
             'cedula' => ['required', 'string', 'max:50']
         ]);
-       
         user::find($id)->update($request->all());
         return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado con exito');
     }
-
-    public function save(Request $request)
-    {
-        $this->validate($request, [
-            'name' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:50'],
-            'email' => ['required', 'string', 'email', 'max:255'],
-            //'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'address' => ['required', 'string', 'max:50'],
-            'phone' => ['required', 'string', 'max:50'],
-            //'tipoUsuario' => ['required', 'string', 'max:1'],
-            //'photo' => ['required', 'string', 'max:50'],
-            'cedula' => ['required', 'string', 'max:50']
-        ]);
-       
-        user::find($id)->update($request->all());
-        return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado con exito');
-    }
-
 
     /**
      * Remove the specified resource from storage.
