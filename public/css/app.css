@@ -323,6 +323,11 @@ li {
   margin-bottom: 15px;
 }
 
+.imagen{
+  weight: 100px;
+  height: 100px;
+}
+
 .wave {
   position: fixed;
   bottom: 0;
