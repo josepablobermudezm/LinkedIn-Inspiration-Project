@@ -28,7 +28,7 @@
   </div>
   <div class="col-sm-10">
     <div class="form-group {{ $errors->has('exFechaInicio') ? 'has-error' : "" }}">
-      {{ Form::text('exFechaInicio',NULL, ['class'=>'form-control', 'id'=>'exFechaInicio', 'placeholder'=>'FechaInicio Post...']) }}
+      {{ Form::date('exFechaInicio',NULL, ['class'=>'form-control', 'id'=>'exFechaInicio', 'placeholder'=>'FechaInicio Post...']) }}
       {!! $errors->first('exFechaInicio', '<p class="help-block">:message</p>') !!}
     </div>
   </div>
@@ -40,7 +40,7 @@
   </div>
   <div class="col-sm-10">
     <div class="form-group {{ $errors->has('fechaFinal') ? 'has-error' : "" }}">
-      {{ Form::text('fechaFinal',NULL, ['class'=>'form-control', 'id'=>'fechaFinal', 'placeholder'=>'Fecha Final Post...']) }}
+      {{ Form::date('fechaFinal',NULL, ['class'=>'form-control', 'id'=>'fechaFinal', 'placeholder'=>'Fecha Final Post...']) }}
       {!! $errors->first('fechaFinal', '<p class="help-block">:message</p>') !!}
     </div>
   </div>

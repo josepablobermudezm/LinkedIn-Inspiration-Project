@@ -20,6 +20,7 @@
       <th with="80px">No</th>
       <td>Candidato</td>
       <td>Observaciones</td>
+      <td>Acciones</td>
       <?php if (sizeof($curriculums) == 0) {?>
         <th with="140px" class="text-center">
           <a href="{{route('curriculums.create')}}" class="btn btn-success btn-sm">

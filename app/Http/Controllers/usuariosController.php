@@ -96,13 +96,33 @@ class usuariosController extends Controller
             //'password' => ['required', 'string', 'min:8', 'confirmed'],
             'address' => ['required', 'string', 'max:50'],
             'phone' => ['required', 'string', 'max:50'],
-            'tipoUsuario' => ['required', 'string', 'max:1'],
-            'photo' => ['required', 'string', 'max:50'],
+            //'tipoUsuario' => ['required', 'string', 'max:1'],
+            //'photo' => ['required', 'string', 'max:50'],
             'cedula' => ['required', 'string', 'max:50']
         ]);
+       
         user::find($id)->update($request->all());
         return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado con exito');
     }
+
+    public function save(Request $request)
+    {
+        $this->validate($request, [
+            'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:50'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            //'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'address' => ['required', 'string', 'max:50'],
+            'phone' => ['required', 'string', 'max:50'],
+            //'tipoUsuario' => ['required', 'string', 'max:1'],
+            //'photo' => ['required', 'string', 'max:50'],
+            'cedula' => ['required', 'string', 'max:50']
+        ]);
+       
+        user::find($id)->update($request->all());
+        return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado con exito');
+    }
+
 
     /**
      * Remove the specified resource from storage.
@@ -134,7 +154,7 @@ class usuariosController extends Controller
                 'phone',
                 'photo',
                 'cedula'
-            )->where('tipoUsuario','E')->get()->toArray();
+            )->where('tipoUsuario', 'E')->get()->toArray();
 
         return view('usuarios.listaEmpresas', compact('usuarios'));
     }

@@ -60,7 +60,7 @@
 
 <div class="row">
   <div class="col-sm-2">
-    {!! form::label('	address','Dirección') !!}
+    {!! form::label(' address','Dirección') !!}
   </div>
   <div class="col-sm-10">
     <div class="form-group {{ $errors->has('address') ? 'has-error' : "" }}">
@@ -82,17 +82,25 @@
   </div>
 </div>
 
-<div class="row">
+<!--<div class="row">
   <div class="col-sm-2">
-    {!! form::label('tipoUsuario','Tipo de usuario') !!}
+    {!! form::label('tipoUsuario','Tipo de Usuario') !!}
   </div>
   <div class="col-sm-10">
     <div class="form-group {{ $errors->has('tipoUsuario') ? 'has-error' : "" }}">
+      <div>
+        {!! form::label('Empresa','Empresa') !!}
+        {{Form::radio('tipoUsuario', $usuarios->tipoUsuario == 'E' ? true : false,['class'=>'form-control'])}}
+      </div>
+      <div>
+        {!! form::label('Candidato','Candidato') !!}
+        {{Form::radio('tipoUsuario',$usuarios->tipoUsuario == 'E' ? false : true,['class'=>'form-control', 'value'=>'E'])}}
+      </div>
       {{ Form::text('tipoUsuario',NULL, ['class'=>'form-control', 'id'=>'tipoUsuario', 'placeholder'=>'TipoUsuario']) }}
-      {{ $errors->first('tipoUsuario', '<p class="help-block">:message</p>') }}
+      {!! $errors->first('tipoUsuario', '<p class="help-block">:message</p>') !!}
     </div>
   </div>
-</div>
+</div>-->
 
 <div class="row">
   <div class="col-sm-2">
@@ -100,7 +108,8 @@
   </div>
   <div class="col-sm-10">
     <div class="form-group {{ $errors->has('photo') ? 'has-error' : "" }}">
-      {{ Form::text('photo',NULL, ['class'=>'form-control', 'id'=>'photo', 'placeholder'=>'Foto']) }}
+    <input type="file" class="form-control" name="file" >
+      {{ Form::file('photo',NULL, ['class'=>'form-control', 'id'=>'photo', 'placeholder'=>'Foto']) }}
       {{ $errors->first('photo', '<p class="help-block">:message</p>') }}
     </div>
   </div>

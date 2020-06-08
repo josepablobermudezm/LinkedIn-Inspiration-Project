@@ -40,7 +40,7 @@
   </div>
   <div class="col-sm-10">
     <div class="form-group {{ $errors->has('foFecha') ? 'has-error' : "" }}">
-      {{ Form::text('foFecha',NULL, ['class'=>'form-control', 'id'=>'foFecha', 'placeholder'=>'Fecha']) }}
+      {{ Form::date('foFecha',NULL, ['class'=>'form-control', 'id'=>'foFecha', 'placeholder'=>'Fecha']) }}
       {!! $errors->first('foFecha', '<p class="help-block">:message</p>') !!}
     </div>
   </div>
