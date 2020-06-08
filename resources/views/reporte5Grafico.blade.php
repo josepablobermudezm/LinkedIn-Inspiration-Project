@@ -15,6 +15,22 @@
 </head>
 
 <body>
+
+    <a href="#" id="downloadPdf">Download Report Page as PDF</a>
+    <br /><br />
+    <div id="reportPage">
+        <div id="chartContainer" style="width: 80%;float: left;">
+            <canvas id="myChart"></canvas>
+        </div>
+
+        <div style="display: none; width: 1%; float: left;">
+            <canvas id="myChart2"></canvas>
+        </div>
+        <br /><br /><br />
+        <div style="display: none; width: 1%; height: 400px; clear: both;">
+            <canvas id="myChart3" style="width: 40%"></canvas>
+        </div>
+    </div>
     <script>
         var chartColors = {
             red: 'rgb(255, 99, 132)',
@@ -115,21 +131,6 @@
             pdf.save('filename.pdf');
         });
     </script>
-    <a href="#" id="downloadPdf">Download Report Page as PDF</a>
-    <br /><br />
-    <div id="reportPage">
-        <div id="chartContainer" style="width: 80%;float: left;">
-            <canvas id="myChart"></canvas>
-        </div>
-
-        <div style="display: none; width: 1%; float: left;">
-            <canvas id="myChart2"></canvas>
-        </div>
-        <br /><br /><br />
-        <div style="display: none; width: 1%; height: 400px; clear: both;">
-            <canvas id="myChart3" style="width: 40%"></canvas>
-        </div>
-    </div>
 </body>
 
 </html>
