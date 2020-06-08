@@ -62,4 +62,10 @@ class ReportGeneratorController extends Controller
         $pdf = PDF::loadView('reporte4Ofertas', compact('ofertas'))->setPaper('a4', 'landscape');;
         return $pdf->stream('Reporte4.pdf');
     }
+
+    public function ReporteGrafico(){
+        $pdf = PDF::loadView('reporte5Grafico');
+        return $pdf->stream('Reporte5.pdf');
+        //return view('reporte5Grafico');
+    }
 }

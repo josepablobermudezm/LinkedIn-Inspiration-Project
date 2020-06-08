@@ -10,19 +10,20 @@
 
 <body>
     <div class="container">
-        <h2>Ofertas</h2>
-        <table class="table table-bordered">
+        <img style="float: left;" src="img/company.png">
+        <h2 style='position: relative; text-align: center;'>Ofertas</h2>
+        <table class="table table-bordered" style="padding-top: 60px; text-align:left; margin-left:0px; ">
             <tr>
-                <td>Nombre</td>
-                <td>Ubicacion</td>
-                <td>Sueldo</td>
-                <td>Descripcion</td>
-                <td>Categoria</td>
-                <td>Horario</td>
-                <td>FechaInicio</td>
-                <td>FechaFinal</td>
-                <td>Vacantes</td>
-                <td>Empresa</td>
+                <th scope="col">Nombre</th>
+                <th scope="col">Ubicacion</th>
+                <th scope="col">Sueldo</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Horario</th>
+                <th scope="col">FechaInicio</th>
+                <th scope="col">FechaFinal</th>
+                <th scope="col">Vacantes</th>
+                <th scope="col">Empresa</th>
             </tr>
             @foreach ($ofertas as $key => $value)
             <tr>
