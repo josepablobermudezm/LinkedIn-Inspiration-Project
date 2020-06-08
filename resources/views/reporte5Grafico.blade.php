@@ -72,64 +72,10 @@
             }
         });
 
-        var myBar2 = new Chart(document.getElementById("myChart2"), {
-            type: 'horizontalBar',
-            data: data,
-            options: {
-                responsive: true,
-                title: {
-                    display: true,
-                    text: "Chart.js - Changing X Axis Step Size"
-                },
-                tooltips: {
-                    mode: 'index',
-                    intersect: false
-                },
-                legend: {
-                    display: false,
-                },
-                scales: {
-                    xAxes: [{
-                        ticks: {
-                            beginAtZero: true,
-                            stepSize: 2
-                        }
-                    }]
-                }
-            }
-        });
-
-        var myBar3 = new Chart(document.getElementById("myChart3"), {
-            type: 'horizontalBar',
-            data: data,
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                title: {
-                    display: true,
-                    text: "Chart.js - Setting maintainAspectRatio = false and Setting Parent Width/Height"
-                },
-                tooltips: {
-                    mode: 'index',
-                    intersect: false
-                },
-                legend: {
-                    display: false,
-                },
-                scales: {
-                    xAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-
         $('#downloadPdf').click(function(event) {
             // get size of report page
-            var reportPageHeight = $('#reportPage').innerHeight();
-            var reportPageWidth = $('#reportPage').innerWidth();
+            var reportPageHeight = 1280;
+            var reportPageWidth = 900;
 
             // create a new canvas object that we will populate with all other canvas objects
             var pdfCanvas = $('<canvas />').attr({
@@ -172,8 +118,16 @@
     <a href="#" id="downloadPdf">Download Report Page as PDF</a>
     <br /><br />
     <div id="reportPage">
-        <div id="chartContainer" style="width: 70%;float: center;">
+        <div id="chartContainer" style="width: 80%;float: left;">
             <canvas id="myChart"></canvas>
+        </div>
+
+        <div style="display: none; width: 1%; float: left;">
+            <canvas id="myChart2"></canvas>
+        </div>
+        <br /><br /><br />
+        <div style="display: none; width: 1%; height: 400px; clear: both;">
+            <canvas id="myChart3" style="width: 40%"></canvas>
         </div>
     </div>
 </body>
