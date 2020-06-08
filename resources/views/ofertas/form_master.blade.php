@@ -17,7 +17,7 @@
         <div class="form-group {{ $errors->has('ofCategoria') ? 'has-error' : "" }}">
             <select name="ofCategoria" class="form-control">
                 @foreach($categories as $key =>$value)
-                <option value='{{$value->cgID}}' >{{$value->cgNombre}}</option>
+                <option value='{{$value->cgID}}'>{{$value->cgNombre}}</option>
                 @endforeach
             </select>
             {!! $errors->first('ofCategoria', '<p class="help-block">:message</p>') !!}
@@ -41,7 +41,7 @@
     </div>
     <div class="col-sm-10">
         <div class="form-group {{ $errors->has('ofFechaInicio') ? 'has-error' : "" }}">
-            {{ Form::text('ofFechaInicio',NULL, ['class'=>'form-control', 'id'=>'ofFechaInicio', 'placeholder'=>'YYYY-MM-DD']) }}
+            {{ Form::date('ofFechaInicio',NULL, ['class'=>'form-control', 'id'=>'ofFechaInicio', 'placeholder'=>'YYYY-MM-DD']) }}
             {!! $errors->first('ofFechaInicio', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
@@ -52,7 +52,7 @@
     </div>
     <div class="col-sm-10">
         <div class="form-group {{ $errors->has('ofFechaFinal') ? 'has-error' : "" }}">
-            {{ Form::text('ofFechaFinal',NULL, ['class'=>'form-control', 'id'=>'ofFechaFinal', 'placeholder'=>'YYYY-MM-DD']) }}
+            {{ Form::date('ofFechaFinal',NULL, ['class'=>'form-control', 'id'=>'ofFechaFinal', 'placeholder'=>'YYYY-MM-DD']) }}
             {!! $errors->first('ofFechaFinal', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
