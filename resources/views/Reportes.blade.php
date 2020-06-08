@@ -23,7 +23,7 @@
                                 <?php if (auth()->user()->tipoUsuario == 'C') { ?>
                                     <a href="{{ route('listaOfertas') }}"><button id="Button4" class="Button1" onclick="CambiarColor(this)"><i class="fas fa-scroll"></i><br><label style="font-size: 20px; cursor: pointer;">Ofertas</label></button></a>
                                 <?php } ?>
-                                <a href="{{ url('curriculums') }}"><button id="Button1" class="Button1" onclick="CambiarColor(this)"><i class="fas fa-scroll"></i><br><label style="font-size: 20px; cursor: pointer;">-</label></button></a>
+                                <a href="{{ route('pdf5') }}"><button id="Button1" class="Button1" onclick="CambiarColor(this)"><i class="fas fa-scroll"></i><br><label style="font-size: 20px; cursor: pointer;">Gráfico</label></button></a>
                             </ul>
                         </nav>
                     </div>

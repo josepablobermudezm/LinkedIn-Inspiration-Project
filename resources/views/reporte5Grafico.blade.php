@@ -1,62 +1,31 @@
-<html>
-    <head>
-        <!--Load the AJAX API-->
-        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-        <script type="text/javascript">
-            google.load("visualization", "1", {packages: ["corechart"]});
-            google.setOnLoadCallback(drawChart);
- 
-            // Callback that creates and populates a data table,
-            // instantiates the pie chart, passes in the data and
-            // draws it.
-            function drawChart() {
-                var data = google.visualization.arrayToDataTable([
-                    ['Year', 'Visitations', { role: 'style' } ],
-                    ['2010', 10, 'color: gray'],
-                    ['2020', 14, 'color: #76A7FA'],
-                    ['2030', 16, 'opacity: 0.2'],
-                    ['2040', 22, 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF'],
-                    ['2050', 28, 'stroke-color: #871B47; stroke-opacity: 0.6; stroke-width: 8; fill-color: #BC5679; fill-opacity: 0.2']
-            ]);
+<!DOCTYPE html>
+<html lang="en">
 
-            var options = {'title': 'How Much Pizza I Ate Last Night',
-                    'width': 400,
-                    'height': 300};
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="jquery-1.3.2.min.js" type="text/javascript"></script>
+    <title>Reporte 5</title>
+</head>
 
-            var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-                chart.draw(data, options);
-
-            }
-            /*function drawChart() {
- 
-                // Create the data table.
-                var data = new google.visualization.DataTable();
-                data.addColumn('string', 'Topping');
-                data.addColumn('number', 'Slices');
-                data.addRows([
-                    ['Mushrooms', 3],
-                    ['Onions', 1],
-                    ['Olives', 1],
-                    ['Zucchini', 1],
-                    ['Pepperoni', 2]
-                ]);
- 
-                // Set chart options
-                var options = {'title': 'How Much Pizza I Ate Last Night',
-                    'width': 400,
-                    'height': 300};
- 
-                // Instantiate and draw our chart, passing in some options.
-                var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-                chart.draw(data, options);
-            }*/
-        </script>
-    </head>
- 
-    <body>
-        <!--Div that will hold the pie chart-->
-        <div id="chart_div">
-        
+<body>
+    <a href="#" id="downloadPdf">Download Report Page as PDF</a>
+    <br /><br />
+    <div id="reportPage">
+        <div id="chartContainer" style="width: 30%;float: left;">
+            <canvas id="myChart"></canvas>
         </div>
-    </body>
+
+        <div style="width: 30%; float: left;">
+            <canvas id="myChart2"></canvas>
+        </div>
+    </div>
+</body>
+
 </html>

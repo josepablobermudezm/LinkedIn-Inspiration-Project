@@ -65,7 +65,8 @@ class ReportGeneratorController extends Controller
 
     public function ReporteGrafico(){
         $pdf = PDF::loadView('reporte5Grafico');
-        return $pdf->stream('Reporte5.pdf');
+        //return $pdf->stream('Reporte5.pdf');
+        return view('reporte5Grafico');
         //return view('reporte5Grafico');
     }
 }
