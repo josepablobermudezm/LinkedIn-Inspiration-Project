@@ -10,10 +10,9 @@
 
 <body>
     <div class="container">
-        <h2>Empresa</h2>
-        <br>
-        <h2>Datos de la empresa</h2>
-        <table class="table table-bordered">
+        <img style="float: left;" src="img/company.png">
+        <h2 style='position: relative; text-align: center;'>Empresa</h2>
+        <table class="table table-bordered" style="padding-top: 60px; text-align:left; margin-left:0px; ">
             <tr>
                 <th scope="col">Nombre</th>
                 <th scope="col">Correo</th>

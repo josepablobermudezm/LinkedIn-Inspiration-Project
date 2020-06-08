@@ -5,15 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-vue@0.15.8/dist/bootstrap-vue.css" crossorigin="anonymous">
     <title>Reporte 1</title>
 </head>
 
 <body>
     <div class="container">
-        <h2>Curriculum</h2>
-        <br>
-        <h2>Datos Personales</h2>
-        <table class="table table-bordered">
+        <img style="float: left;" src="img/company.png">
+        <h2 style='position: relative; text-align: center;'>Curriculum</h2>
+        <h2 style='padding-top: 60px; color: #636b6f;'>Datos Personales</h2>
+        <table class="table table-bordered" style=" text-align:center; margin-left:auto; margin-right:auto;">
             <tr>
                 <th scope="col">Nombre</th>
                 <th scope="col">Correo</th>
@@ -33,7 +35,7 @@
             </tr>
             @endforeach
         </table>
-        <h2>Experiencias</h2>
+        <h2 style="color: #636b6f;">Experiencias</h2>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -54,7 +56,7 @@
             </tr>
             @endforeach
         </table>
-        <h2>Formaciones</h2>
+        <h2 style="color: #636b6f;">Formaciones</h2>
         <table class="table table-bordered">
             <tr>
                 <th scope="col">Titulo</th>
