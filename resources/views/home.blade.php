@@ -5,6 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+                <img class="wave" src="img/wave.png">
                 <div class="card-header">Menú</div>
                 <div class="card-body">
                     @if (session('status'))
