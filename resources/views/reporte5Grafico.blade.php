@@ -85,7 +85,6 @@
                 }
             }
         });
-
         $('#downloadPdf').click(function(event) {
             // get size of report page
             var reportPageHeight = 1280;
