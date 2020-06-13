@@ -58,7 +58,6 @@ class RegisterController extends Controller
             'address' => ['required', 'string', 'max:50'],
             'phone' => ['required', 'string', 'max:50'],
             'tipoUsuario' => ['required', 'string', 'max:1'],
-            'photo' => ['required', 'string', 'max:50'],
             'cedula' => ['required', 'string', 'max:50','unique:users']
         ]);
     }
@@ -80,7 +79,6 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'phone' => $data['phone'],
             'tipoUsuario' => $data['tipoUsuario'],
-            'photo' => $data['photo'],
             'cedula' => $data['cedula'],
         ]);
     }
