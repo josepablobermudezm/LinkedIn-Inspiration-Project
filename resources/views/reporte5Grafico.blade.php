@@ -86,7 +86,7 @@
             }
         });
         $('#downloadPdf').click(function(event) {
-            // get size of report page
+            // el tamaño del reporte
             var reportPageHeight = 1280;
             var reportPageWidth = 900;
 
@@ -96,7 +96,7 @@
                 height: reportPageHeight
             });
 
-            // keep track canvas position
+            // posición de los canvas
             var pdfctx = $(pdfCanvas)[0].getContext('2d');
             var pdfctxX = 0;
             var pdfctxY = 0;
@@ -104,26 +104,26 @@
 
             // for each chart.js chart
             $("canvas").each(function(index) {
-                // get the chart height/width
+                // obtieene el tamaño de los canvas
                 var canvasHeight = $(this).innerHeight();
                 var canvasWidth = $(this).innerWidth();
 
-                // draw the chart into the new canvas
+                // dibuja el chart dentro de los nuevos canvas
                 pdfctx.drawImage($(this)[0], pdfctxX, pdfctxY, canvasWidth, canvasHeight);
                 pdfctxX += canvasWidth + buffer;
 
-                // our report page is in a grid pattern so replicate that in the new canvas
+                // nuestra página de reporte es un patrón de un grid entonces replicamos eso en nuestros nuevos canvas
                 if (index % 2 === 1) {
                     pdfctxX = 0;
                     pdfctxY += canvasHeight + buffer;
                 }
             });
 
-            // create new pdf and add our new canvas as an image
+            // crea un pdf y agrega nuestro nuevo canvas como una imagen
             var pdf = new jsPDF('l', 'pt', [reportPageWidth, reportPageHeight]);
             pdf.addImage($(pdfCanvas)[0], 'PNG', 0, 0);
 
-            // download the pdf
+            // descarga el pdf
             pdf.save('EmpresasVSvacantes.pdf');
         });
     </script>

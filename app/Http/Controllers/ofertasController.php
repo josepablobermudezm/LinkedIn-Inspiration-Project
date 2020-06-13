@@ -234,6 +234,8 @@ class ofertasController extends Controller
                 'ofEmpresa'
             )->get()->toArray();
 
+            
+
         return view('ofertas.listaOfertas', compact('ofertas'));
     }
 
@@ -247,6 +249,7 @@ class ofertasController extends Controller
     {
         $user = auth()->user()->id;
         $array = array();
+        $array1 = array();
         $ofertas = DB::table('ofertas')
             ->select(
                 'ofID',
@@ -271,10 +274,27 @@ class ofertasController extends Controller
         foreach ($ofertas as $key => $oferta) {
             foreach ($inscripciones as $key => $inscripcion) {
                 if ($inscripcion->id_oferta == $oferta->ofID) {
+                    array_push($array1, $oferta);
+                }
+            }
+        }
+
+        $empresas = DB::table('users')
+            ->select(
+                'id',
+                'name',
+            )->get()->toArray();
+
+        foreach ($array1 as $key => $oferta) {
+            foreach ($empresas as $key => $empresa) {
+                if ($oferta->ofEmpresa == $empresa->id) {
+                    $oferta->ofEmpresa = $empresa->name;
                     array_push($array, $oferta);
                 }
             }
         }
+
+        
         
 
         return view('ofertas.listaOfertas', compact('array'));
