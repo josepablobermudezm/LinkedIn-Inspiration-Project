@@ -36,7 +36,7 @@
       <td>{{ $value->email }}</td>
       <td>{{ $value->address }}</td>
       <td>{{ $value->phone }}</td>
-      <td>{{ $value->photo }}</td>
+      <td><img class="imagen" style="width:50px; height:50px;" src="<?php echo ('../storage/images/' . $value->photo) ?>"></td>
       <td>{{ $value->cedula }}</td>
       <td>
       <a class="btn btn-info btn-sm" href="{{ route('pdf3',$value->id) }}">
