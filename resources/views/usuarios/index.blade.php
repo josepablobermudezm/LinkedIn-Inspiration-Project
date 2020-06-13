@@ -39,7 +39,7 @@
       <td>{{ $value->address }}</td>
       <td>{{ $value->phone }}</td>
       <td>{{ $value->tipoUsuario }}</td>
-      <td>{{ $value->photo }}</td>
+      <td><img class="imagen" src="<?php echo ('../../storage/images/' . auth()->user()->photo) ?>"></td>
       <td>{{ $value->cedula }}</td>
       <td>
         <a class="btn btn-info btn-sm" href="{{route('usuarios.show',$value->id)}}">
