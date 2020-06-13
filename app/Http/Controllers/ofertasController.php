@@ -19,8 +19,9 @@ class ofertasController extends Controller
     {
         $userID = auth()->user()->id;
         $user = auth()->user()->tipoUsuario;
+        $ofertas = array();
         if ($user == 'C') { //en el caso de que sea un candidato entonces mostramos toda la lista 
-            $ofertas = DB::table('ofertas')
+            $ofertas1 = DB::table('ofertas')
                 ->join('categorias', 'ofertas.ofCategoria', '=', 'categorias.cgID')
                 ->select(
                     'ofID',
@@ -36,7 +37,7 @@ class ofertasController extends Controller
                     'ofEmpresa'
                 )->get()->toArray();
         } else { //si es una empresa mostramos solamente las ofertas que esa empresa ha creado
-            $ofertas = DB::table('ofertas')
+            $ofertas1 = DB::table('ofertas')
                 ->join('categorias', 'ofertas.ofCategoria', '=', 'categorias.cgID')
                 ->select(
                     'ofID',
@@ -52,6 +53,23 @@ class ofertasController extends Controller
                     'ofEmpresa'
                 )->where('ofEmpresa', $userID)->get()->toArray();
         }
+
+        $empresas = DB::table('users')
+            ->select(
+                'id',
+                'name',
+            )->get()->toArray();
+
+        foreach ($ofertas1 as $key => $oferta) {
+            foreach ($empresas as $key => $empresa) {
+                if ($oferta->ofEmpresa == $empresa->id) {
+                    $oferta->ofEmpresa = $empresa->name;
+                    array_push($ofertas, $oferta);
+                }
+            }
+        }
+
+
         return view('ofertas.index', compact('ofertas'))->with('tipoUsuario', $user);
     }
 
@@ -257,6 +275,7 @@ class ofertasController extends Controller
                 }
             }
         }
+        
 
         return view('ofertas.listaOfertas', compact('array'));
     }

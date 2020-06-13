@@ -36,14 +36,31 @@ class ReportGeneratorController extends Controller
         $ofertasaux  = DB::table('ofertas')->orderBy('ofCategoria', 'asc')->where('ofVacantes','>','0')->get()->toArray();
         $categorias  = DB::table('categorias')->orderBy('cgID', 'asc')->get()->toArray();
         $ofertas = array();
+        $ofertas2 = array();
         foreach($ofertasaux as $key => $oferta){
             foreach($categorias as $key => $categoria){
                 if($oferta->ofCategoria == $categoria->cgID){
                     $oferta->ofCategoria = $categoria->cgNombre;
+                    array_push($ofertas2, $oferta);
+                }
+            }
+        }
+
+        $empresas = DB::table('users')
+            ->select(
+                'id',
+                'name',
+            )->get()->toArray();
+
+        foreach ($ofertas2 as $key => $oferta) {
+            foreach ($empresas as $key => $empresa) {
+                if ($oferta->ofEmpresa == $empresa->id) {
+                    $oferta->ofEmpresa = $empresa->name;
                     array_push($ofertas, $oferta);
                 }
             }
         }
+
         $pdf = PDF::loadView('reporte2Empleos', compact('ofertas'))->setPaper('a4', 'landscape');;
         return $pdf->stream('Reporte2.pdf');
     }
