@@ -39,7 +39,7 @@ class usuariosController extends Controller
         return view('usuarios.create');
     }
 
-    public function filter(Request $request){
+    public function filtro(Request $request){
         $nombre = $request->request->get('txt_empresa');
 
         $usuarios = DB::table('users')->orderBy('id', 'asc')
