@@ -39,30 +39,14 @@ class usuariosController extends Controller
         return view('usuarios.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    /*public function store(Request $request)
-    {
-        //['usNombreReal','usNombreUsuario','usContrasena','usDireccion', 'usTelefono', 'usTipoUsuario', 'usFoto', 'usCedula'];
- 
-        $this->validate($request,[
-            'name' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:50'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'address' => ['required', 'string', 'max:50'],
-            'phone' => ['required', 'string', 'max:50'],
-            'tipoUsuario' => ['required', 'string', 'max:1'],
-            'photo' => ['required', 'string', 'max:50'],
-            'cedula' => ['required', 'string', 'max:50']
-        ]);
-        user::create($request->all());
-        return redirect()->route('usuarios.index')->with('success','Usuario creado exitosamente');
-    }*/
+    public function filter(Request $request){
+        $nombre = $request->request->get('txt_empresa');
+
+        $usuarios = DB::table('users')->orderBy('id', 'asc')
+        ->where('users.tipoUsuario', 'E')
+        ->where('users.name', 'LIKE', '%' . $nombre . '%')->get()->toArray();
+        return view('usuarios.listaEmpresas', compact('usuarios'));
+    }
 
     /**
      * Display the specified resource.

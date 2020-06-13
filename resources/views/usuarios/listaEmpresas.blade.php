@@ -14,7 +14,10 @@
           <p>{{ $message }}</p>
       </div>
   @endif
-
+  {{ Form::open(['route'=>['filter'], 'method'=>'GET']) }}        
+    <input name="txt_empresa" class="form-control" style="margin-left: 5px; width: 30%;" type="text" placeholder="Nombre">
+    <button type="submit" style="margin-left: 10px; margin: 5px; justify-content: center;" class="btn btn-info btn-sm" style="font-size: 20px;" class="fa fa-floppy-o">Buscar</i></button>
+  {{ form::close() }}
   <table class="table table-bordered">
     <tr>
       <th with="80px">No</th>

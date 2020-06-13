@@ -42,6 +42,10 @@ Route::get('ofertas/filter/', [
     'as' => 'filter', 'uses' => 'ofertasController@filter'
 ]);
 
+Route::get('usuarios/filter/', [
+    'as' => 'filter', 'uses' => 'usuariosController@filter'
+]);
+
 Route::get('requisitos/create/{id}', 'requisitosController@create')->name('create');
 
 Route::get('requisitos/show/{id}/{oferta}', [
