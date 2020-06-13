@@ -36,7 +36,7 @@
                 <td>{{ $value->phone }}</td>
                 <td>{{ $value->address }}</td>
                 <td>{{ $value->cedula }}</td>
-                <td>{{ $value->photo }}</td>
+                <td><img class="imagen" style="width:50px; height:50px;" src="<?php echo ('storage/images/' . $value->photo) ?>"></td>
             </tr>
             @endforeach
         </table>
@@ -45,16 +45,16 @@
             <thead>
                 <tr>
                     <th scope="col">Puesto</th>
+                    <th scope="col">Empresa</th>
                     <th scope="col">Descripcion</th>
                     <th scope="col">Fecha Inicio</th>
                     <th scope="col">Fecha Final</th>
-                    <th scope="col">Cedula</th>
-                    <th scope="col">Foto</th>
                 </tr>
             </thead>
             @foreach ($experiencias as $key => $value)
             <tr>
                 <td>{{ $value->exPuesto }}</td>
+                <td>{{ $value->exEmpresa }}</td>
                 <td>{{ $value->exDescripcion }}</td>
                 <td>{{ $value->exFechaInicio }}</td>
                 <td>{{ $value->fechaFinal }}</td>

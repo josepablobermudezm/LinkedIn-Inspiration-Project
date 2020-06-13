@@ -28,7 +28,7 @@
                 <td>{{ $value->phone }}</td>
                 <td>{{ $value->address }}</td>
                 <td>{{ $value->cedula }}</td>
-                <td>{{ $value->photo }}</td>
+                <td><img class="imagen" style="width:50px; height:50px;" src="<?php echo ('storage/images/' . $value->photo) ?>"></td>
             </tr>
             @endforeach
         </table>

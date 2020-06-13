@@ -16,29 +16,29 @@
         <h2 style='position: relative; text-align: center;'>Empleos</h2>
         <table class="table table-bordered" style="padding-top: 60px; text-align:left; margin-left:0px; ">
             <tr>
-                <td scope="col" >Categoria</td>
-                <td scope="col" >Nombre</td>
-                <td scope="col" >Ubicacion</td>
-                <td scope="col" >Sueldo</td>
-                <td scope="col" >Descripcion</td>
-                <td scope="col" >Horario</td>
-                <td scope="col" >FechaInicio</td>
-                <td scope="col" >FechaFinal</td>
-                <td scope="col" >Vacantes</td>
-                <td scope="col" >Empresa</td>
+                <td scope="col" style="font-size: 12px;">Categoria</td>
+                <td scope="col" style="font-size: 12px;" >Nombre</td>
+                <td scope="col" style="font-size: 12px;" >Ubicacion</td>
+                <td scope="col" style="font-size: 12px;" >Sueldo</td>
+                <td scope="col" style="font-size: 12px;" >Descripcion</td>
+                <td scope="col" style="font-size: 12px;" >Horario</td>
+                <td scope="col" style="font-size: 12px;" >FechaInicio</td>
+                <td scope="col" style="font-size: 12px;" >FechaFinal</td>
+                <td scope="col" style="font-size: 12px;" >Vacantes</td>
+                <td scope="col" style="font-size: 12px;" >Empresa</td>
             </tr>
             @foreach ($ofertas as $key => $value)
             <tr>
-                <td>{{ $value->ofCategoria  }}</td>
-                <td>{{ $value->ofNombre }}</td>
-                <td>{{ $value->ofUbicacion }}</td>
-                <td>{{ $value->ofSueldo }}</td>
-                <td>{{ $value->ofDescripcion }}</td>
-                <td>{{ $value->ofHorario }}</td>
-                <td>{{ $value->ofFechaInicio }}</td>
-                <td>{{ $value->ofFechaFinal }}</td>
-                <td>{{ $value->ofVacantes }}</td>
-                <td>{{ $value->ofEmpresa  }}</td>
+                <td style="font-size: 12px;" >{{ $value->ofCategoria  }}</td>
+                <td style="font-size: 12px;">{{ $value->ofNombre }}</td>
+                <td style="font-size: 12px;">{{ $value->ofUbicacion }}</td>
+                <td style="font-size: 12px;">{{ $value->ofSueldo }}</td>
+                <td style="font-size: 12px;">{{ $value->ofDescripcion }}</td>
+                <td style="font-size: 12px;">{{ $value->ofHorario }}</td>
+                <td style="font-size: 12px;">{{ $value->ofFechaInicio }}</td>
+                <td style="font-size: 12px;">{{ $value->ofFechaFinal }}</td>
+                <td style="font-size: 12px;">{{ $value->ofVacantes }}</td>
+                <td style="font-size: 12px;">{{ $value->ofEmpresa  }}</td>
             </tr>
             @endforeach
         </table>
