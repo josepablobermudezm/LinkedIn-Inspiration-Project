@@ -15,7 +15,7 @@ class CreateRequisitosTable extends Migration
     {
         Schema::create('requisitos', function (Blueprint $table) {
             $table->increments('rqID');
-            $table->string('qNombre', 50);
+            $table->string('rqNombre', 50);
             $table->string('rqDescripcion', 300);
             $table->unsignedInteger('rqOfertaTrabajo');
             $table->foreign('rqOfertaTrabajo')->references('ofID')->on('ofertas');
