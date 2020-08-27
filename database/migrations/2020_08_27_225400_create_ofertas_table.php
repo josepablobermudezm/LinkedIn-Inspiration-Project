@@ -19,8 +19,8 @@ class CreateOfertasTable extends Migration
             $table->string('ofUbicacion', 300);
             $table->double('ofSueldo', 8, 2);
             $table->string('ofDescripcion', 300);
-            $table->unsignedBigInteger('ofCategoria');
-            $table->foreign('ofCategoria')->references('id')->on('categorias');
+            $table->unsignedInteger('ofCategoria');
+            $table->foreign('ofCategoria')->references('cgID')->on('categorias');
             $table->date('ofHorario', 300);
             $table->date('ofFechaInicio');
             $table->date('ofFechaFinal');

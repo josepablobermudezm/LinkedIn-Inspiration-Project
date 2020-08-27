@@ -14,7 +14,7 @@ class CreateCategoriasTable extends Migration
     public function up()
     {
         Schema::create('categorias', function (Blueprint $table) {
-            $table->id();
+            $table->increments('cgID');
             $table->string('cgNombre', 30);
             $table->unsignedBigInteger('cgEmpresa');
             $table->foreign('cgEmpresa')->references('id')->on('users');
