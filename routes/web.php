@@ -108,3 +108,10 @@ Route::resource('ofertas', 'ofertasController');
 Route::resource('requisitos', 'requisitosController');
 Route::resource('formaciones', 'formacionesController');
 Route::resource('categorias', 'categoriasController');
+
+Route::get('/agenda', 'agendaController@index')->name('agenda');
+Route::get('/agenda/listar', 'agendaController@listar');
+Route::post('/guardarCalendar', 'agendaController@guardar')->name('guardarCalendar');
+Route::post('/agenda/editar', 'agendaController@editar');
+Route::post('/agenda/eliminar', 'agendaController@eliminar');
+Route::get('agenda/pdf', 'agendaController@createPDF')->name('agendaPDF');
