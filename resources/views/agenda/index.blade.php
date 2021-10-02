@@ -132,8 +132,6 @@
     var descripcionAnt = null;
     var calendar = null;
 
-
-    <?php if (auth()->user()->tipoUsuario == 'E') { ?>
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');
             var es = {
@@ -169,6 +167,7 @@
                 selectable: true,
                 selectMirror: true,
                 select: function(arg) {
+                    <?php if (auth()->user()->tipoUsuario == 'E') { ?>
                     let fechaConFomato = moment(arg.start).format("YYYY-MM-DD"); //para convertirlo
                     let horaInicial = moment(arg.start).format("HH:mm:ss");
                     let horaFinal = moment(arg.end).format("HH:mm:ss");
@@ -177,9 +176,11 @@
                     $("#agn_HoraInicio").val(horaInicial);
                     $("#agn_HoraFinal_tiempo").val("30");
                     $("#agenda_modal").modal();
+                    <?php } ?>
                     calendar.unselect()
                 },
                 eventClick: function(info) {
+                    <?php if (auth()->user()->tipoUsuario == 'E') { ?>
                     $("#agenda_modal").modal();
                     $("#agn_fecha").val(moment(info.event.extendedProps['agn_fecha']).format("YYYY-MM-DD"));
                     FechaAnt = moment(info.event.extendedProps['agn_fecha']).format("YYYY-MM-DD");
@@ -194,6 +195,7 @@
                     $("#agn_HoraInicio").val(info.event.extendedProps['agn_HoraInicio']);
                     horaInicioAnt = info.event.extendedProps['agn_HoraInicio'];
                     ID = info.event.id;
+                    <?php } ?>
                 },
                 editable: false,
                 dayMaxEvents: true, // allow "more" link when too many events
@@ -207,55 +209,7 @@
             });
             calendar.render();
         })
-    <?php } ?>
-
-    <?php if (auth()->user()->tipoUsuario == 'C') { ?>
-        document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('calendar');
-            var es = {
-                code: "es",
-                week: {
-                    dow: 1, // Monday is the first day of the week.
-                    doy: 4 // The week that contains Jan 4th is the first week of the year.
-                },
-                buttonText: {
-                    prev: "Ant",
-                    next: "Sig",
-                    today: "Hoy",
-                    month: "Mes",
-                    week: "Semana",
-                    day: "Día",
-                    list: "Agenda"
-                },
-                weekText: "Sm",
-                allDayText: "Todo el día",
-                moreLinkText: "más",
-                noEventsText: "No hay eventos para mostrar"
-            };
-
-            calendar = new FullCalendar.Calendar(calendarEl, {
-                schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
-                locale: es,
-                headerToolbar: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
-                },
-                navLinks: true,
-                selectMirror: true,
-                editable: false,
-                dayMaxEvents: true, // allow "more" link when too many events
-                events: {
-                    url: '/agenda/listar',
-                    method: 'GET',
-                    failure: function() {
-                        alert('Hubo un error mientras se cargaban los eventos');
-                    }
-                }
-            });
-            calendar.render();
-        })
-    <?php } ?>
+    
 
     function guardar() {
         var fd = new FormData(document.getElementById("formulario_agenda"));
