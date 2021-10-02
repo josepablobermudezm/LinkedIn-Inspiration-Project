@@ -88,13 +88,13 @@
                     <div row="input-group">
                         <div class="col">
                             <div class="form-group">
-                                <label for="">Nombre Completo</label>
+                                <label for="">Nombre de Actividad</label>
                                 <input type="text" class="form-control" id="agn_NombreCompleto" name="agn_NombreCompleto">
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label for="">Teléfono</label>
+                                <label for="">Contacto</label>
                                 <input type="text" class="form-control" id="agn_telefono" name="agn_telefono">
                             </div>
                         </div>
