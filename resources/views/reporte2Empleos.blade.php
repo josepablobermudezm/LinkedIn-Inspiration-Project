@@ -12,7 +12,7 @@
 
 <body>
     <div class="container">
-    <img style="float: left;" src="img/company.png">
+    <img style="float: left;" src="img/empleos.png">
         <h2 style='position: relative; text-align: center;'>Empleos</h2>
         <table class="table table-bordered" style="padding-top: 60px; text-align:left; margin-left:0px; ">
             <tr>

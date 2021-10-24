@@ -21,25 +21,28 @@ class ReportGeneratorController extends Controller
         $curriculums = DB::table('curriculums')->join('users', 'curriculums.crUsuario', '=', 'users.id')
             ->select('curriculums.crID', 'users.name as NombreUsuario', 'curriculums.crObservaciones')
             ->where('crUsuario', $user)->get()->toArray();
-        //Obtenemos las formaciones
-        $formaciones  = DB::table('formaciones')->orderBy('foID', 'asc')->where('foCurriculum', $curriculums[0]->crID)->get()->toArray();
-        // Obtenemos las experiencias
-        $experiencias  = DB::table('experiencias')->orderBy('exID', 'asc')->where('exCurriculum', $curriculums[0]->crID)->get()->toArray();
-        
-        $pdf = PDF::loadView('reporte1Curriculum', compact('usuarios', 'experiencias', 'formaciones'))->setPaper('a4', 'landscape');;
-      
-        return $pdf->stream('Reporte1.pdf');
+        if (!empty($curriculums)) {
+            //Obtenemos las formaciones
+            $formaciones  = DB::table('formaciones')->orderBy('foID', 'asc')->where('foCurriculum', $curriculums[0]->crID)->get()->toArray();
+            // Obtenemos las experiencias
+            $experiencias  = DB::table('experiencias')->orderBy('exID', 'asc')->where('exCurriculum', $curriculums[0]->crID)->get()->toArray();
+
+            $pdf = PDF::loadView('reporte1Curriculum', compact('usuarios', 'experiencias', 'formaciones'))->setPaper('a4', 'landscape');;
+
+            return $pdf->stream('Reporte1.pdf');
+        }
+        return view('reportes', compact('usuarios'));
     }
 
     public function ReporteEmpleos()
     {
-        $ofertasaux  = DB::table('ofertas')->orderBy('ofCategoria', 'asc')->where('ofVacantes','>','0')->get()->toArray();
+        $ofertasaux  = DB::table('ofertas')->orderBy('ofCategoria', 'asc')->where('ofVacantes', '>', '0')->get()->toArray();
         $categorias  = DB::table('categorias')->orderBy('cgID', 'asc')->get()->toArray();
         $ofertas = array();
         $ofertas2 = array();
-        foreach($ofertasaux as $key => $oferta){
-            foreach($categorias as $key => $categoria){
-                if($oferta->ofCategoria == $categoria->cgID){
+        foreach ($ofertasaux as $key => $oferta) {
+            foreach ($categorias as $key => $categoria) {
+                if ($oferta->ofCategoria == $categoria->cgID) {
                     $oferta->ofCategoria = $categoria->cgNombre;
                     array_push($ofertas2, $oferta);
                 }
@@ -81,11 +84,12 @@ class ReportGeneratorController extends Controller
         return $pdf->stream('Reporte4.pdf');
     }
 
-    public function ReporteGrafico(){
+    public function ReporteGrafico()
+    {
         $empresas   = DB::table('ofertas')->join('users', 'ofertas.ofEmpresa', '=', 'users.id')
-        ->where('users.tipoUsuario', 'E')
-        ->select('users.name', DB::raw('sum(ofertas.ofVacantes) as vacantes'))->groupBy('users.name')
-        ->get()->toArray();
+            ->where('users.tipoUsuario', 'E')
+            ->select('users.name', DB::raw('sum(ofertas.ofVacantes) as vacantes'))->groupBy('users.name')
+            ->get()->toArray();
         return view('reporte5Grafico', compact('empresas'));
     }
 }
