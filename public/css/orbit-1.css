@@ -40,7 +40,7 @@ p {
 }
 
 .wrapper {
-  float: right;
+  /*float: right;*/
   background: #42A8C0;
   max-width: 25%;
   margin-right: 0px;
@@ -154,7 +154,7 @@ p {
 .main-wrapper {
   margin-top: 0px;
   background: #fff;
-  max-width: 70%;
+  max-width: 60%;
   padding: 60px;
   position: relative;
 }
