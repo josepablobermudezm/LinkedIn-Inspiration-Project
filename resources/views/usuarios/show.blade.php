@@ -1,14 +1,14 @@
 @extends('layouts.app')
 @section('PageTitle', 'Mi Perfil')
 @section('content')
-<div class="row">
+<div class="row ">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
             <h2> Show User</h2>
         </div>
         <div class="pull-right">
             <br/>
-            <a class="btn btn-primary" href="{{ route('usuarios.index') }}"> <i class="glyphicon glyphicon-arrow-left"></i></a>
+            <a class="btn btn-primary" href="{{ route('usuarios.index') }}"> <i class="material-icons">keyboard_arrow_left</i></a>
         </div>
     </div>
 </div>
