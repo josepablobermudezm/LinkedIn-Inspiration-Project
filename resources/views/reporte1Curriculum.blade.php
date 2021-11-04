@@ -4,11 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-vue@0.15.8/dist/bootstrap-vue.css" crossorigin="anonymous"> -->
-    <script defer src="../js/all.min.js"></script>
-    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <script defer src="{{ asset('js/all.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link id="theme-style" rel="stylesheet" href="{{ asset('css/orbit-1.css') }}">
 
     <title>Reporte 1</title>
@@ -41,7 +38,7 @@
                 <td>{{ $value->address }}</td>
                 <td>{{ $value->cedula }}</td>
                 <td><img class="imagen" style="width:50px; height:50px;"
-                        src="<?php echo ('storage/images/' . $value->photo) ?>"></td>
+                        src="<?php //echo ('storage/images/' . $value->photo) ?>"></td>
             </tr>
             @endforeach
         </table>
@@ -84,8 +81,7 @@
             @endforeach
         </table>
     </div> -->
-
-    <div class="wrapper mt-lg-5">
+    <div class="wrapper">
         <div class="sidebar-wrapper">
             <div class="profile-container">
                 <img class="profile" src="assets/images/profile.png" alt="">
@@ -188,246 +184,240 @@
         </div>
         <!--//sidebar-wrapper-->
 
-        <div class="main-wrapper">
-
-            <section class="section summary-section">
-                <h2 class="section-title"><span class="icon-holder"><svg class="svg-inline--fa fa-user fa-w-14"
-                            aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" role="img"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
-                            <path fill="currentColor"
-                                d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z">
-                            </path>
-                        </svg><!-- <i class="fas fa-user"></i> Font Awesome fontawesome.com --></span>Career Profile
-                </h2>
-                <div class="summary">
-                    <p>Summarise your career here lorem ipsum dolor sit amet, consectetuer adipiscing elit. You can <a
-                            href="https://themes.3rdwavemedia.com/bootstrap-templates/resume/orbit-free-resume-cv-bootstrap-theme-for-developers/"
-                            target="_blank">download this free resume/CV template here</a>. Aenean commodo ligula eget
-                        dolor aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-                        ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.</p>
-                </div>
-                <!--//summary-->
-            </section>
-            <!--//section-->
-
-            <section class="section experiences-section">
-                <h2 class="section-title"><span class="icon-holder"><svg class="svg-inline--fa fa-briefcase fa-w-16"
-                            aria-hidden="true" focusable="false" data-prefix="fas" data-icon="briefcase" role="img"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
-                            <path fill="currentColor"
-                                d="M320 336c0 8.84-7.16 16-16 16h-96c-8.84 0-16-7.16-16-16v-48H0v144c0 25.6 22.4 48 48 48h416c25.6 0 48-22.4 48-48V288H320v48zm144-208h-80V80c0-25.6-22.4-48-48-48H176c-25.6 0-48 22.4-48 48v48H48c-25.6 0-48 22.4-48 48v80h512v-80c0-25.6-22.4-48-48-48zm-144 0H192V96h128v32z">
-                            </path>
-                        </svg><!-- <i class="fas fa-briefcase"></i> Font Awesome fontawesome.com --></span>Experiences
-                </h2>
-
-                <div class="item">
-                    <div class="meta">
-                        <div class="upper-row">
-                            <h3 class="job-title">Lead Developer</h3>
-                            <div class="time">2019 - Present</div>
-                        </div>
-                        <!--//upper-row-->
-                        <div class="company">Startup Hubs, San Francisco</div>
-                    </div>
-                    <!--//meta-->
-                    <div class="details">
-                        <p>Describe your role here lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                            commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
-                            parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
-                            pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo.</p>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                            architecto beatae vitae dicta sunt explicabo. </p>
-                    </div>
-                    <!--//details-->
-                </div>
-                <!--//item-->
-
-                <div class="item">
-                    <div class="meta">
-                        <div class="upper-row">
-                            <h3 class="job-title">Senior Software Engineer</h3>
-                            <div class="time">2018 - 2019</div>
-                        </div>
-                        <!--//upper-row-->
-                        <div class="company">Google, London</div>
-                    </div>
-                    <!--//meta-->
-                    <div class="details">
-                        <p>Describe your role here lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                            commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
-                            parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
-                            pretium quis, sem.</p>
-
-                    </div>
-                    <!--//details-->
-                </div>
-                <!--//item-->
-
-                <div class="item">
-                    <div class="meta">
-                        <div class="upper-row">
-                            <h3 class="job-title">UI Developer</h3>
-                            <div class="time">2016 - 2018</div>
-                        </div>
-                        <!--//upper-row-->
-                        <div class="company">Amazon, London</div>
-                    </div>
-                    <!--//meta-->
-                    <div class="details">
-                        <p>Describe your role here lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                            commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
-                            parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
-                            pretium quis, sem.</p>
-                    </div>
-                    <!--//details-->
-                </div>
-                <!--//item-->
-
-            </section>
-            <!--//section-->
-
-            <section class="section projects-section">
-                <h2 class="section-title"><span class="icon-holder"><svg class="svg-inline--fa fa-archive fa-w-16"
-                            aria-hidden="true" focusable="false" data-prefix="fas" data-icon="archive" role="img"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
-                            <path fill="currentColor"
-                                d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z">
-                            </path>
-                        </svg><!-- <i class="fas fa-archive"></i> Font Awesome fontawesome.com --></span>Projects</h2>
-                <div class="intro">
-                    <p>You can list your side projects or open source libraries in this section. Lorem ipsum dolor sit
-                        amet, consectetur adipiscing elit. Vestibulum et ligula in nunc bibendum fringilla a eu lectus.
-                    </p>
-                </div>
-                <!--//intro-->
-                <div class="item">
-                    <span class="project-title"><a
-                            href="https://themes.3rdwavemedia.com/bootstrap-templates/startup/coderpro-bootstrap-5-startup-template-for-software-projects/"
-                            target="_blank">CoderPro</a></span> - <span class="project-tagline">A responsive website
-                        template designed to help developers launch their software projects. </span>
-
-                </div>
-                <!--//item-->
-                <div class="item">
-                    <span class="project-title"><a
-                            href="https://themes.3rdwavemedia.com/bootstrap-templates/startup/launch-bootstrap-5-template-for-saas-businesses/"
-                            target="_blank">Launch</a></span> - <span class="project-tagline">A responsive website
-                        template designed to help startups promote their products or services.</span>
-                </div>
-                <!--//item-->
-                <div class="item">
-                    <span class="project-title"><a
-                            href="https://themes.3rdwavemedia.com/bootstrap-templates/resume/devcard-bootstrap-5-vcard-portfolio-template-for-software-developers/"
-                            target="_blank">DevCard</a></span> - <span class="project-tagline">A portfolio website
-                        template designed for software developers.</span>
-                </div>
-                <!--//item-->
-                <div class="item">
-                    <span class="project-title"><a
-                            href="https://themes.3rdwavemedia.com/bootstrap-templates/startup/bootstrap-template-for-mobile-apps-nova-pro/"
-                            target="_blank">Nova Pro</a></span> - <span class="project-tagline">A responsive Bootstrap
-                        theme designed to help app developers promote their mobile apps</span>
-                </div>
-                <!--//item-->
-                <div class="item">
-                    <span class="project-title"><a
-                            href="http://themes.3rdwavemedia.com/website-templates/responsive-bootstrap-theme-web-development-agencies-devstudio/"
-                            target="_blank">DevStudio</a></span> -
-                    <span class="project-tagline">A responsive website template designed to help web
-                        developers/designers market their services. </span>
-                </div>
-                <!--//item-->
-            </section>
-            <!--//section-->
-
-            <section class="skills-section section">
-                <h2 class="section-title"><span class="icon-holder"><svg class="svg-inline--fa fa-rocket fa-w-16"
-                            aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rocket" role="img"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
-                            <path fill="currentColor"
-                                d="M505.12019,19.09375c-1.18945-5.53125-6.65819-11-12.207-12.1875C460.716,0,435.507,0,410.40747,0,307.17523,0,245.26909,55.20312,199.05238,128H94.83772c-16.34763.01562-35.55658,11.875-42.88664,26.48438L2.51562,253.29688A28.4,28.4,0,0,0,0,264a24.00867,24.00867,0,0,0,24.00582,24H127.81618l-22.47457,22.46875c-11.36521,11.36133-12.99607,32.25781,0,45.25L156.24582,406.625c11.15623,11.1875,32.15619,13.15625,45.27726,0l22.47457-22.46875V488a24.00867,24.00867,0,0,0,24.00581,24,28.55934,28.55934,0,0,0,10.707-2.51562l98.72834-49.39063c14.62888-7.29687,26.50776-26.5,26.50776-42.85937V312.79688c72.59753-46.3125,128.03493-108.40626,128.03493-211.09376C512.07526,76.5,512.07526,51.29688,505.12019,19.09375ZM384.04033,168A40,40,0,1,1,424.05,128,40.02322,40.02322,0,0,1,384.04033,168Z">
-                            </path>
-                        </svg><!-- <i class="fas fa-rocket"></i> Font Awesome fontawesome.com --></span>Skills &amp;
-                    Proficiency</h2>
-                <div class="skillset">
-                    <div class="item">
-                        <h3 class="level-title">Python &amp; Django</h3>
-                        <div class="progress level-bar">
-                            <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 99%"
-                                aria-valuenow="99" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <!--//item-->
-
-                    <div class="item">
-                        <h3 class="level-title">Javascript</h3>
-                        <div class="progress level-bar">
-                            <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 98%"
-                                aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <!--//item-->
-
-                    <div class="item">
-                        <h3 class="level-title">React &amp; Angular</h3>
-                        <div class="progress level-bar">
-                            <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 98%"
-                                aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <!--//item-->
-
-                    <div class="item">
-                        <h3 class="level-title">HTML5 &amp; CSS</h3>
-                        <div class="progress level-bar">
-                            <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 95%"
-                                aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <!--//item-->
-
-                    <div class="item">
-                        <h3 class="level-title">Ruby on Rails</h3>
-                        <div class="progress level-bar">
-                            <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 85%"
-                                aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <!--//item-->
-
-                    <div class="item">
-                        <h3 class="level-title">Sketch &amp; Photoshop</h3>
-                        <div class="progress level-bar">
-                            <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 60%"
-                                aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <!--//item-->
-
-                </div>
-            </section>
-            <!--//skills-section-->
-
-        </div>
         <!--//main-body-->
     </div>
 
-    <footer class="footer">
-        <div class="text-center">
-            <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
-            <small class="copyright">Designed with <svg class="svg-inline--fa fa-heart fa-w-16" aria-hidden="true"
-                    focusable="false" data-prefix="fas" data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 512 512" data-fa-i2svg="">
-                    <path fill="currentColor"
-                        d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z">
-                    </path>
-                </svg><!-- <i class="fas fa-heart"></i> Font Awesome fontawesome.com --> by <a
-                    href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
-        </div>
-        <!--//container-->
-    </footer>
-    <!--//footer-->
+    <div class="main-wrapper">
+
+        <section class="section summary-section">
+            <h2 class="section-title"><span class="icon-holder"><svg class="svg-inline--fa fa-user fa-w-14"
+                        aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" role="img"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
+                        <path fill="currentColor"
+                            d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z">
+                        </path>
+                    </svg><!-- <i class="fas fa-user"></i> Font Awesome fontawesome.com --></span>Career Profile
+            </h2>
+            <div class="summary">
+                <p>Summarise your career here lorem ipsum dolor sit amet, consectetuer adipiscing elit. You can
+                    <a href="https://themes.3rdwavemedia.com/bootstrap-templates/resume/orbit-free-resume-cv-bootstrap-theme-for-developers/"
+                        target="_blank">download this free resume/CV template here</a>. Aenean commodo ligula
+                    eget
+                    dolor aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
+                    ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.
+                </p>
+            </div>
+            <!--//summary-->
+        </section>
+        <!--//section-->
+
+        <section class="section experiences-section">
+            <h2 class="section-title"><span class="icon-holder"><svg class="svg-inline--fa fa-briefcase fa-w-16"
+                        aria-hidden="true" focusable="false" data-prefix="fas" data-icon="briefcase" role="img"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                        <path fill="currentColor"
+                            d="M320 336c0 8.84-7.16 16-16 16h-96c-8.84 0-16-7.16-16-16v-48H0v144c0 25.6 22.4 48 48 48h416c25.6 0 48-22.4 48-48V288H320v48zm144-208h-80V80c0-25.6-22.4-48-48-48H176c-25.6 0-48 22.4-48 48v48H48c-25.6 0-48 22.4-48 48v80h512v-80c0-25.6-22.4-48-48-48zm-144 0H192V96h128v32z">
+                        </path>
+                    </svg>
+                    <!-- <i class="fas fa-briefcase"></i> Font Awesome fontawesome.com --></span>Experiences
+            </h2>
+
+            <div class="item">
+                <div class="meta">
+                    <div class="upper-row">
+                        <h3 class="job-title">Lead Developer</h3>
+                        <div class="time">2019 - Present</div>
+                    </div>
+                    <!--//upper-row-->
+                    <div class="company">Startup Hubs, San Francisco</div>
+                </div>
+                <!--//meta-->
+                <div class="details">
+                    <p>Describe your role here lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+                        commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
+                        parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
+                        eu,
+                        pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo.</p>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                        laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                        architecto beatae vitae dicta sunt explicabo. </p>
+                </div>
+                <!--//details-->
+            </div>
+            <!--//item-->
+
+            <div class="item">
+                <div class="meta">
+                    <div class="upper-row">
+                        <h3 class="job-title">Senior Software Engineer</h3>
+                        <div class="time">2018 - 2019</div>
+                    </div>
+                    <!--//upper-row-->
+                    <div class="company">Google, London</div>
+                </div>
+                <!--//meta-->
+                <div class="details">
+                    <p>Describe your role here lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+                        commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
+                        parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
+                        eu,
+                        pretium quis, sem.</p>
+
+                </div>
+                <!--//details-->
+            </div>
+            <!--//item-->
+
+            <div class="item">
+                <div class="meta">
+                    <div class="upper-row">
+                        <h3 class="job-title">UI Developer</h3>
+                        <div class="time">2016 - 2018</div>
+                    </div>
+                    <!--//upper-row-->
+                    <div class="company">Amazon, London</div>
+                </div>
+                <!--//meta-->
+                <div class="details">
+                    <p>Describe your role here lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+                        commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
+                        parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
+                        eu,
+                        pretium quis, sem.</p>
+                </div>
+                <!--//details-->
+            </div>
+            <!--//item-->
+
+        </section>
+        <!--//section-->
+
+        <section class="section projects-section">
+            <h2 class="section-title"><span class="icon-holder"><svg class="svg-inline--fa fa-archive fa-w-16"
+                        aria-hidden="true" focusable="false" data-prefix="fas" data-icon="archive" role="img"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                        <path fill="currentColor"
+                            d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z">
+                        </path>
+                    </svg><!-- <i class="fas fa-archive"></i> Font Awesome fontawesome.com --></span>Projects
+            </h2>
+            <div class="intro">
+                <p>You can list your side projects or open source libraries in this section. Lorem ipsum dolor
+                    sit
+                    amet, consectetur adipiscing elit. Vestibulum et ligula in nunc bibendum fringilla a eu
+                    lectus.
+                </p>
+            </div>
+            <!--//intro-->
+            <div class="item">
+                <span class="project-title"><a
+                        href="https://themes.3rdwavemedia.com/bootstrap-templates/startup/coderpro-bootstrap-5-startup-template-for-software-projects/"
+                        target="_blank">CoderPro</a></span> - <span class="project-tagline">A responsive website
+                    template designed to help developers launch their software projects. </span>
+
+            </div>
+            <!--//item-->
+            <div class="item">
+                <span class="project-title"><a
+                        href="https://themes.3rdwavemedia.com/bootstrap-templates/startup/launch-bootstrap-5-template-for-saas-businesses/"
+                        target="_blank">Launch</a></span> - <span class="project-tagline">A responsive website
+                    template designed to help startups promote their products or services.</span>
+            </div>
+            <!--//item-->
+            <div class="item">
+                <span class="project-title"><a
+                        href="https://themes.3rdwavemedia.com/bootstrap-templates/resume/devcard-bootstrap-5-vcard-portfolio-template-for-software-developers/"
+                        target="_blank">DevCard</a></span> - <span class="project-tagline">A portfolio website
+                    template designed for software developers.</span>
+            </div>
+            <!--//item-->
+            <div class="item">
+                <span class="project-title"><a
+                        href="https://themes.3rdwavemedia.com/bootstrap-templates/startup/bootstrap-template-for-mobile-apps-nova-pro/"
+                        target="_blank">Nova Pro</a></span> - <span class="project-tagline">A responsive
+                    Bootstrap
+                    theme designed to help app developers promote their mobile apps</span>
+            </div>
+            <!--//item-->
+            <div class="item">
+                <span class="project-title"><a
+                        href="http://themes.3rdwavemedia.com/website-templates/responsive-bootstrap-theme-web-development-agencies-devstudio/"
+                        target="_blank">DevStudio</a></span> -
+                <span class="project-tagline">A responsive website template designed to help web
+                    developers/designers market their services. </span>
+            </div>
+            <!--//item-->
+        </section>
+        <!--//section-->
+        <section class="skills-section section">
+            <h2 class="section-title"><span class="icon-holder"><svg class="svg-inline--fa fa-rocket fa-w-16"
+                        aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rocket" role="img"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                        <path fill="currentColor"
+                            d="M505.12019,19.09375c-1.18945-5.53125-6.65819-11-12.207-12.1875C460.716,0,435.507,0,410.40747,0,307.17523,0,245.26909,55.20312,199.05238,128H94.83772c-16.34763.01562-35.55658,11.875-42.88664,26.48438L2.51562,253.29688A28.4,28.4,0,0,0,0,264a24.00867,24.00867,0,0,0,24.00582,24H127.81618l-22.47457,22.46875c-11.36521,11.36133-12.99607,32.25781,0,45.25L156.24582,406.625c11.15623,11.1875,32.15619,13.15625,45.27726,0l22.47457-22.46875V488a24.00867,24.00867,0,0,0,24.00581,24,28.55934,28.55934,0,0,0,10.707-2.51562l98.72834-49.39063c14.62888-7.29687,26.50776-26.5,26.50776-42.85937V312.79688c72.59753-46.3125,128.03493-108.40626,128.03493-211.09376C512.07526,76.5,512.07526,51.29688,505.12019,19.09375ZM384.04033,168A40,40,0,1,1,424.05,128,40.02322,40.02322,0,0,1,384.04033,168Z">
+                        </path>
+                    </svg><!-- <i class="fas fa-rocket"></i> Font Awesome fontawesome.com --></span>Skills &amp;
+                Proficiency</h2>
+            <div class="skillset">
+                <div class="item">
+                    <h3 class="level-title">Python &amp; Django</h3>
+                    <div class="progress level-bar">
+                        <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 99%"
+                            aria-valuenow="99" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <!--//item-->
+
+                <div class="item">
+                    <h3 class="level-title">Javascript</h3>
+                    <div class="progress level-bar">
+                        <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 98%"
+                            aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <!--//item-->
+
+                <div class="item">
+                    <h3 class="level-title">React &amp; Angular</h3>
+                    <div class="progress level-bar">
+                        <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 98%"
+                            aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <!--//item-->
+
+                <div class="item">
+                    <h3 class="level-title">HTML5 &amp; CSS</h3>
+                    <div class="progress level-bar">
+                        <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 95%"
+                            aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <!--//item-->
+
+                <div class="item">
+                    <h3 class="level-title">Ruby on Rails</h3>
+                    <div class="progress level-bar">
+                        <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 85%"
+                            aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <!--//item-->
+
+                <div class="item">
+                    <h3 class="level-title">Sketch &amp; Photoshop</h3>
+                    <div class="progress level-bar">
+                        <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 60%"
+                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <!--//item-->
+
+            </div>
+        </section>
+        <!--//skills-section-->
+
+    </div>
 
 </body>
 
