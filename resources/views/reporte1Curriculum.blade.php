@@ -85,7 +85,7 @@
     <div class="wrapper mt-lg-5">
         <div class="sidebar-wrapper">
             <div class="profile-container">
-                <img class="profile" src="" alt="" />
+                <img class="profile" src="" alt="profile" />
                 <h1 class="name">Alan Doe</h1>
                 <h3 class="tagline">Full Stack Developer</h3>
             </div>
