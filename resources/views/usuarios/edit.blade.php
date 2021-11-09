@@ -6,7 +6,7 @@
     {{ Form::model($usuarios,['route'=>['usuarios.update',$usuarios->id],'method'=>'PATCH']) }}
     @include('usuarios.form_master')
     {{ Form::close() }}
-    <form method="POST" action="/upload" enctype="multipart/form-data">
+    <form method="POST" action="/SIRHENA/public/usuarios/upload" enctype="multipart/form-data">
       @csrf
       <div class="row">
         <div class="col-sm-2">
@@ -14,7 +14,7 @@
           {!! form::label('username','Cambiar Foto') !!}
         </div>
         <div class="col-sm-10">
-          <img class="imagen" src="<?php echo ('../../storage/images/' . auth()->user()->photo) ?>">
+          <img class="imagen" src="<?php echo ('../../../../SIRHENA/storage/images/' . auth()->user()->photo) ?>">
           <input type="file" type="photo" class="form-control @error('photo') is-invalid @enderror" name="photo" value="{{ old('photo') }}" required autocomplete="photo">
           @error('photo')
           <span class="invalid-feedback" role="alert">

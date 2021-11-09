@@ -21,7 +21,7 @@ class usuariosController extends Controller
         return view('usuarios.index', compact('usuarios'));
     }
 
-    public function subirImagen(Request $request)
+    public function upload(Request $request)
     {
         $filename = $request->photo->getClientOriginalName();
         $request->photo->storeAs('images',$filename, 'public');

@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 
     <!-- Theme CSS -->
-    <link id="theme-style" rel="stylesheet" href="{{ asset('css/orbit-1.css') }}">
+    <link id="theme-style" rel="stylesheet" href="{{ asset('css/orbit-3.css') }}">
 </head>
 
 <body>
@@ -31,17 +31,7 @@
                 <th scope="col">Cedula</th>
                 <th scope="col">Foto</th>
             </tr>
-            @foreach ($usuarios as $key => $value)
-            <tr>
-                <td>{{ $value->name }}</td>
-                <td>{{ $value->email }}</td>
-                <td>{{ $value->phone }}</td>
-                <td>{{ $value->address }}</td>
-                <td>{{ $value->cedula }}</td>
-                <td><img class="imagen" style="width:50px; height:50px;"
-                        src="<?php //echo ('storage/images/' . $value->photo) ?>"></td>
-            </tr>
-            @endforeach
+          
         </table>
         <h2 style="color: #636b6f;">Experiencias</h2>
         <table class="table table-bordered">
@@ -54,15 +44,7 @@
                     <th scope="col">Fecha Final</th>
                 </tr>
             </thead>
-            @foreach ($experiencias as $key => $value)
-            <tr>
-                <td>{{ $value->exPuesto }}</td>
-                <td>{{ $value->exEmpresa }}</td>
-                <td>{{ $value->exDescripcion }}</td>
-                <td>{{ $value->exFechaInicio }}</td>
-                <td>{{ $value->fechaFinal }}</td>
-            </tr>
-            @endforeach
+        
         </table>
         <h2 style="color: #636b6f;">Formaciones</h2>
         <table class="table table-bordered">
@@ -84,37 +66,38 @@
     </div> -->
     <div class="wrapper mt-lg-5">
         <div class="sidebar-wrapper">
+            @foreach ($usuarios as $key => $value)
             <div class="profile-container">
-                <img class="profile" src="" alt="profile" />
-                <h1 class="name">Alan Doe</h1>
-                <h3 class="tagline">Full Stack Developer</h3>
+                <img class="profile" src="<?php echo ('storage/images/' . $value->photo) ?>"" alt=" profile"
+                style="width: 15em;" />
+                <h1 class="name">{{ $value->name }}</h1>
             </div>
             <!--//profile-container-->
-
             <div class="contact-container container-block">
                 <ul class="list-unstyled contact-list">
-                    <li class="email"><i class="fas fa-envelope"></i><a
-                            href="mailto: yourname@email.com">yo soy el 3.doe@website.com</a></li>
-                    <li class="phone"><i class="fas fa-phone"></i><a href="tel:0123 456 789">0123 456 789</a></li>
-                    <li class="website"><i class="fas fa-globe"></i><a
-                            href="https://themes.3rdwavemedia.com/bootstrap-templates/resume/orbit-free-resume-cv-bootstrap-theme-for-developers/"
-                            target="_blank">portfoliosite.com</a></li>
-                    <li class="linkedin"><i class="fab fa-linkedin-in"></i><a href="#"
-                            target="_blank">linkedin.com/in/alandoe</a></li>
-                    <li class="github"><i class="fab fa-github"></i><a href="#" target="_blank">github.com/username</a>
-                    </li>
-                    <li class="twitter"><i class="fab fa-twitter"></i><a href="https://twitter.com/3rdwave_themes"
-                            target="_blank">@twittername</a></li>
+                    <li class="email"><i class="fas fa-envelope"></i><a href="mailto: yourname@email.com">Email:
+                            {{ $value->email }}</a></li>
+                    <li class="phone"><i class="fas fa-phone"></i><a href="#">Tel: {{ $value->phone }}</a></li>
+                    <li class="website"><i class="fas fa-globe"></i><a href="#" target="_blank">Dir:
+                            {{ $value->address }}</a></li>
+                    <li class="address"><i class="fab fa-twitter"></i><a href="#" target="_blank">Ced:
+                            {{ $value->cedula }}</a></li>
                 </ul>
             </div>
+            @endforeach
             <!--//contact-container-->
             <div class="education-container container-block">
                 <h2 class="container-block-title">Education</h2>
+                @foreach ($formaciones as $key => $value)
                 <div class="item">
-                    <h4 class="degree">MSc in Computer Science</h4>
-                    <h5 class="meta">University of London</h5>
-                    <div class="time">2016 - 2018</div>
+                    <h4 class="degree">{{ $value->foTitulo }}</h4>
+                    <h5 class="degree">{{ $value->foEspecialidad }}</h5>
+
+                    <h5 class="meta">{{ $value->foInstitucion }}</h5>
+                    <div class="time">{{ $value->foFecha }}</div>
                 </div>
+                @endforeach
+
                 <!--//item-->
                 <div class="item">
                     <h4 class="degree">BSc in Applied Mathematics</h4>
@@ -149,23 +132,19 @@
         <!--//sidebar-wrapper-->
 
         <div class="main-wrapper">
-
+            @foreach ($curriculums as $key => $value)
             <section class="section summary-section">
-                <h2 class="section-title"><span class="icon-holder"><i class="fas fa-user"></i></span>Career Profile
+                <h2 class="section-title"><span class="icon-holder"><i class="fas fa-user"></i></span>Perfil de Carrera
                 </h2>
                 <div class="summary">
-                    <p>Summarise your career here lorem ipsum dolor sit amet, consectetuer adipiscing elit. You can <a
-                            href="https://themes.3rdwavemedia.com/bootstrap-templates/resume/orbit-free-resume-cv-bootstrap-theme-for-developers/"
-                            target="_blank">download this free resume/CV template here</a>. Aenean commodo ligula eget
-                        dolor aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-                        ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.</p>
+                    <p>{{$value->Observaciones}}</p>
                 </div>
                 <!--//summary-->
             </section>
+            @endforeach
             <!--//section-->
-
             <section class="section experiences-section">
-                <h2 class="section-title"><span class="icon-holder"><i class="fas fa-briefcase"></i></span>Experiences
+                <h2 class="section-title"><span class="icon-holder"><i class="fas fa-briefcase"></i></span>Experiencias
                 </h2>
 
                 @foreach ($experiencias as $key => $value)
@@ -185,12 +164,9 @@
                     <!--//details-->
                 </div>
                 @endforeach
-
                 <!--//item-->
-
             </section>
             <!--//section-->
-
             <section class="section projects-section">
                 <h2 class="section-title"><span class="icon-holder"><i class="fas fa-archive"></i></span>Projects</h2>
                 <div class="intro">
