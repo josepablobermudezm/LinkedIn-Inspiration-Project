@@ -20,12 +20,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-  color: #2d7788;
+  color: #35776d;
   text-decoration: none;
 }
 a:hover {
   text-decoration: underline;
-  color: #1a454f;
+  color: #1d423c;
   -webkit-transition: all 0.4s ease-in-out;
   -moz-transition: all 0.4s ease-in-out;
   -ms-transition: all 0.4s ease-in-out;
@@ -40,20 +40,22 @@ p {
 }
 
 .wrapper {
-  background: #42A8C0;
+  background: #4CAC9D;
   max-width: 960px;
   margin: 0 auto;
   position: relative;
+  -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar-wrapper {
-  background: #42A8C0;
+  background: #4CAC9D;
   position: absolute;
   right: 0;
+  margin-bottom: 0;
   width: 240px;
   height: auto;
-  min-height: 800px;
   color: #fff;
 }
 .sidebar-wrapper a {
@@ -159,7 +161,7 @@ p {
   text-transform: uppercase;
   font-size: 20px;
   font-weight: 500;
-  color: #2d7788;
+  color: #35776d;
   position: relative;
   margin-top: 0;
   margin-bottom: 20px;
@@ -170,11 +172,15 @@ p {
   margin-right: 8px;
   display: inline-block;
   color: #fff;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
   border-radius: 50%;
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  background: #2d7788;
+  background: #35776d;
   text-align: center;
   font-size: 16px;
   position: relative;
@@ -237,13 +243,17 @@ p {
 .skillset .level-bar {
   height: 12px;
   background: #f5f5f5;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
   border-radius: 2px;
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
 }
 .skillset .theme-progress-bar {
-  background: #68bacd;
+  background: #6dbeb2;
 }
 
 .footer {
@@ -258,3 +268,4 @@ p {
 .footer .fa-heart {
   color: #fb866a;
 }
+

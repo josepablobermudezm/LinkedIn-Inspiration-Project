@@ -30,7 +30,7 @@ class ReportGeneratorController extends Controller
             $pdf = PDF::loadView('reporte1Curriculum', compact('curriculums', 'usuarios', 'experiencias', 'formaciones'))->setPaper('a4', 'landscape');;
 
             return $pdf->stream('Reporte1.pdf');
-            //return view('reporte1Curriculum', compact('usuarios', 'experiencias', 'formaciones'));
+            //return view('reporte1Curriculum', compact('curriculums','usuarios', 'experiencias', 'formaciones'));
 
         }
         return view('reportes', compact('usuarios'));
