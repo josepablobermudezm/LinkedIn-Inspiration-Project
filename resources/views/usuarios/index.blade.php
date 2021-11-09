@@ -41,7 +41,7 @@
         <td>{{ $value->address }}</td>
         <td>{{ $value->phone }}</td>
         <td>{{ $value->tipoUsuario }}</td>
-        <td><img class="imagen" src="<?php echo ('../../storage/images/' . auth()->user()->photo) ?>"></td>
+        <td><img class="imagen" src="<?php echo ('../../SIRHENA/storage/images/' . auth()->user()->photo) ?>"></td>
         <td>{{ $value->cedula }}</td>
         <td>
             <div class="row">
