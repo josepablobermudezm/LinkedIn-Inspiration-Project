@@ -29,6 +29,7 @@ Route::post('usuarios/upload','usuariosController@upload')->name('upload');;
 Route::get('pdf/{user}', 'ReportGeneratorController@ReporteCurriculum')->name('pdf');//Reportecurriculum
 Route::get('pdfCurriculum2/{user}', 'ReportGeneratorController@ReporteCurriculum2')->name('pdfCurriculum2');//Reportecurriculum estilo 2
 Route::get('pdfCurriculum3/{user}', 'ReportGeneratorController@ReporteCurriculum3')->name('pdfCurriculum3');//Reportecurriculum estilo 3
+Route::get('pdfCurriculum4/{user}', 'ReportGeneratorController@ReporteCurriculum4')->name('pdfCurriculum4');//Reportecurriculum estilo 3
 
 Route::get('pdf2', 'ReportGeneratorController@ReporteEmpleos')->name('pdf2');//ReporteEmpresa
 Route::get('pdf3/{user}', 'ReportGeneratorController@ReporteEmpresa')->name('pdf3');//ReporteEmpresa
