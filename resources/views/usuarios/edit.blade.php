@@ -6,7 +6,7 @@
     {{ Form::model($usuarios,['route'=>['usuarios.update',$usuarios->id],'method'=>'PATCH']) }}
     @include('usuarios.form_master')
     {{ Form::close() }}
-    <form method="POST" action="/upload" enctype="multipart/form-data">
+    <form method="POST" action="/SIRHENA/public/usuarios/upload" enctype="multipart/form-data">
       @csrf
       <div class="row">
         <div class="col-sm-2">

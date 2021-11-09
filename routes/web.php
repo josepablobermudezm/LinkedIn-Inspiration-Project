@@ -24,7 +24,7 @@ Route::get('/Reportes', function () {
     return view('Reportes');
 })->name('reportes');
 
-Route::post('/upload','usuariosController@subirImagen');
+Route::post('usuarios/upload','usuariosController@upload')->name('upload');;
 
 Route::get('pdf/{user}', 'ReportGeneratorController@ReporteCurriculum')->name('pdf');//Reportecurriculum
 Route::get('pdfCurriculum2/{user}', 'ReportGeneratorController@ReporteCurriculum2')->name('pdfCurriculum2');//Reportecurriculum estilo 2
