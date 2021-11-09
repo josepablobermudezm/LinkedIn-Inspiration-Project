@@ -14,7 +14,7 @@
           {!! form::label('username','Cambiar Foto') !!}
         </div>
         <div class="col-sm-10">
-          <img class="imagen" src="<?php echo ('../../SIRHENA/storage/images/' . auth()->user()->photo) ?>">
+          <img class="imagen" src="<?php echo ('../../../../SIRHENA/storage/images/' . auth()->user()->photo) ?>">
           <input type="file" type="photo" class="form-control @error('photo') is-invalid @enderror" name="photo" value="{{ old('photo') }}" required autocomplete="photo">
           @error('photo')
           <span class="invalid-feedback" role="alert">
