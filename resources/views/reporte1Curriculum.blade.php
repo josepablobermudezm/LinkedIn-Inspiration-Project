@@ -66,22 +66,22 @@
     </div> -->
     <div class="wrapper mt-lg-5">
         <div class="sidebar-wrapper">
-        @foreach ($usuarios as $key => $value)
+            @foreach ($usuarios as $key => $value)
             <div class="profile-container">
-                <img class="profile" src="<?php echo ('storage/images/' . $value->photo) ?>"" alt="profile" />
+                <img class="profile" src="<?php echo ('storage/images/' . $value->photo) ?>"" alt=" profile"
+                style="width: 15em;" />
                 <h1 class="name">{{ $value->name }}</h1>
             </div>
             <!--//profile-container-->
             <div class="contact-container container-block">
                 <ul class="list-unstyled contact-list">
-                    <li class="email"><i class="fas fa-envelope"></i><a
-                            href="mailto: yourname@email.com">Email: {{ $value->email }}</a></li>
+                    <li class="email"><i class="fas fa-envelope"></i><a href="mailto: yourname@email.com">Email:
+                            {{ $value->email }}</a></li>
                     <li class="phone"><i class="fas fa-phone"></i><a href="#">Tel: {{ $value->phone }}</a></li>
-                    <li class="website"><i class="fas fa-globe"></i><a
-                            href="#"
-                            target="_blank">Dir: {{ $value->address }}</a></li>
-                    <li class="address"><i class="fab fa-twitter"></i><a href="#"
-                            target="_blank">Ced: {{ $value->cedula }}</a></li>
+                    <li class="website"><i class="fas fa-globe"></i><a href="#" target="_blank">Dir:
+                            {{ $value->address }}</a></li>
+                    <li class="address"><i class="fab fa-twitter"></i><a href="#" target="_blank">Ced:
+                            {{ $value->cedula }}</a></li>
                 </ul>
             </div>
             @endforeach
