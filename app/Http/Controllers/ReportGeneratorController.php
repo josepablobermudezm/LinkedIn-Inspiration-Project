@@ -19,7 +19,7 @@ class ReportGeneratorController extends Controller
 
         // Se obteien el curriculum para sacar las experiencias y formaciones
         $curriculums = DB::table('curriculums')->join('users', 'curriculums.crUsuario', '=', 'users.id')
-            ->select('curriculums.crID', 'users.name as NombreUsuario', 'curriculums.crObservaciones')
+            ->select('curriculums.crID', 'curriculums.crObservaciones as Observaciones', 'users.name as NombreUsuario', 'curriculums.crObservaciones')
             ->where('crUsuario', $user)->get()->toArray();
         if (!empty($curriculums)) {
             //Obtenemos las formaciones
@@ -27,7 +27,7 @@ class ReportGeneratorController extends Controller
             // Obtenemos las experiencias
             $experiencias  = DB::table('experiencias')->orderBy('exID', 'asc')->where('exCurriculum', $curriculums[0]->crID)->get()->toArray();
 
-            $pdf = PDF::loadView('reporte1Curriculum', compact('usuarios', 'experiencias', 'formaciones'))->setPaper('a4', 'landscape');;
+            $pdf = PDF::loadView('reporte1Curriculum', compact('curriculums', 'usuarios', 'experiencias', 'formaciones'))->setPaper('a4', 'landscape');;
 
             return $pdf->stream('Reporte1.pdf');
             //return view('reporte1Curriculum', compact('usuarios', 'experiencias', 'formaciones'));
