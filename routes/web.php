@@ -27,6 +27,9 @@ Route::get('/Reportes', function () {
 Route::post('/upload','usuariosController@subirImagen');
 
 Route::get('pdf/{user}', 'ReportGeneratorController@ReporteCurriculum')->name('pdf');//Reportecurriculum
+Route::get('pdfCurriculum2/{user}', 'ReportGeneratorController@ReporteCurriculum2')->name('pdfCurriculum2');//Reportecurriculum estilo 2
+Route::get('pdfCurriculum3/{user}', 'ReportGeneratorController@ReporteCurriculum3')->name('pdfCurriculum3');//Reportecurriculum estilo 3
+
 Route::get('pdf2', 'ReportGeneratorController@ReporteEmpleos')->name('pdf2');//ReporteEmpresa
 Route::get('pdf3/{user}', 'ReportGeneratorController@ReporteEmpresa')->name('pdf3');//ReporteEmpresa
 Route::get('pdf4/{user}', 'ReportGeneratorController@ReporteOferta')->name('pdf4');//Reporteoferta
@@ -59,6 +62,8 @@ Route::post('requisitos/store/{oferta}', [
 Route::get('usuarios/listaEmpresas/', [
     'as' => 'listaEmpresas', 'uses' => 'usuariosController@listaEmpresas'
 ]);
+
+Route::get('CurriculumsMenu', 'ReportGeneratorController@CurriculumsMenu')->name('CurriculumsMenu');
 
 Route::get('ofertas/listaOfertas/', [
     'as' => 'listaOfertas', 'uses' => 'ofertasController@listaOfertas'
