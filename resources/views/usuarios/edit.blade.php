@@ -9,6 +9,7 @@
     <form method="POST" action="/SIRHENA/public/usuarios/upload" enctype="multipart/form-data">
       @csrf
       <div class="row">
+        
         <div class="col-sm-2">
           <!--<input id="photo" type="photo" placeholder="Foto" class="form-control @error('photo') is-invalid @enderror" name="photo" value="{{ old('photo') }}" required autocomplete="photo">-->
           {!! form::label('username','Cambiar Foto') !!}
