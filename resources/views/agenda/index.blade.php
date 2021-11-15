@@ -14,7 +14,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Reporte de Agenda Médica</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Reporte de Agenda</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -167,34 +167,37 @@
                 selectable: true,
                 selectMirror: true,
                 select: function(arg) {
+                    console.log("hola")
                     <?php if (auth()->user()->tipoUsuario == 'E') { ?>
-                    let fechaConFomato = moment(arg.start).format("YYYY-MM-DD"); //para convertirlo
-                    let horaInicial = moment(arg.start).format("HH:mm:ss");
-                    let horaFinal = moment(arg.end).format("HH:mm:ss");
-                    //valores por defecto
-                    $("#agn_fecha").val(fechaConFomato);
-                    $("#agn_HoraInicio").val(horaInicial);
-                    $("#agn_HoraFinal_tiempo").val("30");
-                    $("#agenda_modal").modal();
+                        let fechaConFomato = moment(arg.start).format("YYYY-MM-DD"); //para convertirlo
+                        let horaInicial = moment(arg.start).format("HH:mm:ss");
+                        let horaFinal = moment(arg.end).format("HH:mm:ss");
+                        //valores por defecto
+                        $("#agn_fecha").val(fechaConFomato);
+                        $("#agn_HoraInicio").val(horaInicial);
+                        $("#agn_HoraFinal_tiempo").val("30");
+                        console.log("antes")
+                        $("#agenda_modal").show();
                     <?php } ?>
                     calendar.unselect()
                 },
                 eventClick: function(info) {
+                    console.log("hola")
                     <?php if (auth()->user()->tipoUsuario == 'E') { ?>
-                    $("#agenda_modal").modal();
-                    $("#agn_fecha").val(moment(info.event.extendedProps['agn_fecha']).format("YYYY-MM-DD"));
-                    FechaAnt = moment(info.event.extendedProps['agn_fecha']).format("YYYY-MM-DD");
-                    $("#agn_NombreCompleto").val(info.event.extendedProps['agn_NombreCompleto']);
-                    NombreCompletoAnt = info.event.extendedProps['agn_NombreCompleto'];
-                    $("#agn_telefono").val(info.event.extendedProps['agn_telefono']);
-                    telefonoAnt = info.event.extendedProps['agn_telefono'];
-                    $("#agn_descripcion").val(info.event.extendedProps['agn_descripcion']);
-                    descripcionAnt = info.event.extendedProps['agn_descripcion'];
-                    $("#agn_HoraFinal_tiempo").val(info.event.extendedProps['agn_Tiempo']);
-                    tiempoAnt = info.event.extendedProps['agn_Tiempo'];
-                    $("#agn_HoraInicio").val(info.event.extendedProps['agn_HoraInicio']);
-                    horaInicioAnt = info.event.extendedProps['agn_HoraInicio'];
-                    ID = info.event.id;
+                        $("#agenda_modal").show();
+                        $("#agn_fecha").val(moment(info.event.extendedProps['agn_fecha']).format("YYYY-MM-DD"));
+                        FechaAnt = moment(info.event.extendedProps['agn_fecha']).format("YYYY-MM-DD");
+                        $("#agn_NombreCompleto").val(info.event.extendedProps['agn_NombreCompleto']);
+                        NombreCompletoAnt = info.event.extendedProps['agn_NombreCompleto'];
+                        $("#agn_telefono").val(info.event.extendedProps['agn_telefono']);
+                        telefonoAnt = info.event.extendedProps['agn_telefono'];
+                        $("#agn_descripcion").val(info.event.extendedProps['agn_descripcion']);
+                        descripcionAnt = info.event.extendedProps['agn_descripcion'];
+                        $("#agn_HoraFinal_tiempo").val(info.event.extendedProps['agn_Tiempo']);
+                        tiempoAnt = info.event.extendedProps['agn_Tiempo'];
+                        $("#agn_HoraInicio").val(info.event.extendedProps['agn_HoraInicio']);
+                        horaInicioAnt = info.event.extendedProps['agn_HoraInicio'];
+                        ID = info.event.id;
                     <?php } ?>
                 },
                 editable: false,
@@ -255,6 +258,7 @@
 
     function limpiar() {
         $("#agenda_modal").modal('hide');
+        $("#agenda_modal").hide();
         $("#agn_HoraInicio").val("");
         $("#agn_HoraFinal_tiempo").val("");
         $("#agn_NombreCompleto").val("");
