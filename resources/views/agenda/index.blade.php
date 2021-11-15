@@ -200,7 +200,7 @@
                 editable: false,
                 dayMaxEvents: true, // allow "more" link when too many events
                 events: {
-                    url: '/agenda/listar',
+                    url: '/ProyectoGlobales/public/agenda/listar',
                     method: 'GET',
                     failure: function() {
                         alert('Hubo un error mientras se cargaban los eventos');
@@ -233,7 +233,7 @@
         }
         //enviamos por ajax
         $.ajax({
-            url: (ID == null) ? "/guardarCalendar" : "/agenda/editar", //si ID es nulo entonces guardamos, sino, editamos
+            url: (ID == null) ? "/ProyectoGlobales/public/guardarCalendar" : "/ProyectoGlobales/public/agenda/editar", //si ID es nulo entonces guardamos, sino, editamos
             data: fd,
             type: "POST",
             processData: false,
@@ -275,7 +275,7 @@
             fd.append("agn_id", ID);
             //enviamos por ajax
             $.ajax({
-                url: "/agenda/eliminar",
+                url: "/ProyectoGlobales/public/agenda/eliminar",
                 data: fd,
                 type: "POST",
                 processData: false,

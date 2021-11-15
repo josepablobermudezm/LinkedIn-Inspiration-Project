@@ -36,7 +36,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
-<body  style="background-color: #f2f6f6; background: url('img/wave.png');background-size:cover; " >
+<body  style="background-color: #f2f6f6; background-size:cover; " >
     <div id="app">
         <nav class="navbar navbar-dark bg-dark">
             <div class="container">
