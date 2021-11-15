@@ -120,4 +120,4 @@ Route::get('/agenda/listar', 'agendaController@listar');
 Route::post('/guardarCalendar', 'agendaController@guardar')->name('guardarCalendar');
 Route::post('/agenda/editar', 'agendaController@editar');
 Route::post('/agenda/eliminar', 'agendaController@eliminar');
-Route::get('agenda/pdf', 'agendaController@createPDF')->name('agendaPDF');
+Route::get('/agenda/pdf', 'agendaController@createPDF')->name('agendaPDF');
