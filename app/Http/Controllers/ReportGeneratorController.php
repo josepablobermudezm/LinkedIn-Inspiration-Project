@@ -44,17 +44,18 @@ class ReportGeneratorController extends Controller
 
         // Se obteien el curriculum para sacar las experiencias y formaciones
         $curriculums = DB::table('curriculums')->join('users', 'curriculums.crUsuario', '=', 'users.id')
-            ->select('curriculums.crID', 'users.name as NombreUsuario', 'curriculums.crObservaciones')
+            ->select('curriculums.crID', 'curriculums.crObservaciones as Observaciones', 'users.name as NombreUsuario', 'curriculums.crObservaciones')
             ->where('crUsuario', $user)->get()->toArray();
+            
         if (!empty($curriculums)) {
             //Obtenemos las formaciones
             $formaciones  = DB::table('formaciones')->orderBy('foID', 'asc')->where('foCurriculum', $curriculums[0]->crID)->get()->toArray();
             // Obtenemos las experiencias
             $experiencias  = DB::table('experiencias')->orderBy('exID', 'asc')->where('exCurriculum', $curriculums[0]->crID)->get()->toArray();
 
-            $pdfCurriculum2 = PDF::loadView('reporte2Curriculum', compact('usuarios', 'experiencias', 'formaciones'))->setPaper('a4', 'landscape');;
+            $pdf = PDF::loadView('reporte2Curriculum', compact('curriculums', 'usuarios', 'experiencias', 'formaciones'))->setPaper('a4', 'landscape');;
 
-            return $pdfCurriculum2->stream('Reporte2Curriculum.pdf');
+            return $pdf->stream('Reporte2Curriculum.pdf');
             //return view('reporte1Curriculum', compact('usuarios', 'experiencias', 'formaciones'));
 
         }
@@ -85,7 +86,30 @@ class ReportGeneratorController extends Controller
         }
         return view('reportes', compact('usuarios'));
     }
+    public function ReporteCurriculum4($user)
+    {
+        // Sacamos el usuario logueado, esto en caso de ser un candidato, si es empresa entonces hay que mostrarle
+        // los canditados que están inscritos a sus ofertas
+        $usuarios  = DB::table('users')->orderBy('id', 'asc')->where('id', $user)->get()->toArray();
 
+        // Se obteien el curriculum para sacar las experiencias y formaciones
+        $curriculums = DB::table('curriculums')->join('users', 'curriculums.crUsuario', '=', 'users.id')
+            ->select('curriculums.crID', 'curriculums.crObservaciones as Observaciones', 'users.name as NombreUsuario', 'curriculums.crObservaciones')
+            ->where('crUsuario', $user)->get()->toArray();
+        if (!empty($curriculums)) {
+            //Obtenemos las formaciones
+            $formaciones  = DB::table('formaciones')->orderBy('foID', 'asc')->where('foCurriculum', $curriculums[0]->crID)->get()->toArray();
+            // Obtenemos las experiencias
+            $experiencias  = DB::table('experiencias')->orderBy('exID', 'asc')->where('exCurriculum', $curriculums[0]->crID)->get()->toArray();
+
+            $pdf = PDF::loadView('reporte4Curriculum', compact('curriculums', 'usuarios', 'experiencias', 'formaciones'))->setPaper('a4', 'landscape');;
+
+            return $pdf->stream('Reporte4.pdf');
+            //return view('reporte1Curriculum', compact('curriculums','usuarios', 'experiencias', 'formaciones'));
+
+        }
+        return view('reportes', compact('usuarios'));
+    }
     public function ReporteEmpleos()
     {
         $ofertasaux  = DB::table('ofertas')->orderBy('ofCategoria', 'asc')->where('ofVacantes', '>', '0')->get()->toArray();
