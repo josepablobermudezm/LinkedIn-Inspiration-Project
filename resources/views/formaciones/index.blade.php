@@ -40,7 +40,7 @@
         <td>{{ $value->foEspecialidad}}</td>
         <td>{{ $value->foInstitucion}}</td>
         <td>{{ $value->foFecha }}</td>
-        <td>
+        <td class="text-center">
             <a class="btn btn-primary btn-sm" href="{{route('formaciones.edit',$value->foID)}}">
                 <i class="material-icons">edit</i></a>
             {!! Form::open(['method' => 'DELETE','route' => ['formaciones.destroy',

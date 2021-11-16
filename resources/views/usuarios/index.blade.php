@@ -16,7 +16,7 @@
     <p>{{ $message }}</p>
 </div>
 @endif
-<table class="table">
+<table class="table table-hover">
     <tr>
         <th with="80px">No</th>
         <td>Nombre Real</td>
@@ -41,24 +41,17 @@
         <td>{{ $value->address }}</td>
         <td>{{ $value->phone }}</td>
         <td>{{ $value->tipoUsuario }}</td>
-        <td><img class="imagen" src="<?php echo ('../../ProyectoGlobales/storage/images/' . auth()->user()->photo) ?>"></td>
+        <td><img class="imagen" src="<?php echo ('../../ProyectoGlobales/storage/images/' . auth()->user()->photo) ?>">
+        </td>
         <td>{{ $value->cedula }}</td>
-        <td>
-            <div class="row">
-                <div class="col-sm-6">
-                    <a class="" href="{{route('usuarios.edit',$value->id)}}">
-                        <i class="material-icons">edit</i></a>
-                </div>
-                <br>
-                <div class="col-sm-6">
-                    {!! Form::open(['method' => 'DELETE','route' => ['usuarios.destroy',
-                    $value->id],'style'=>'display:inline'])
-                    !!}
-                    <a type="submit" style="display: inline;" class=""><i
-                            class="material-icons">delete</i></a>
-                    {!! Form::close() !!}
-                </div>
-            </div>
+        <td class="text-center">
+            <a class="btn btn-primary btn-sm" href="{{route('usuarios.edit',$value->id)}}">
+                <i class="material-icons">edit</i></a>
+            {!! Form::open(['method' => 'DELETE','route' => ['usuarios.destroy',
+            $value->id],'style'=>'display:inline'])
+            !!}
+            <button type="submit" style="display: inline;" class="btn btn-danger btn-sm" ><i class="material-icons">delete</i></button>
+            {!! Form::close() !!}
         </td>
     </tr>
     @endforeach

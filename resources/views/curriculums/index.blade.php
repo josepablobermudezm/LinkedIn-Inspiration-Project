@@ -38,7 +38,7 @@
         <td>{{$no++}}</td>
         <td>{{ $value->NombreUsuario}}</td>
         <td>{{ $value->	crObservaciones}}</td>
-        <td>
+        <td class="text-center">
             <a class="btn btn-primary btn-sm" href="{{route('curriculums.edit',$value->crID)}}">
                 <i class="material-icons">edit</i></a>
             {!! Form::open(['method' => 'DELETE','route' => ['curriculums.destroy',

@@ -2,7 +2,7 @@
 @section('PageTitle', 'Registro')
 @section('content')
 
-<div class="containerAux">
+<div  class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -107,9 +107,6 @@
                                 <label class="textaa"><input id="columnaRadio" checked="checked" name="tipoUsuario" type="radio" value="C">Candidatos</label>
                             </div>
                         </div>
-
-
-
                         <div class="form-group row">
                             <div class="col-md-3 col-form-label text-md-right"></div>
                             <div class="col-md-6">
@@ -121,7 +118,6 @@
                                 @enderror
                             </div>
                         </div>
-
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btnLogin">
@@ -130,8 +126,6 @@
                             </div>
                         </div>
                     </form>
-                    
-
                 </div>
             </div>
         </div>
