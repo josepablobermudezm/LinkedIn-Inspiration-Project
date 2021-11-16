@@ -1,10 +1,10 @@
 <div class="row">
-  <div class="col-sm-2">
+  <div class="col-sm-2" style="margin-right: 2%;">
     {!! form::label('crObservaciones','Observaciones') !!}
   </div>
   <div class="col-sm-10">
     <div class="form-group {{ $errors->has('crObservaciones') ? 'has-error' : "" }}">
-      {{ Form::text('crObservaciones',NULL, ['class'=>'form-control', 'id'=>'crObservaciones', 'placeholder'=>'Observaciones']) }}
+      {{ Form::text('crObservaciones',NULL, ['class'=>'form-control', 'id'=>'crObservaciones', 'placeholder'=>'Digita tus Observaciones de curriculum']) }}
       {!! $errors->first('crObservaciones', '<p class="help-block">:message</p>') !!}
     </div>
   </div>

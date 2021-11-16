@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Reporte 1</title>
+    <title>Reporte 3</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -22,7 +22,7 @@
         <div class="sidebar-wrapper">
             @foreach ($usuarios as $key => $value)
             <div class="profile-container">
-                <img class="profile" src="<?php echo ('storage/images/' . $value->photo) ?>"" alt=" profile"
+                <img class="profile" src="<?php echo ('storage/images/' . $value->photo) ?>" alt=" profile"
                 style="width: 15em;" />
                 <h1 class="name">{{ $value->name }}</h1>
             </div>
