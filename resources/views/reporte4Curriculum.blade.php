@@ -68,12 +68,12 @@
                 <!--//summary-section-->
                 <div class="row">
                     <div class="col-lg-9">
-                        @foreach ($experiencias as $key => $value)
                         <section class="resume-section experience-section mb-5">
                             <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Experiencias
                             </h2>
+							@foreach ($experiencias as $key => $value)
                             <div class="resume-section-content">
-                                <div class="resume-timeline position-relative">
+                                <div class="position-relative">
                                     <article class="position-relative pb-5">
                                         <div class="resume-timeline-item-header mb-2">
                                             <div class="resume-position-title font-weight-bold mb-1">
@@ -93,15 +93,15 @@
                                     </article>
                                 </div>
                             </div>
+							@endforeach
                         </section>
-                        @endforeach
                         <!--//experience-section-->
                     </div>
                     <div class="col-lg-3">
                         <!--//skills-section-->
                         <section class="resume-section education-section mb-5">
 
-                            <h2 class="resume-section-title text-uppercase font-weight-bold pb-1 mb-1">Education</h2>
+                            <h2 class="resume-section-title text-uppercase font-weight-bold pb-1 mb-1">Educación</h2>
                             <div class="resume-section-content">
                                 <ul class="list-unstyled">
                                     @foreach ($formaciones as $key => $value)
