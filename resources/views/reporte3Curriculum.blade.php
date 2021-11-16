@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Reporte 1</title>
+    <title>Reporte 3</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -68,7 +68,7 @@
         <div class="sidebar-wrapper">
             @foreach ($usuarios as $key => $value)
             <div class="profile-container">
-                <img class="profile" src="<?php echo ('storage/images/' . $value->photo) ?>"" alt=" profile"
+                <img class="profile" src="<?php echo ('storage/images/' . $value->photo) ?>" alt=" profile"
                 style="width: 15em;" />
                 <h1 class="name">{{ $value->name }}</h1>
             </div>
@@ -97,36 +97,8 @@
                     <div class="time">{{ $value->foFecha }}</div>
                 </div>
                 @endforeach
-
-                <!--//item-->
-                <div class="item">
-                    <h4 class="degree">BSc in Applied Mathematics</h4>
-                    <h5 class="meta">Bristol University</h5>
-                    <div class="time">2012 - 2016</div>
-                </div>
-                <!--//item-->
             </div>
             <!--//education-container-->
-
-            <div class="languages-container container-block">
-                <h2 class="container-block-title">Languages</h2>
-                <ul class="list-unstyled interests-list">
-                    <li>English <span class="lang-desc">(Native)</span></li>
-                    <li>French <span class="lang-desc">(Professional)</span></li>
-                    <li>Spanish <span class="lang-desc">(Professional)</span></li>
-                </ul>
-            </div>
-            <!--//interests-->
-
-            <div class="interests-container container-block">
-                <h2 class="container-block-title">Interests</h2>
-                <ul class="list-unstyled interests-list">
-                    <li>Climbing</li>
-                    <li>Snowboarding</li>
-                    <li>Cooking</li>
-                </ul>
-            </div>
-            <!--//interests-->
 
         </div>
         <!--//sidebar-wrapper-->
