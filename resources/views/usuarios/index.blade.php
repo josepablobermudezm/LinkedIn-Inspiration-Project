@@ -16,7 +16,7 @@
     <p>{{ $message }}</p>
 </div>
 @endif
-<table class="table table-hover">
+<table class="table">
     <tr>
         <th with="80px">No</th>
         <td>Nombre Real</td>
@@ -45,17 +45,12 @@
         <td>{{ $value->cedula }}</td>
         <td>
             <div class="row">
-                <div class="col-sm-4">
-                    <a class="" href="{{route('usuarios.show',$value->id)}}">
-                        <i class="material-icons">visibility</i></a>
-                </div>
-                <br>
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                     <a class="" href="{{route('usuarios.edit',$value->id)}}">
                         <i class="material-icons">edit</i></a>
                 </div>
                 <br>
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                     {!! Form::open(['method' => 'DELETE','route' => ['usuarios.destroy',
                     $value->id],'style'=>'display:inline'])
                     !!}

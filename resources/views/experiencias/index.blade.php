@@ -47,8 +47,6 @@
             <td>{{ $value->fechaFinal }}</td>
             <td>{{ $value->exDescripcion }}</td>
             <td>
-                <a class="btn btn-info btn-sm" href="{{route('experiencias.show', $value->exID)}}">
-                    <i class="material-icons">visibility</i></a>
                 <a class="btn btn-primary btn-sm" href="{{route('experiencias.edit', $value->exID)}}">
                     <i class="material-icons">edit</i></a>
                 {!! Form::open(['method' => 'DELETE','route' => ['experiencias.destroy', $value->exID

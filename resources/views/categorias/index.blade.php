@@ -22,7 +22,7 @@
       <td>Descripcion</td>
       <th with="140px" class="text-center">
         <a href="{{route('categorias.create')}}" class="btn btn-success btn-sm">
-          <i class="glyphicon glyphicon-plus"></i>
+          <i class="material-icons">add</i>
         </a>
       </th>
     </tr>
@@ -34,9 +34,9 @@
       <td>{{ $value->cgDescripcion }}</td>
       <td>
         <a class="btn btn-info btn-sm" href="{{route('categorias.show',$value->cgID)}}">
-          <i class="glyphicon glyphicon-th-large"></i></a>
+          <i class="material-icons">remove</i>delete</a>
         <a class="btn btn-primary btn-sm" href="{{route('categorias.edit',$value->cgID)}}">
-          <i class="glyphicon glyphicon-pencil"></i></a>
+          <i class="material-icons">edit</i></a>
         {!! Form::open(['method' => 'DELETE','route' => ['categorias.destroy', $value->cgID],'style'=>'display:inline']) !!}
         <button type="submit" style="display: inline;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
         {!! Form::close() !!}
