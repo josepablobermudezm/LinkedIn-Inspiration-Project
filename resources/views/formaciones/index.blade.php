@@ -41,8 +41,6 @@
         <td>{{ $value->foInstitucion}}</td>
         <td>{{ $value->foFecha }}</td>
         <td>
-            <a class="btn btn-info btn-sm" href="{{route('formaciones.show',$value->foID)}}">
-                <i class="material-icons">visibility</i></a>
             <a class="btn btn-primary btn-sm" href="{{route('formaciones.edit',$value->foID)}}">
                 <i class="material-icons">edit</i></a>
             {!! Form::open(['method' => 'DELETE','route' => ['formaciones.destroy',
