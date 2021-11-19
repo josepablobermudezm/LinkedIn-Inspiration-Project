@@ -43,7 +43,7 @@
       <td>{{ $value->cedula }}</td>
       <td>
       <a class="btn btn-info btn-sm" href="{{ route('pdf3',$value->id) }}">
-        <i class="glyphicon glyphicon-th-list"></i></a>
+        <i class="material-icons">picture_as_pdf</i></a>
       </td>
     </tr>
     @endforeach
