@@ -49,7 +49,7 @@
     @if ($tipoUsuario == 'E')
     <th with="140px" class="text-center">
       <a href="{{route('ofertas.create')}}" class="btn btn-success btn-sm">
-        <i class="glyphicon glyphicon-plus"></i>
+        <i class="material-icons">add</i>
       </a>
     </th>
     @else
@@ -75,11 +75,11 @@
     <td>
       @if ($tipoUsuario == 'E')
       <a class="btn btn-primary btn-sm" href="{{route('listaCandidatos',$value->ofID)}}">
-        <i class="glyphicon glyphicon-th-list"></i></a>
+        <i class="material-icons">add</i></a>
       <a class="btn btn-info btn-sm" href="{{route('offer',$value->ofID)}}">
         Requisitos</a>
       <a class="btn btn-primary btn-sm" href="{{route('ofertas.edit',$value->ofID)}}">
-        <i class="glyphicon glyphicon-pencil"></i></a>
+        <i class="material-icons">edit</i></a>
       {!! Form::open(['method' => 'DELETE','route' => ['ofertas.destroy', $value->ofID],'style'=>'display:inline']) !!}
       <button type="submit" style="display: inline;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
       {!! Form::close() !!}
