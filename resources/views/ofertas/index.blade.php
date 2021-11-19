@@ -81,7 +81,7 @@
       <a class="btn btn-primary btn-sm" href="{{route('ofertas.edit',$value->ofID)}}">
         <i class="material-icons">edit</i></a>
       {!! Form::open(['method' => 'DELETE','route' => ['ofertas.destroy', $value->ofID],'style'=>'display:inline']) !!}
-      <button type="submit" style="display: inline;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
+      <button type="submit" style="display: inline;" class="btn btn-danger btn-sm"><i class="material-icons">delete</i></button>
       {!! Form::close() !!}
       @else
       {{ Form::open(['route'=>['inscribir', 'ofID'=>$value->ofID], 'method'=>'POST']) }}
